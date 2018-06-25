@@ -16,6 +16,6 @@ var foo = function () {
 }
 console.log(new foo().c.b()); //a
 ```
-* ES6 箭头函数的this指的是定义时this的指向，b在定义时，this指向的是c被定义时的函数
+* ES6 箭头函数的this指的是定义时this的指向，b在定义时，this指向的是c被定义时的函数(箭头函数是和父级上下文绑定在一起的);
 
 * 箭头函数不能用new
