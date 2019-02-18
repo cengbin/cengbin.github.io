@@ -1,7 +1,7 @@
 
 # WEB开发博客
 
-## [所有文章](https://github.com/urlzengbin/web-blog/issues)
+## [所有文章](https://github.com/urlzengbin/web-blog/tree/master/issues)
 
 
 ## [JavaScript](https://github.com/urlzengbin/web-blog/labels)
