@@ -21,8 +21,8 @@ iPhone4 屏幕尺寸继续保持320 x 480，不过单位并非是像素，而是
 
 ### 设备像素比(device pixel ratio) 
 设备像素比(简称dpr)定义了物理像素和设备独立像素的对应关系，它的值可以按如下的公式的得到：
-设备像素比 = 物理像素 / 设备独立像素 // 在某一方向上，x方向或者y方向
-在javascript中，可以通过window.devicePixelRatio获取到当前设备的dpr。
+设备像素比 = 物理像素 / 设备独立像素   
+// 在某一方向上，x方向或者y方向在javascript中，可以通过window.devicePixelRatio获取到当前设备的dpr。
 
 ### 转化成我们熟知的像素尺寸：
 ￼![](./iphone_pixel_size.jpg)
