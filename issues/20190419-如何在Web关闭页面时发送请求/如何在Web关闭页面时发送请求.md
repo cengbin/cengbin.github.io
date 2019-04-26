@@ -45,11 +45,42 @@ navigator.sendBeacon(url [, data]);
 
 data 参数是将要发送的 ArrayBufferView 或 Blob, DOMString 或者 FormData 类型的数据。
 
->注：  
->只能发送post请求
->
-sendBeacon中Content-Type标头唯一允许的值是：
->
-* application/x-www-form-urlencoded 
-* multipart/form-data 
-* text/plain 
+注： 
+>* 只能发送post请求
+>* sendBeacon中Content-Type标头唯一允许的值是：
+	* application/x-www-form-urlencoded 
+	* multipart/form-data 
+	* text/plain 	
+
+
+我收集的是提取传输数据的内容类型，并将其设置为HTTP请求的Content-Type。
+
+1. 如果发送Blob对象，则Content-Type将成为Blob的类型。
+2. 如果发送FormData对象，则Content-Type将变为multipart / form-data
+3. 如果发送了URLSearchParams对象，则Content-Type将变为application / x-www-form-urlencoded
+4. 如果发送普通字符串，则Content-Type变为text / plain
+
+[可以在此处找到](http://usefulangle.com/post/63/javascript-navigator-sendbeacon-set-form-http-header)实现不同对象的Javascript代码
+
+
+
+
+```
+var data = {
+ name: 'test',
+ uniqueId: Math.random()
+};
+var blob = new Blob([JSON.stringify(data)], {type : 'application/json'});
+navigator.sendBeacon('http://example.in/data/post', blob);
+```
+报错：Uncaught DOMException: Failed to execute 'sendBeacon' on 'Navigator': sendBeacon() with a Blob whose type is not any of the CORS-safelisted values for the Content-Type request header is disabled temporarily. See [http://crbug.com/490015](http://crbug.com/490015) for details.  
+Chrome [https://bugs.chromium.org/p/chromium/issues/detail?id=490015](https://bugs.chromium.org/p/chromium/issues/detail?id=490015)中的安全问题
+
+解决：
+最后我将数据发送为'text / plain; charset = UTF-8'并在服务器端读取流以获取json内容。
+
+web：
+```
+const blob = new Blob([JSON.stringify(myData)], {type: 'text/plain; charset=UTF-8'});
+navigator.sendBeacon(appData.ReleaseSessionUrl, blob); 
+```
