@@ -4,9 +4,16 @@
 
 <label style='color:red;'>ES6的模块不是对象，import命令会被 JavaScript 引擎静态分析，在编译时就引入模块代码，而不是在代码运行时加载</label>，所以无法实现条件加载。也正因为这个，使得静态分析成为可能。
 
-## CommonJS 模块
+## CommonJS规范
 
-<label style='color:red;'>CommonJS就是一个JavaScript模块化的规范</label>,是用在服务器端的node的模块规范，前端的webpack也是对CommonJS原生支持的。
+<label style='color:red;'>CommonJS只是一个规范！CommonJS就是一个JavaScript模块化的规范</label>,是用在服务器端的node的模块规范。就和Promise一样是一个规范，虽然有许多实现这些规范的开源库，但是这个规范也是可以依靠我们的JS能力实现的。
+
+CommonJS定义了两个主要概念：
+
+* <label style='color:red;'>require</label>函数，用于导入模块
+* <label style='color:red;'>module.exports</label>变量，用于导出模块
+
+<label style='color:red;'></label>
 
 ## ES6 模块与commonJS模块的差异
 
