@@ -23,11 +23,11 @@ let p2 = p1.then(value => {
 
   // return value
 
-  // throw new Error('ha ha')
+  throw new Error('ha ha')
 
-  return new PromiseA((resolve, reject) => {
-    resolve('p2')
-  })
+  // return new PromiseA((resolve, reject) => {
+  //   resolve('p2')
+  // })
 
   // return new PromiseA((resolve, reject) => {
   //   resolve(new PromiseA((resolve, reject) => {
@@ -49,12 +49,20 @@ let p2 = p1.then(value => {
   // return p2
 }, error => {
   console.log('4.2 reason:', error)
+}).catch((error) => {
+  console.log('4 catch:', error)
 })
 
-p2.then(value => {
+let p3 = p2.then(value => {
   console.log('5.1 value:', value)
+  // throw new Error('ha ha')
 }, error => {
   console.log('5.2 reason:', error)
 })
 
+p3
+
 console.log('3')
+
+console.log(PromiseA.resolve(1))
+console.log(PromiseA.reject('error'))

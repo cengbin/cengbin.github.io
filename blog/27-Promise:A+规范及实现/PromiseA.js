@@ -4,7 +4,6 @@ const FULFILLED = 'fulfilled'
 const REJECTED = 'rejected'
 
 class PromiseA {
-
   constructor(executor) {
     if (typeof executor !== 'function') throw new Error(`TypeError: Promise resolver ${executor} is not a function`)
 
@@ -36,71 +35,87 @@ class PromiseA {
       reject(e)
     }
   }
+}
 
-  then(onFulfilled, onRejected) {
-    // 2.2.7.3
-    if (typeof onFulfilled !== 'function' && this.state === FULFILLED) onFulfilled = value => value
+PromiseA.prototype.then = function (onFulfilled, onRejected) {
+  // 2.2.7.3
+  if (typeof onFulfilled !== 'function' && this.state === FULFILLED) onFulfilled = value => value
 
-    // 2.2.7.4
-    if (typeof onRejected !== 'function' && this.state === REJECTED) onRejected = reason => reason
+  // 2.2.7.4
+  if (typeof onRejected !== 'function' && this.state === REJECTED) onRejected = reason => reason
 
-    let promise2 = new PromiseA((resolve, reject) => {
+  let promise2 = new PromiseA((resolve, reject) => {
 
-      if (this.state === FULFILLED) {
-        // 2.2.4 then函数是异步，模拟异步
+    if (this.state === FULFILLED) {
+      // 2.2.4 then函数是异步，模拟异步
+      setTimeout(() => {
+        // 2.2.7.2
+        try {
+          // 2.2.2.1 / 2.2.5
+          let x = onFulfilled(this.value)
+          // 2.2.6.1
+          resolvePromise(promise2, x, resolve, reject)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    }
+
+    if (this.state === REJECTED) {
+      setTimeout(() => {
+        try {
+          // 2.2.3.1
+          let x = onRejected(this.reason)
+          resolvePromise(promise2, x, resolve, reject)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    }
+
+    if (this.state === PENDING) {
+      this.onFulfilledCallbacks.push((value) => {
         setTimeout(() => {
-          // 2.2.7.2
           try {
-            // 2.2.2.1 / 2.2.5
-            let x = onFulfilled(this.value)
-            // 2.2.6.1
+            let x = onFulfilled(value)
             resolvePromise(promise2, x, resolve, reject)
           } catch (e) {
             reject(e)
           }
         })
-      }
+      })
 
-      if (this.state === REJECTED) {
+      this.onRejectedCallbacks.push((reason) => {
         setTimeout(() => {
           try {
-            // 2.2.3.1
-            let x = onRejected(this.reason)
+            let x = onRejected(reason)
             resolvePromise(promise2, x, resolve, reject)
           } catch (e) {
             reject(e)
           }
         })
-      }
+      })
+    }
+  })
 
-      if (this.state === PENDING) {
-        this.onFulfilledCallbacks.push((value) => {
-          setTimeout(() => {
-            try {
-              let x = onFulfilled(value)
-              resolvePromise(promise2, x, resolve, reject)
-            } catch (e) {
-              reject(e)
-            }
-          })
-        })
+  // 2.2.7
+  return promise2
+}
 
-        this.onRejectedCallbacks.push((reason) => {
-          setTimeout(() => {
-            try {
-              let x = onRejected(reason)
-              resolvePromise(promise2, x, resolve, reject)
-            } catch (e) {
-              reject(e)
-            }
-          })
-        })
-      }
-    })
+PromiseA.prototype.catch = function (errFn) {
+  return this.then(null, errFn)
+}
 
-    // 2.2.7
-    return promise2
-  }
+PromiseA.all = function (arr) {
+
+}
+
+PromiseA.resolve = function (value) {
+  return new PromiseA((resolve, reject) => resolve(value))
+}
+
+PromiseA.reject = function (reason) {
+  return new PromiseA((resolve, reject) => reject(reason))
 }
 
 /**

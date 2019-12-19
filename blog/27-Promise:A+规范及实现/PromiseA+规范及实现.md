@@ -7,6 +7,16 @@
 * 终值（eventual value）：所谓终值，指的是 promise 被解决时传递给解决回调的值，由于 promise 有一次性的特征，因此当这个值被传递时，标志着 promise 等待态的结束，故称之终值，有时也直接简称为值（value）。
 * 据因（reason）：也就是拒绝原因，指在 promise 被拒绝时传递给拒绝回调的值。
 
+> thenable对象指的是具有then方法的对象，比如下面这个对象。
+
+```
+let thenable = {
+  then: function(resolve, reject) {
+    resolve(42);
+  }
+};
+```
+
 ### 参考
 [https://promisesaplus.com/ Promises/A+](https://promisesaplus.com/)
 
