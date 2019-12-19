@@ -107,7 +107,9 @@ PromiseA.prototype.catch = function (errFn) {
 }
 
 PromiseA.all = function (arr) {
-
+  return new PromiseA((resolve, reject) => {
+    // 遍历数组 未完待续！
+  })
 }
 
 PromiseA.resolve = function (value) {
