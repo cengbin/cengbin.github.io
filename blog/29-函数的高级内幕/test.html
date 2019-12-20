@@ -1,0 +1,32 @@
+<meta charset="UTF-8">
+<title>函数</title>
+<script>
+
+  console.log(a) //  function a { console.log(10) }
+
+  a() // 10
+
+  var a = 3
+
+  function a() {
+    console.log(10)
+  }
+
+  console.log(a) // 3
+
+  a = 6
+
+  // a() // throw error
+
+  function getName() {//函数声明提升到顶部
+    console.log(1)
+  }
+
+  var getName    // 变量声明提升
+
+  getName = function () { // 变量赋值依然保留在原来的位置
+    console.log(2)
+  }
+
+  getName() // 最终输出：2
+</script>
