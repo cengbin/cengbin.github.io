@@ -25,4 +25,5 @@ CommonJS定义了两个主要概念：
 * CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。
 	* 因为 CommonJS 加载的是一个对象（即module.exports属性），该对象只有在脚本运行完才会生成。
 	* 而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。
-
+* commonJS 加载的是整个模块，即将所有的接口全部加载进来，ES6 可以单独加载其中的某个接口（方法）
+* commonJS this 指向当前模块，ES6 this 指向undefined
