@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>节流throuttle</title>
+</head>
+<body>
+  <style>
+    body {
+      height: 2000px;
+    }
+  </style>
+  <script>
+    function throuttle(fn, interval) {
+      let lastTime = new Date().valueOf()
+      return function () {
+        let now = new Date().valueOf()
+
+        if (now - lastTime > interval) {
+          lastTime = now
+          fn()
+        }
+      }
+    }
+
+    window.addEventListener('scroll', throuttle(function () {
+      console.log('window scroll')
+    }, 100))
+
+    window.addEventListener('click', throuttle(function () {
+      console.log('window click')
+    }, 100))
+  </script>
+</body>
+</html>

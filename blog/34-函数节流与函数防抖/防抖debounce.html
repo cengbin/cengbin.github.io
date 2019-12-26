@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>防抖debounce</title>
+</head>
+<body>
+  <style>
+    body {
+      height: 2000px;
+    }
+  </style>
+  <input type="text">
+  <p id="tips"></p>
+  <script>
+    function debounce(fn, interval) {
+      let num = null
+      return function () {
+        if (num) clearTimeout(num)
+
+        num = setTimeout(fn, interval)
+      }
+    }
+
+    let input = document.getElementsByTagName('input')[0]
+    let p = document.getElementsByTagName('p')[0]
+
+    input.addEventListener('input', function () {
+      p.innerText = '输入中...'
+    })
+
+    input.addEventListener('input', debounce(function () {
+      p.innerText = '搜索中...'
+    }, 300))
+
+    window.addEventListener('scroll', debounce(function () {
+      console.log('window scroll stop')
+    }, 300))
+
+    window.addEventListener('click', debounce(function () {
+      console.log('last click window')
+    }, 300))
+  </script>
+</body>
+</html>
