@@ -10,7 +10,9 @@
 	* 当页面关闭后,会触发unload事件. 
 * window.onpageshow
 * window.onpagehide
-	* 该pagehide事件被发送到一个Window当浏览器隐藏当前页面从会话历史呈现不同页面的过程。例如，当用户单击浏览器的“后退”按钮时，当前页面pagehide在显示上一页之前会收到一个事件。	
+	* 该pagehide事件被发送到一个Window当浏览器隐藏当前页面从会话历史呈现不同页面的过程。例如，当用户单击浏览器的“后退”按钮时，当前页面pagehide在显示上一页之前会收到一个事件。
+* [window.onerror](https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onerror)
+	* error事件的事件处理程序。针对各种目标的不同类型的错误触发了 Error 事件：
 
 > 离开页面的情况：  
 >	1. 点击标签页关闭按钮  
