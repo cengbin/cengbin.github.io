@@ -68,6 +68,7 @@
 </body>
 </html>
 <script src="log.js"></script>
+<script src="documentReady.js"></script>
 <script src="visibility.js"></script>
 <script>
   let bugout = new window.Log({
@@ -77,8 +78,14 @@
   })
   bugout.log('进入到 a.html')
 
-  window.addEventListener('DOMContentLoaded', () => {
-    bugout.log(['执行了 DOMContentLoaded  事件, DOM树解析完成'])
+  documentReady(() => {
+    bugout.log(['执行了 DOMContentLoaded  事件1次, DOM树解析完成'])
+  })
+  documentReady(() => {
+    bugout.log(['执行了 DOMContentLoaded  事件2次, DOM树解析完成'])
+  })
+  documentReady(() => {
+    bugout.log(['执行了 DOMContentLoaded  事件3次, DOM树解析完成'])
   })
 
   window.onload = function () {

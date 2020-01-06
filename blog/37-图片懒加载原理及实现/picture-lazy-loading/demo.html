@@ -58,7 +58,8 @@
           }
         }
       })
-      // if(imgs.length<=0) window.removeEventListener('scroll')
-    })
+
+      if (imgs.length <= 0) window.removeEventListener('scroll', arguments.callee, false)
+    }, false)
   })
 </script>
