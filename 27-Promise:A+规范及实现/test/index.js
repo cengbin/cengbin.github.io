@@ -18,3 +18,14 @@ let p3 = p2.then((value) => {
   console.log('p2 reason:', error)
 })
 console.log('5')
+
+
+var _p1 = Promise.resolve(3);
+var _p2 = 1337;
+var _p3 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 1000, 'foo');
+});
+
+Promise.all([_p1, _p2, _p3]).then(values => {
+  console.log(values); // [3, 1337, "foo"]
+});

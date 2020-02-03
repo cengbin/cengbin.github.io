@@ -66,3 +66,20 @@ console.log('3')
 
 console.log(PromiseA.resolve(1))
 console.log(PromiseA.reject('error'))
+
+
+var _p1 = PromiseA.resolve(3);
+var _p2 = 1337;
+var _p3 = new PromiseA((resolve, reject) => {
+  setTimeout(resolve, 1000, 'foo');
+});
+var _p4 = new PromiseA((resolve, reject) => {
+  setTimeout(resolve, 2000, 'bor');
+  // setTimeout(reject, 2000, 'bor');
+});
+
+PromiseA.all([_p1, _p2, _p3, _p4]).then(values => {
+  console.log(values); // [3, 1337, "foo"]
+}, reason => {
+  console.log('reason:', reason)
+});

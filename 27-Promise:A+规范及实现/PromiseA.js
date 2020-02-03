@@ -106,9 +106,30 @@ PromiseA.prototype.catch = function (errFn) {
   return this.then(null, errFn)
 }
 
-PromiseA.all = function (arr) {
+PromiseA.all = function (iterable) {
+  let result = []
+  let i = 0
+
   return new PromiseA((resolve, reject) => {
-    // 遍历数组 未完待续！
+    iterable.forEach((item, idx) => {
+      if (isPromise(item)) {
+        item.then(value => {
+          result[idx] = value
+
+          if (++i === iterable.length) {
+            resolve(result)
+          }
+        }, reason => {
+          reject(reason)
+        })
+      } else {
+        result[idx] = item
+
+        if (++i === iterable.length) {
+          resolve(result)
+        }
+      }
+    })
   })
 }
 
@@ -177,6 +198,13 @@ function resolvePromise(promise2, x, resolve, reject) {
   } else {
     resolve(x)
   }
+}
+
+/**
+ * 判断是否是Promise实例
+ * */
+function isPromise(obj) {
+  return obj instanceof PromiseA
 }
 
 module.exports = {
