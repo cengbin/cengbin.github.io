@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+  // ---------- ES5 ----------
+  function A() {
+    this.sayName = function () {
+      console.log("我是超人");
+    }
+  }
+
+  function B(name) {
+    this.name = name;
+    this.sayHello = function () {
+      console.log('我的名字叫', this.name);
+    }
+  }
+
+  var a = new A()
+  B.prototype = a
+
+  var b = new B('chuck');
+  b.sayHello();
+  b.sayName();
+  console.log(b.__proto__) // 指向的是 a 对象
+  console.log('\n')
+
+  // ---------- ES6 ----------
+  class C {
+    constructor() {}
+
+    sayName() {console.log("我是超人");}
+  }
+
+  class D extends C {
+    constructor(name) {
+      super();
+      this.name = name;
+    }
+
+    sayHello() {
+      console.log('我的名字叫', this.name);
+    }
+  }
+
+  var c = new C()
+  console.log(c.__proto__) // 指向C类的实例
+
+  let d = new D('chuck2');
+  console.log(d)
+  console.log(d.__proto__) // 指向D类的实例
+  console.log(d.__proto__.__proto__) // 指向C类的实例
+</script>
