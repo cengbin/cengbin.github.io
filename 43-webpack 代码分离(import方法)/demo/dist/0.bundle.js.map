@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/c.js"],"names":[],"mappings":";;;;;;;;;;AAAA;AAAe;AACf;AACA,C","file":"0.bundle.js","sourcesContent":["export default {\n  key: 'something'\n}"],"sourceRoot":""}
