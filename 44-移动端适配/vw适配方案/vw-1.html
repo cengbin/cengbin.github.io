@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>vw适配方案</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        p{
+            font-size: 10vw;
+        }
+    </style>
+</head>
+<body>
+    <p>目前出视觉设计稿，我们都是使用750px宽度的，那么100vw = 750px，即1vw = 7.5px。</p>
+    <strong>那么在哪些地方可以使用vw来适配我们的页面。根据相关的测试：</strong>
+    <ul>
+        <li>容器适配，可以使用vw</li>
+        <li>文本的适配，可以使用vw</li>
+        <li>大于1px的边框、圆角、阴影都可以使用vw</li>
+        <li>内距和外距，可以使用vw</li>
+    </ul>
+</body>
+</html>

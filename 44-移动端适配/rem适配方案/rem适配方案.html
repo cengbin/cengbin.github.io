@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>前端rem适配方案</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      p {
+        font-size: 0.32rem;
+      }
+
+      span {
+        font-size: 0.5rem;
+      }
+    </style>
+    <script>
+      //参考链接 https://m.taobao.com/
+      //浏览器默认的字体大小16px
+
+      function setRemFontSize(baseSize, baseWidth) {
+
+        //基本字体大小
+        var baseSize = baseSize || 100;
+
+        //设计图的基本宽度640
+        //iphone5s(640*1136比例) iphone6(750*1334=640*1138) iphone6 plus(818*1472=640*1152)
+        var baseWidth = baseWidth || 640;
+
+        var clientWidth = document.documentElement.clientWidth;
+
+        if (document.documentElement.clientWidth >= 768) {
+          clientWidth = 768;
+        } else if (document.documentElement.clientWidth <= 320) {
+          clientWidth = 320;
+        }
+
+        document.getElementsByTagName('html')[0].style.fontSize = (clientWidth / baseWidth) * baseSize + 'px'
+      }
+
+      setRemFontSize();
+      window.addEventListener("resize", function () {
+        setTimeout(function () {setRemFontSize();}, 200)
+      });
+    </script>
+  </head>
+  <body>
+    <p>我是一行文字 改变现实区域的宽度看看效果</p>
+    <span>我是span</span>
+  </body>
+</html>
