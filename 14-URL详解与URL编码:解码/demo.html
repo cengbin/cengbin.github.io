@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>URL详解与URL编码:解码</title>
+  </head>
+  <body>
+
+  </body>
+</html>
+<script>
+  function parseURL(url) {
+    var a = document.createElement('a');
+    a.href = url;
+    return {
+      source: url,
+      protocol: a.protocol.replace(':', ''),
+      host: a.hostname,
+      port: a.port,
+      query: a.search,
+      params: (function () {
+        var ret = {},
+          seg = a.search.replace(/^\?/, '').split('&'),
+          len = seg.length, i = 0, s;
+        for (; i < len; i++) {
+          if (!seg[i]) {
+            continue;
+          }
+          s = seg[i].split('=');
+          ret[s[0]] = s[1];
+        }
+        return ret;
+      })(),
+      file: (a.pathname.match(/([^/?#]+)$/i) || [, ''])[1],
+      hash: a.hash.replace('#', ''),
+      path: a.pathname.replace(/^([^/])/, '/$1'),
+      relative: (a.href.match(/tps?:\/[^/]+(.+)/) || [, ''])[1],
+      segments: a.pathname.replace(/^\//, '').split('/')
+    };
+  }
+
+  var url1 = 'http://www.aspxfans.com:8080/news/index.asp?boardID=5&ID=24618&page=1#new/1998'
+  console.log(parseURL(url1));
+  document.write(JSON.stringify(parseURL(url1)));
+
+  var url = document.createElement('a');
+  url.href = url1;
+  console.log(url.href);      // https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container
+  console.log(url.protocol);  // https:
+  console.log(url.host);      // developer.mozilla.org:8080
+  console.log(url.hostname);  // developer.mozilla.org
+  console.log(url.port);      // (blank - https assumes port 443)
+  console.log(url.pathname);  // /en-US/search
+  console.log(url.search);    // ?q=URL
+  console.log(url.hash);      // #search-results-close-container
+  console.log(url.origin);    // https://developer.mozilla.org:8080
+</script>
