@@ -1,5 +1,4 @@
 define(function (require, exports, module) {
-
   var c = require('./c')
   // console.log("spinning.js trace c:", c.plus())
 

@@ -8,7 +8,7 @@ define(function (require, exports, module) {
     console.log('i am c.js。 plus=', ++count);
   }
 
-  exports.getspinning = function () {
+  exports.getb = function () {
     console.log('c.js b:', b)
   }
 
