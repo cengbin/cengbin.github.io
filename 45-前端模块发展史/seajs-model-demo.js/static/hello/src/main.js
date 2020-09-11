@@ -21,5 +21,5 @@ define(function (require, exports, module) {
     }
   }
 
-  console.log(module.exports === exports); // false
+  console.log('module.exports === exports:', module.exports === exports); // false
 })
