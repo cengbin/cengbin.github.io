@@ -5,27 +5,27 @@
 Zen Coding由两个核心组件组成：一个缩写扩展器(缩写为像CSS一样的选择器)和上下文无关的HTML标签对匹配器。
 
 ```
-body>(div#head>div.title.title1>p[title="hello world",v-for='item,idx in data',:key=idx]>a{Click me})+(div#main>(div.left>div*5)+(div.right))+(div#footer)
+body>(div#head>div.title.title1>p[title="hello world",v-for='item,idx in data',:key=idx]>a{Click me})+(div#main>(div.left>div{hello $}*5)+(div.right))+(div#footer)
 ```
 
 ```
 <body>
-  <div id="head">
-    <div class="title title1">
-      <p title="hello world" v-for="item,idx in data" :key=""><a href="">Click me</a></p>
-    </div>
-  </div>
-  <div id="main">
-    <div class="left">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <div class="right"></div>
-  </div>
-  <div id="footer"></div>
+	<div id="head">
+	  <div class="title title1">
+	    <p title="hello world" v-for="item,idx in data" :key=""><a href="">Click me</a></p>
+	  </div>
+	</div>
+	<div id="main">
+	  <div class="left">
+	    <div>hello 1</div>
+	    <div>hello 2</div>
+	    <div>hello 3</div>
+	    <div>hello 4</div>
+	    <div>hello 5</div>
+	  </div>
+	  <div class="right"></div>
+	</div>
+	<div id="footer"></div>
 </body>
 ```
 
