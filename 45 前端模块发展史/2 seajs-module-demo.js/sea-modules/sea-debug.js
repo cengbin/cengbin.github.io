@@ -863,6 +863,7 @@
   }
 
 // Use function is equal to load a anonymous module
+  // 该方法用来加载一个匿名模块
   Module.use = function (ids, callback, uri) {
     var mod = Module.get(uri, isArray(ids) ? ids : [ids])
 
