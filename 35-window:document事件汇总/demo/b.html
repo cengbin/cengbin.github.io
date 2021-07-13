@@ -1,87 +1,47 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>B页面</title>
-  <style>
-    input, textarea {
-      font-size: 1em;
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-      border-radius: 5px;
-      border: 1px #C4C4C4 solid;
-      padding: 3px 8px;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>B页面</title>
+    <style>
+      input, textarea {
+        font-size: 1em;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px #C4C4C4 solid;
+        padding: 3px 8px;
+        box-sizing: border-box;
+      }
 
-    input[type=button] {
-      display: inline-block;
-      width: auto;
-      margin-bottom: 10px;
-      padding: 5px 20px;
-      color: white;
-      background-color: #8BC53F;
-      border: 0;
-      outline: none;
-      cursor: pointer;
-      -webkit-appearance: none;
-    }
-
-    input[type=button]:active {
-      background-color: #669f1b;
-    }
-
-    #wrap {
-      padding: 0 20px;
-    }
-
-    section {
-      display: block;
-      clear: left;
-      position: relative;
-      border-bottom: 1px #C4C4C4 solid;
-      padding: 20px 0;
-    }
-
-    .marginRight {
-      margin-right: 20px !important
-    }
-  </style>
-</head>
-<body>
-  <div id="wrap">
-    <section>
-      <input type="button" class="marginRight" id="btn1" value="按钮1" onClick="">
-      <input type="button" class="marginRight" id="btn2" value="按钮2">
-      <input type="button" class="marginRight" id="btn3" value="按钮3">
-      <input type="button" class="marginRight" id="showLog" value="打印日志">
-    </section>
-  </div>
-</body>
+      input[type=button] {
+        display: inline-block;
+        width: auto;
+        margin-bottom: 10px;
+        padding: 5px 20px;
+        color: white;
+        background-color: #8BC53F;
+        border: 0;
+        outline: none;
+        cursor: pointer;
+        -webkit-appearance: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <section>
+        <input type="button" id="btn1" value="按钮1" onClick="">
+        <input type="button" id="btn2" value="按钮2">
+        <input type="button" id="btn3" value="按钮3">
+        <input type="button" id="showLog" value="打印日志">
+      </section>
+    </div>
+  </body>
 </html>
-<script src="log.js"></script>
 <script>
   window.onload = function () {
-    let bugout = new window.Log({
-      useLocalStorage: true,
-      useTimestamps: true,
-      showLine: false
-    })
-    bugout.log('进入到 b.html')
 
-    document.getElementById('btn1').onclick = function () {
-      bugout.log('点击按钮1')
-    }
-    document.getElementById('btn2').onclick = function () {
-      bugout.log('点击按钮2')
-    }
-    document.getElementById('btn3').onclick = function () {
-      bugout.log('点击按钮3')
-    }
-    document.getElementById('showLog').onclick = function () {
-      bugout.log('点击打印日志')
-      console.log(bugout.getLog())
-    }
   }
 </script>

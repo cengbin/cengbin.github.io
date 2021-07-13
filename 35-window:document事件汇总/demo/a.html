@@ -1,159 +1,98 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>A页面</title>
-  <style>
-    input, textarea {
-      font-size: 1em;
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-      border-radius: 5px;
-      border: 1px #C4C4C4 solid;
-      padding: 3px 8px;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>A页面</title>
+    <style>
+      input, textarea {
+        font-size: 1em;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px #C4C4C4 solid;
+        padding: 3px 8px;
+        box-sizing: border-box;
+      }
 
-    input[type=button] {
-      display: inline-block;
-      width: auto;
-      margin-bottom: 10px;
-      padding: 5px 20px;
-      color: white;
-      background-color: #8BC53F;
-      border: 0;
-      outline: none;
-      cursor: pointer;
-      -webkit-appearance: none;
-    }
+      input[type=button] {
+        display: inline-block;
+        width: auto;
+        margin-bottom: 10px;
+        padding: 5px 20px;
+        color: white;
+        background-color: #8BC53F;
+        border: 0;
+        outline: none;
+        cursor: pointer;
+        -webkit-appearance: none;
+      }
+    </style>
+  </head>
 
-    input[type=button]:active {
-      background-color: #669f1b;
-    }
-
-    #wrap {
-      padding: 0 20px;
-    }
-
-    section {
-      display: block;
-      clear: left;
-      position: relative;
-      border-bottom: 1px #C4C4C4 solid;
-      padding: 20px 0;
-    }
-
-    .marginRight {
-      margin-right: 20px !important
-    }
-  </style>
-</head>
-
-<body>
-  <div id="wrap">
-    <section>
-      <input type="button" class="marginRight" id="btn1" value="按钮1">
-      <input type="button" class="marginRight" id="btn2" value="按钮2">
-      <input type="button" class="marginRight" id="btn3" value="按钮3">
-      <input type="button" class="marginRight" id="btn4" value="按钮4">
-      <input type="button" class="marginRight" id="btn5" value="按钮5">
-      <input type="button" class="marginRight" id="btn7" value="跳转到b.html">
-      <input type="button" class="marginRight" id="download" value="下载日志">
-      <input type="button" class="marginRight" id="js_btn_trigger_error" value="触发JS Error">
-      <input type="button" class="marginRight" id="btn6" value="清除日志">
-      <input type="button" class="marginRight" id="showLog" value="打印日志">
-    </section>
-  </div>
-</body>
+  <body>
+    <input type="button" id="btn7" value="跳转到b.html">
+    <input type="button" id="btn8" value="触发JS Error">
+    <input type="button" id="btn9" value="更改hash">
+  </body>
 </html>
-<script src="log.js"></script>
-<script src="documentReady.js"></script>
-<script src="visibility.js"></script>
+<script src="./documentReady.js"></script>
+<script src="./visibility.js"></script>
 <script>
-  let bugout = new window.Log({
-    useLocalStorage: true,
-    useTimestamps: true,
-    showLine: false
-  })
-  bugout.log('进入到 a.html')
-
   documentReady(() => {
-    bugout.log(['执行了 DOMContentLoaded  事件1次, DOM树解析完成'])
+    console.log(['document: 执行了DOMContentLoaded事件1次'])
   })
   documentReady(() => {
-    bugout.log(['执行了 DOMContentLoaded  事件2次, DOM树解析完成'])
+    console.log(['document: 执行了DOMContentLoaded事件2次'])
   })
   documentReady(() => {
-    bugout.log(['执行了 DOMContentLoaded  事件3次, DOM树解析完成'])
+    console.log(['document: 执行了DOMContentLoaded事件3次'])
   })
 
   window.onload = function () {
-    bugout.log(['执行了 onload  事件'])
+    console.log(['window: 执行了onload事件'])
 
-    document.getElementById('btn1').onclick = function () {
-      bugout.log('点击按钮1')
-    }
-    document.getElementById('btn2').onclick = function () {
-      bugout.log('点击按钮2')
-    }
-    document.getElementById('btn3').onclick = function () {
-      bugout.log('点击按钮3')
-    }
-    document.getElementById('btn4').onclick = function () {
-      bugout.log('点击按钮4')
-    }
-    document.getElementById('btn5').onclick = function () {
-      bugout.log('点击按钮5')
-    }
-    document.getElementById('btn6').onclick = function () {
-      bugout.clear()
-    }
     document.getElementById('btn7').onclick = function () {
       window.location.href = 'b.html'
     }
-    document.getElementById('showLog').onclick = function () {
-      bugout.log('点击打印日志')
-      console.log(bugout.getLog())
-    }
-    document.getElementById('download').onclick = function () {
-      bugout.downloadLog()
-    }
-    document.getElementById('js_btn_trigger_error').onclick = function () {
+    document.getElementById('btn8').onclick = function () {
       let num = parseInt(Math.random() * 2)
-      // let num = 0
       if (num === 0) {
         var err = undefined
         err.a = 1
       } else if (num === 1) {
-        throw  new Error('js error')
+        throw new Error('js error')
       }
+    }
+    document.getElementById('btn9').onclick = function () {
+      window.location.hash = 'abc'
     }
   }
 
   window.addEventListener('beforeunload', () => {
-    bugout.log('执行了 beforeunload 事件')
+    console.log('window: 执行了 beforeunload 事件')
   })
   window.addEventListener('unload', () => {
-    bugout.log('执行了 unload 事件')
+    console.log('window: 执行了 unload 事件')
   })
 
   window.addEventListener('pagehide', () => {
-    bugout.log('执行了 pagehide 事件')
+    console.log('window: 执行 pagehide 事件')
   })
   window.addEventListener('pageshow', () => {
-    bugout.log('执行了 pageshow 事件')
+    console.log('window: 执行 pageshow')
   })
 
   // https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onerror
   // window.addEventListener('error', function (message, source, lineNo, colNo, error) {
   // window.addEventListener('error' 与 window.onerror 监听函数message实参值不一样
   window.onerror = function (message, source, lineNo, colNo, error) {
+    console.log('window: 执行 onerror 事件')
     console.log(message, source, lineNo, colNo, error)
     var string = message.toLowerCase()
     var substring = 'script error'
     if (string.indexOf(substring) > -1) {
-      bugout.log('Script Error: See Browser Console for Detail')
+      console.log('Script Error: See Browser Console for Detail')
     } else {
       let msg = message
       if (source) {
@@ -162,15 +101,19 @@
       if (lineNo || colNo) {
         msg += ':' + lineNo + ':' + colNo
       }
-      bugout.log({type: 'error', text: msg})
+      console.log({type: 'error', text: msg})
     }
   }
 
+  window.onhashchange = function () {
+    console.log('window: 执行 onhashchange 事件')
+  }
+
   window.addEventListener('hidden', function () {
-    bugout.log('执行了 hidden 事件，系统睡眠/页面隐藏/切换页面')
+    console.log('window: 执行 hidden 事件')
   })
 
   window.addEventListener('visible', function () {
-    bugout.log('执行了 visible 事件，显示页面')
+    console.log('window: 执行 visible 事件')
   })
 </script>
