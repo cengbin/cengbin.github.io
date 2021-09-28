@@ -46,8 +46,9 @@ PromiseA.prototype.then = function (onFulfilled, onRejected) {
 
   let promise2 = new PromiseA((resolve, reject) => {
 
+    // 此处ths指向的是声明promise2变量作用域中的this，并非promise2实例，因为promise2构造函数传入的是箭头函数。
     if (this.state === FULFILLED) {
-      // 2.2.4 then函数是异步，模拟异步
+      // 2.2.4 onFulfilled，onRejected是异步调用，模拟异步
       setTimeout(() => {
         // 2.2.7.2
         try {
@@ -144,7 +145,7 @@ PromiseA.reject = function (reason) {
 /**
  * Promise 处理程序
  * @param promise2 then函数返回的promise
- * @param x 调用onFulfilled函数返回的promise
+ * @param x 是调用then函数参数onFulfilled函数返回值。x可能是Promise实例或其他类型对象。
  * @param resolve promise2的resolve
  * @param reject promise2的reject
  */
