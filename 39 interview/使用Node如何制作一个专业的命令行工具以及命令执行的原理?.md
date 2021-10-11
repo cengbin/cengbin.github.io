@@ -14,6 +14,8 @@ binzengdeMacBook-Pro:~ bin.zeng$ which env
 
 而这些 bin 目录在环境变量 PATH 中，豁然开朗。简而言之: 「在环境变量的 PATH 中路径的命令可在其它任意地方执行」。
 
+![](./env.jpg)
+
 「开发命令行的原理也是如此，将你开发的命令行工具脚本置于环境变量 PATH 下的路径之中」，而本篇文章的目标就是:
 
 > 使用 Javascript 这门前端开发者熟悉的语言，借助 Node 环境，开发一个命令行工具。
