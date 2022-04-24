@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="p">p element</p>
+</body>
+</html>
+<script>
+  let handler = {
+    has(target, key) {
+      if (key in target) {
+        return target[key]
+      } else {
+        throw `无法访问属性或方法 ${key}, 详情请参考：https://www.google.com`
+        // throw new Error(`无法访问属性或方法 ${key}, 详情请参考：https://www.google.com`)
+        return undefined;
+      }
+    }
+  }
+
+  let target = {
+    console: window.console,
+    Math: window.Math,
+    Date: window.Date,
+
+    name: "i am module"
+  }
+
+  let proxy = new Proxy(target, handler)
+
+  let moduleCode = `
+        function foo(){
+            console.log(name);
+
+            function bar(){
+                var b = 10;
+                console.log("b: ",b);
+                console.log(Math.random());
+                console.log(new Date());
+                // console.log(document.getElementById('p'));
+                console.log(window);
+            }
+
+            bar();
+        }
+
+        foo()
+    `
+
+  let fun = new Function("window",`
+        with(window){
+            ${moduleCode}
+        }
+    `)
+
+  fun.call(proxy,proxy)
+</script>
