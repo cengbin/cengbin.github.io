@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background: lightgreen;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      console.log('\n我是触发 DOMContentLoaded 事件执行的代码')
+      console.log(new Date().valueOf())
+      console.log('DOMContentLoaded')
+    })
+  </script>
+</head>
+<body>
+  <div>div</div>
+  <br/>
+
+  <script>
+    let span = document.getElementById('sp')
+    console.log(span)
+  </script>
+  <p>p</p>
+  <br/>
+
+  <script defer src="render.js"></script>
+  <sapn id="sp">span</sapn>
+  <br/>
+
+  <a id="a">a</a>
+  <script src="../../assets/lib/phaser/phaser-3.19.0.js"></script>
+</body>
+</html>
