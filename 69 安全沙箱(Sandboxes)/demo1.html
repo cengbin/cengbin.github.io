@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <title>Title</title>
-</head>
-<body>
-<p id="p">p element</p>
-</body>
+  </head>
+  <body>
+
+  </body>
 </html>
 <script>
   let handler = {
@@ -16,7 +16,7 @@
       } else {
         throw `无法访问属性或方法 ${key}, 详情请参考：https://www.google.com`
         // throw new Error(`无法访问属性或方法 ${key}, 详情请参考：https://www.google.com`)
-        return undefined;
+        return undefined
       }
     }
   }
@@ -32,6 +32,12 @@
   let proxy = new Proxy(target, handler)
 
   let moduleCode = `
+        // NaN
+
+        // (0, eval)('this')
+
+        // 0,eval("window")
+
         function foo(){
             console.log(name);
 
@@ -40,7 +46,7 @@
                 console.log("b: ",b);
                 console.log(Math.random());
                 console.log(new Date());
-                // console.log(document.getElementById('p'));
+                console.log(document.getElementById('p'));
                 console.log(window);
             }
 
@@ -50,11 +56,11 @@
         foo()
     `
 
-  let fun = new Function("window",`
+  let fun = new Function("window", `
         with(window){
             ${moduleCode}
         }
     `)
 
-  fun.call(proxy,proxy)
+  fun.call(proxy, proxy)
 </script>
