@@ -32,31 +32,31 @@
   let proxy = new Proxy(target, handler)
 
   let moduleCode = `
-        // NaN
+      function foo(){
+          console.log(name);
 
-        // (0, eval)('this')
+          // this===window 此写法会造成沙箱逃逸
+          console.log("this:", this);
+          console.log(this.document);
 
-        // 0,eval("window")
+          function bar(){
+              var b = 10;
+              console.log("b: ",b);
+              console.log(Math.random());
+              console.log(new Date());
+              console.log(document.getElementById('p'));
+              console.log(window);
+          }
 
-        function foo(){
-            console.log(name);
+          bar();
+      }
 
-            function bar(){
-                var b = 10;
-                console.log("b: ",b);
-                console.log(Math.random());
-                console.log(new Date());
-                console.log(document.getElementById('p'));
-                console.log(window);
-            }
-
-            bar();
-        }
-
-        foo()
-    `
+      foo()
+  `
 
   let fun = new Function("window", `
+        "use stric";
+
         with(window){
             ${moduleCode}
         }
