@@ -29,19 +29,19 @@
 
 ### 第二节 架构设计
 
-[微前端](../1.1 微前端/微前端.md)
+[微前端](https://github.com/cengbin/web-blog/tree/master/1.2%20%E5%BE%AE%E5%89%8D%E7%AB%AF)
 
 ### 第三节 构建工具
 
-[构建工具](../1.3 构建工具/构建工具.md)
+[构建工具](https://github.com/cengbin/web-blog/tree/master/1.3%20%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7)
 
 ### 第四节 前端规范
 
-[前端规范](../1.4 前端规范/0 前端规范.md)
+[前端规范](https://github.com/cengbin/web-blog/tree/master/1.4%20%E5%89%8D%E7%AB%AF%E8%A7%84%E8%8C%83)
 
 ### 第五节 应用监控
 
-[应用监控](./1.5 应用监控/应用监控.md)
+[应用监控](https://github.com/cengbin/web-blog/tree/master/1.5%20%E5%BA%94%E7%94%A8%E7%9B%91%E6%8E%A7)
 
 ### 第六节 项目部署
     
