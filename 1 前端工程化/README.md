@@ -27,7 +27,7 @@
 
 ### 第一节 技术选型
 
-[技术选型](../1.1 技术选型/技术选型.md)
+[技术选型](https://github.com/cengbin/web-blog/tree/master/1.1%20%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B)
 
 ### 第二节 架构设计
 
