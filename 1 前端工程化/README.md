@@ -25,7 +25,9 @@
 > * 项目中有哪些痛点和可以提升效率的地方，如何制定针对性的方案解决？
 > * 深度思考是如何解决项目中的痛点，并总结出一套方法论？
 
-### 第一节 [技术选型](https://github.com/cengbin/web-blog/tree/master/1.1%20%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B)
+### 第一节 技术选型
+
+[技术选型](https://github.com/cengbin/web-blog/tree/master/1.1%20%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B)
 
 ### 第二节 架构设计
 
