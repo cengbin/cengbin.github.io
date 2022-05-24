@@ -32,11 +32,13 @@
   let proxy = new Proxy(target, handler)
 
   let moduleCode = `
+      console.log('this1:',this); // this指向proxy
+
       function foo(){
           console.log(name);
 
-          // this===window 此写法会造成沙箱逃逸
-          console.log("this:", this);
+          // this === window 此写法会造成沙箱逃逸
+          console.log("this2:", this); // this是AO，AO作为this值返回时通常为null，this不能为null，重置为全局对象。
           console.log(this.document);
 
           function bar(){
