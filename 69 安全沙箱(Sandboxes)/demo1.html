@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
   </head>
-  <body>
-
-  </body>
 </html>
 <script>
   let handler = {
@@ -22,9 +19,12 @@
   }
 
   let target = {
-    console: window.console,
     Math: window.Math,
     Date: window.Date,
+
+    console: window.console,
+    // document: window.document,
+    // window: window,
 
     name: "i am module"
   }
@@ -32,21 +32,30 @@
   let proxy = new Proxy(target, handler)
 
   let moduleCode = `
-      console.log('this1:',this); // this指向proxy
+
+      function bar(){
+        console.log('this3:', this);
+      }
+
+      bar.call({name:'bar'})
+      // bar();
+
+      // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode
+      console.log('this1:',this); // 非严格模式下，this指向proxy
 
       function foo(){
           console.log(name);
 
-          // this === window 此写法会造成沙箱逃逸
-          console.log("this2:", this); // this是AO，AO作为this值返回时通常为null，this不能为null，重置为全局对象。
-          console.log(this.document);
+          // this === window 非严格模式下，此写法会造成沙箱逃逸
+          console.log("this2:", this); // 非严格模式下，this是AO，ECMAScript规范规定AO作为this值返回时通常为null，this不能为null，重置为全局对象。
+          // console.log(this.document);
 
           function bar(){
               var b = 10;
               console.log("b: ",b);
               console.log(Math.random());
               console.log(new Date());
-              console.log(document.getElementById('p'));
+              console.log(document);
               console.log(window);
           }
 
@@ -56,13 +65,14 @@
       foo()
   `
 
-  let fun = new Function("window", `
-        "use stric";
-
-        with(window){
-            ${moduleCode}
+  let fun = new Function(`
+        with(this){
+            (function(){
+              "use strict";
+              ${moduleCode}
+            })()
         }
     `)
 
-  fun.call(proxy, proxy)
+  fun.call(proxy)
 </script>
