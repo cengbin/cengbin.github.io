@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      var firstClosure
+      var secondClosure
+
+      function foo() {
+
+        var x = 1
+        var y = 10
+
+        firstClosure = function () {
+          y++
+          return ++x
+        }
+
+        secondClosure = function () {
+          return --x
+        }
+
+        x = 3
+
+        console.log(firstClosure()) // 4
+      }
+
+      foo()
+
+      console.log(firstClosure()) // 5
+
+      console.log(secondClosure()) // 4
+    </script>
+  </body>
+</html>

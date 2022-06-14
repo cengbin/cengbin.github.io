@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <p id="p">p element</p>
+  </body>
+</html>
+<script>
+  var x = 10
+
+  function foo() {
+    var y = 20
+
+    function barFD() {
+      console.log([x, y])
+    }
+
+    var barFE = function () {
+      console.log([x, y])
+    }
+
+    var barFn = Function('console.log([x,y])')
+
+    barFD() // 10, 20
+    barFE() // 10, 20
+    barFn() // 10, 'y' is not defined
+  }
+
+  foo()
+</script>

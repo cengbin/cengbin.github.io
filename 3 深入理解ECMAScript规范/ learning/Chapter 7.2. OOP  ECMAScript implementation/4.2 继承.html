@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+
+  </body>
+</html>
+
+<script>
+  // 首先，因为原始值 1 ， new Number(1) 作为中间对象被创建了；
+  // 接着继承的toString 方法从中间对象调用。
+  console.log((1.).toString()) // "1"
+
+  console.log(10.) // 10
+  console.log(10..toString()) // "10"
+</script>

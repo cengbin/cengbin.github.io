@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      function A(x) {
+        this.x = x || 10
+      }
+
+      A.prototype = {
+        y: 20
+      }
+
+      var a = new A()
+      console.log(a.x)
+      console.log(a.y)
+      a.y = 30
+      console.log(a.y)
+
+      console.log('\n')
+
+      var a2 = new A()
+      console.log(a2.y)
+    </script>
+  </body>
+</html>

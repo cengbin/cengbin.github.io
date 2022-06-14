@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<!--
+<script>
+  function foo() {
+    function bar() {
+      console.log(this)
+    }
+
+    bar()
+  }
+
+  foo()
+</script>-->
+
+<script>
+  try {
+    throw function () {
+      console.log(this)
+    }
+  } catch (e) {
+    console.log(e)
+    e()
+  }
+</script>

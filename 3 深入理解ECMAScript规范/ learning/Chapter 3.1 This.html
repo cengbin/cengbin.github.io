@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+  var foo = {x: 10}
+
+  var bar = {
+    x: 20,
+    test: function () {
+      alert(this === bar)
+      alert(this.x)
+
+      // this = foo // error, can't change this value
+
+      // alert(this.x)
+    }
+  }
+
+  bar.test() // true, 20
+
+  foo.test = bar.test
+
+  foo.test() // false, 20
+</script>

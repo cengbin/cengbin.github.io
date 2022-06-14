@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+
+  </body>
+</html>
+
+<!--
+<script>
+  let x = {
+    a: 1,
+    b: 2
+  }
+
+  let y = {
+    c: 3,
+    d: 4,
+    e: 5,
+  }
+
+  y.__proto__ = x
+
+  let z = {
+    f: 6,
+    g: 7
+  }
+
+  z.__proto__ = y
+
+  console.log(z.a) // 1
+  console.log(y.b) // 2
+
+  x.a = 100
+  x.b = 200
+
+  console.log(x.a) // 100
+  console.log(y.b) // 200
+</script>-->
+
+<script>
+  var a = {
+    x: 10
+  }
+  console.log('a  :', a)
+
+  function A() {
+    this.y = 20
+  }
+
+  A.prototype = a
+
+  var a1 = new A()
+  console.log('a1 :', a1)
+
+  console.log(a1.hasOwnProperty('x'))
+  console.log(a1.x)
+  // 设置的是a1对象的x属性
+  a1.x = 30
+
+  // 设置的是a对象的x属性
+  a1.__proto__.x = 40
+  // 同上
+  // a.x = 30
+</script>

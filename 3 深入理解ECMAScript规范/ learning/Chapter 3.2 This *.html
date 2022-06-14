@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+  function foo() {
+    console.log(this)
+  }
+
+  foo.prototype.x = 10
+
+  foo() // global
+
+  console.log(foo.prototype.constructor === foo) // true
+
+  foo.prototype.constructor() // foo.prototype
+
+  // 从上面输出的结果可以看出：调用函数的方式，影响了被调用上下文的this值
+</script>
+
+<!--
+<script>
+  var foo = {
+    bar: function () {
+      console.log(this, this === foo)
+    }
+  }
+
+  foo.bar() // foo, true
+
+  var exampleFun = foo.bar
+
+  console.log(exampleFun === foo.bar) // true
+
+  exampleFun() // global, false
+
+  // 上面输出的结果再次证明：调用函数的方式，影响了被调用上下文的this值
+</script>-->

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+
+  </body>
+</html>
+
+<script>
+  // 等价于
+  // var array = new Array(1,2,3);
+  // 或则
+  // var array = new Array();
+  // array[0]=1;
+  // array[1]=2;
+  // array[2]=3;
+  var array = [1, 2, 3]
+
+  // 等价于
+  // var object = new Object();
+  // object.a = 1;
+  // object.b = 2;
+  // object.c = 3;
+  var object = {a: 1, b: 2, c: 3}
+
+  // 等价于
+  // var re = new RegExp("^\\d+$", "g")
+  var re = /^\d+$/g
+</script>
+
+<script>
+  var getClass = Object.prototype.toString
+
+  console.log(new Object())
+
+  Object = Number
+
+  var foo = new Object()
+  console.log([foo, getClass.call(foo), bar])
+
+  var bar = new Number(1)
+  var bar1 = Number(1)
+  var bar2 = 1
+  console.log([bar, bar1, bar2])
+</script>

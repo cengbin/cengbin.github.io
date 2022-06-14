@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<script>
+  var x = 10
+
+  function foo() {
+    var y = 20
+
+    function bar() {
+      var z = 30
+      console.log(x + y + z)
+    }
+
+    return bar
+  }
+
+  foo()()
+</script>

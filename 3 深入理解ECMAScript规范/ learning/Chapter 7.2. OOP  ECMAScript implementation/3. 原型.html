@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+
+  </body>
+</html>
+
+<script>
+  function A() {}
+
+  var a = new A
+
+  // constructor属性来自于A.prototype。通过原型链继承，a对象可以访问到constructor属性。
+  console.log(a.constructor) // function A() {}
+  console.log(a.constructor === A) // true
+
+  // 通过构造函数的prototype属性显示引用原型
+  // 通过继承的 constructor 属性实例，可以间接的获取原型对象的引用
+  console.log(a.constructor.prototype === A.prototype) // true
+  
+  console.log(a.constructor.prototype.constructor === A) // true
+
+  // __proto__ 属性是一个非标准的属性，通过__proto__属性可以访问对象的原型
+  console.log(a.__proto__ === A.prototype) // true
+  console.log(a.__proto__.constructor === A) // true
+
+  // 注意，ES5中引进了 Object.getPrototypeOf(o) 方法，直接返回对象的 [[Prototype]] 属性 — 实例的原型对象。
+  console.log(Object.getPrototypeOf(a))
+  console.log(Object.getPrototypeOf(a) === a.constructor.prototype) // true
+  console.log(Object.getPrototypeOf(a) === A.prototype) // true
+  console.log(Object.getPrototypeOf(a) === a.__proto__) // true
+</script>

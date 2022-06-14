@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+</html>
+<script>
+  var x = 10;
+
+  function foo() {
+    console.log(x)
+  }
+
+  (function (funArg) {
+    var x = 20
+
+    funArg()
+  })(foo)
+</script>

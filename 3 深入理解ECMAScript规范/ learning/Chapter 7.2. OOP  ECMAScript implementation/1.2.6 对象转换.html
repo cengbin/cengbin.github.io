@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <!--<script>
+      // 对象转化成原始值可以用valueOf方法
+      let a = new Number(1) // a 是一个对象
+      let primitiveA = Number(a) // 隐式"valueOf"调用 (primitiveA是一个原始值)
+      let alsoPrimitiveA = a.valueOf() // 显式调用 (alsoPrimitiveA是一个原始值)
+
+      console.log([
+        typeof a, // object
+        typeof primitiveA, // number
+        typeof alsoPrimitiveA, // number
+      ])
+    </script>-->
+
+    <!--<script>
+      let a = new Number(1)
+      let b = new Number(2)
+      console.log(a + b) // 3 相当于隐式的调用a.valueOf()方法 + b.valueOf()方法
+
+      let c = {
+        x: 10,
+        y: 20,
+        valueOf: function () {
+          return this.x + this.y
+        }
+      }
+      console.log(c.valueOf()) // 30
+
+      let d = {
+        x: 30,
+        y: 40,
+        valueOf: c.valueOf
+      }
+      console.log(d.valueOf()) // 70
+
+      console.log(c + d) // 100
+    </script>-->
+
+    <!--<script>
+      let a = {
+        valueOf: function () {
+          return 100
+        },
+        toString: function () {
+          return "__test"
+        }
+      }
+
+      // 这个操作里，toString方法自动调用
+      alert(a) // "__test"
+
+      // 但是这里，调用的却是valueOf方法
+      alert(a + 10) // 110
+
+      console.log(a) // {valueOf: ƒ, toString: ƒ}
+    </script>-->
+
+    <script>
+      // 值转化成对象类型
+      var n = Object(1)
+      var s = Object('test')
+      var b = new Object(true)
+      var o = new Object()
+
+      console.log([
+        Object.prototype.toString.call(n), // [object Number]
+        Object.prototype.toString.call(s), // [object String]
+        Object.prototype.toString.call(b), // [object Boolean]
+        Object.prototype.toString.call(o), // [object Object]
+      ])
+
+      var a = []
+      console.log(a === new Object(a)) // true
+      console.log(a === Object(a)) // true
+    </script>
+  </body>
+</html>

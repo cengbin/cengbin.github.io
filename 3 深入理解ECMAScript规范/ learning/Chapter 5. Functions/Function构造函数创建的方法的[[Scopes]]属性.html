@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Function构造函数创建的方法的[[Scope]]属性</title>
+  </head>
+</html>
+<script>
+  var x = 10
+
+  function foo() {
+
+    var y = 20
+
+    function barFD() {
+      console.log(x, y)
+    }
+
+    var barFE = function () {
+      console.log(x, y)
+    }
+
+    // 通过Function构造函数创建的方法barFn不能访问变量y。
+    // 这并不意味barFn方法没有[[Scope]]内部属性(否则它将不能访问x变量).而在于通过Function构造函数创建的方法的[[Scope]]属性仅包含全局对象。
+    // 也就是说，通过这中方式创建的方法是不可能创建父级上下文的闭包环境，除全局情况外。
+    var barFn = Function('console.log(x,y);')
+
+    barFD()
+    barFE()
+    barFn()
+  }
+
+  foo()
+</script>

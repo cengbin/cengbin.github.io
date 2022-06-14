@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<script>
+  var b = 10
+
+  function a(c) {
+    console.log(this.b, c)
+  }
+
+  a(20) // ths === global, 10, 20
+
+  a.call({b: 20}, 30) // 20, 30
+  a.apply({b: 30}, [40]) // 30, 40
+</script>

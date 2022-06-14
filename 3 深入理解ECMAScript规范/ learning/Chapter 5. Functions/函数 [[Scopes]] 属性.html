@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>函数[[Scopes]]属性</title>
+  </head>
+</html>
+<script>
+  function foo() {
+    var x = 10
+    var y = 20
+
+    return function () {
+      console.log([x, y])
+    }
+  }
+
+  var x = 30
+
+  var bar = foo()
+
+  // 有些实现中，允许对闭包作用域直接进行访问。
+  // 比如Rhino，针对函数的[[Scope]]属性，对应有一个非标准的 __parent__属性
+  console.log(bar.__parent__)
+
+  bar()
+
+  setTimeout(() => {
+
+    // 无法输出 bar函数[[Scopes]]属性 -> console.log(bar['[[Scopes]]']); // undefined
+    // 可以通过Chrome浏览器调试工具查看 bar函数[[Scopes]]属性
+    // 注意：函数的[[Scope]]属性在创建方法的上下文销毁后任然存在
+    bar
+    debugger
+  }, 1000)
+</script>

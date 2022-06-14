@@ -47,3 +47,7 @@
 
 ### 第六节 项目部署
     
+#### 参考
+
+前端工程化
+https://woai3c.gitee.io/introduction-to-front-end-engineering/ 

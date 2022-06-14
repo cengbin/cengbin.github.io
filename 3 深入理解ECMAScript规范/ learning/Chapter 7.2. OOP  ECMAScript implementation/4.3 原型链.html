@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+
+  </body>
+</html>
+
+<script>
+  function A() {
+    console.log('A.[[Call]] activated')
+    this.x = 10
+  }
+
+  A.prototype.y = 20
+
+  function B() {}
+
+  B.prototype = new A()
+  B.prototype.constructor = B
+
+  var b = new B()
+  console.log([b.x, b.y])
+  b.x = 30
+  b.y = 40
+  console.log([b.x, b.y])
+
+  var c = new A()
+  console.log([c.x, c.y])
+
+  A.prototype.y = 50
+
+  var d = new A()
+  console.log([d.x, d.y])
+</script>
+
+<!--<script>
+  function A() {
+    console.log('A.[[Call]] activated')
+    this.x = 10
+  }
+
+  A.prototype.y = 20
+
+  var a = new A()
+
+  console.log([a.x, a.y])
+
+  console.log('\n')
+
+  function B() {}
+
+  B.prototype = new A()
+
+  B.prototype.constructor = B
+
+  var b = new B()
+
+  console.log([b.x, b.y])
+
+</script>-->
+
+<!--<script>
+  function A(param) {
+    if (!param) {
+      throw 'Param required'
+    }
+
+    this.param = param
+  }
+
+  A.prototype.x = 10
+
+  var a = new A(20)
+
+  console.log([a.x, a.param])
+
+  console.log('\n')
+
+  function B() {}
+
+  B.prototype = new A()
+
+</script>-->
+
+<!--
+<script>
+  function A() {
+    console.log('A.[[Call]] activated')
+    this.x = 10
+  }
+
+  A.prototype.y = 20
+
+  var a = new A()
+
+  console.log([a.x, a.y]) // 10 (自身)，20（集成）
+
+  console.log('\n')
+
+  function B() {
+
+    // 或者使用A.apply(this,arguments)
+    B.superproto.constructor.apply(this, arguments)
+  }
+
+  // 继承：通过空的中间构造函数将原型连在一起
+  var F = function () {}
+  F.prototype = A.prototype // 引用
+
+  B.prototype = new F()
+  B.superproto = A.prototype // 显示引用到另外一个原型上，"super"
+
+  // 修复原型的constructor属性，否则的就是A了
+  B.prototype = new A()
+
+  var b = new B()
+  console.log([b.x, b.y]) // 10（自身），20（集成）
+</script>-->
+
+<!--<script>
+  function A() {
+    alert('A.[[Call]] activated')
+    this.x = 10
+  }
+
+  A.prototype.y = 20
+
+  var a = new A()
+  alert([a.x, a.y]) // 10（自身），20（继承）
+
+  function B() {}
+
+  // 最快？？？的原型链方式就是设置对象的原型为另外一个新对象
+  B.prototype = new A()
+
+  var b = new B()
+  alert([b.x, b.y]) // 10, 20, 2个都是继承来的
+</script>-->
+
+<!--
+<script>
+  function A(param) {
+    if (!param) {
+      throw 'Param required'
+    }
+    this.param = param
+  }
+
+  A.prototype.x = 10
+
+  var a = new A(20)
+  alert([a.x, a.param]) // 10, 20
+
+  function B() {}
+
+  B.prototype = new A()
+</script>-->
+
+<!--<script>
+  function A() {
+    alert('A.[[Call]] activated')
+    this.x = 10
+  }
+
+  A.prototype.y = 10
+
+
+  function B() {
+    B.superproto.constructor.apply(this, arguments)
+  }
+
+  // 继承：通过空的中间构造函数将原型连接在一起
+  var F = function () {}
+  F.prototype = A.prototype
+
+  B.prototype = new F()
+  B.superproto = A.prototype
+
+  B.prototype.constructor = B
+
+  var b = new B()
+  alert([b.x, b.y])
+</script>-->

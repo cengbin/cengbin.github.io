@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      var x = 10;
+
+      (function foo() {
+        var y = 20;
+
+        (function bar() {
+          var z = 30
+
+          console.log(x + y + z)
+        })()
+      })()
+    </script>
+  </body>
+</html>
