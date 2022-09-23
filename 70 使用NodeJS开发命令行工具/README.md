@@ -121,5 +121,6 @@ $ npm i -g dmall-cli
 
 
 参考：
-使用 Node，如何制作一个专业的命令行工具？
-https://mp.weixin.qq.com/s/TAj-dvEU8FeM6ifq34zanA
+
+[使用 Node，如何制作一个专业的命令行工具？](
+https://mp.weixin.qq.com/s/TAj-dvEU8FeM6ifq34zanA)
