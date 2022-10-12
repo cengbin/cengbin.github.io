@@ -1,6 +1,6 @@
 # 深入理解ECMAScript规范
 
-从来没有深入了解ECMAScript规范，早在2010年就有大佬 Dmitry Soshnikov 总结了ECMAScript中的核心内容，我这里只是理解记录，加深自己的印象。
+早在2010年就有大佬 Dmitry Soshnikov 总结了ECMAScript中的核心内容，我这里只是理解记录，加深自己的印象。
 
 文章链接：[http://dmitrysoshnikov.com/ecmascript](http://dmitrysoshnikov.com/ecmascript)
 
