@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>资源管理</title>
+    <script src="./spark-md5.min.js"></script>
+    <script src="./jquery-3.6.1.min.js"></script>
+    <script type="module">
+      import upload from './upload.js'
+
+      $(function () {
+        $('#submit').click(function () {
+          $('input[name*=file]').each(function () {
+            if (!this.files.length) {
+              return alert('请选择文件')
+            }
+
+            upload(this.files)
+          })
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <main>
+      <form id="myform">
+        <input type="file" accept="" id="mdinput" name="file"/>
+      </form>
+      <button type="button" id="submit" class="btn btn-light">上传</button>
+    </main>
+  </body>
+</html>
