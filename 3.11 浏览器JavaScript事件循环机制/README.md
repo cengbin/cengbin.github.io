@@ -1,4 +1,4 @@
-# 浏览器中的js事件循环机制
+# 浏览器JavaScript事件循环机制
 
 ![](./eventloop.png)
 		
