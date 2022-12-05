@@ -1,3 +1,4 @@
+```
 function foo(){
 
 }
@@ -6,8 +7,9 @@ function foo(){
 fooContext = {
     VO:{...}, // 变量对象
     this:thisValue, // this值是执行上下文一属性
-    Scope
+    Scope // 函数作用域链
 }
+```
 
 函数在创建阶段会给foo函数创建[[Scopes]]属性
 
