@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <title>Title</title>
   </head>
+  <body>
+    demo1.html
+    <iframe id="iframe" src="./demo2.html" frameborder="0"></iframe>
+  </body>
 </html>
 <script>
   let handler = {
@@ -44,6 +48,11 @@
       console.log('this1:',this); // 非严格模式下，this指向proxy
 
       function foo(){
+
+          eval("var b=2;console.log('document=',document)");
+
+          var fun3 = new Function("var b=2;console.log('document=',document)"); fun3();
+
           console.log(name);
 
           // this === window 非严格模式下，此写法会造成沙箱逃逸
@@ -55,11 +64,13 @@
               console.log("b: ",b);
               console.log(Math.random());
               console.log(new Date());
-              console.log(document);
-              console.log(window);
+              // console.log(document);
+              // console.log(window);
           }
 
           bar();
+
+
       }
 
       foo()

@@ -7,7 +7,7 @@
 1. 脚本不能访问到位于它们下面的 DOM 元素，因此，脚本无法给它们添加处理程序等。
 2. 如果页面顶部有一个笨重的脚本，它会“阻塞页面”。在该脚本下载并执行结束前，用户都不能看到页面内容：
 
-幸运的是，这里有两个 <script> 特性（attribute）可以为我们解决这个问题：defer 和 async。
+幸运的是，这里有两个 `<script>` 特性（attribute）可以为我们解决这个问题：defer 和 async。
 
 async和defer属性值为bool，它用来说明script脚本应该**如何执行**。 async和defer属性仅适用于script标签有src属性的情况。在script标签没有src属性的情况下，async和defer属性可以不指定值。
 
