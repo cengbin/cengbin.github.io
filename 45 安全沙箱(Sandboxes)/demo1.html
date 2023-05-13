@@ -6,7 +6,7 @@
   </head>
   <body>
     demo1.html
-    <iframe id="iframe" src="./demo2.html" frameborder="0"></iframe>
+    <iframe id="iframe" src="./demo2.html" height="300"></iframe>
   </body>
 </html>
 <script>
@@ -49,9 +49,9 @@
 
       function foo(){
 
-          eval("var b=2;console.log('document=',document)");
+          // eval("var b=2;console.log('document=',document)");
 
-          var fun3 = new Function("var b=2;console.log('document=',document)"); fun3();
+          // var fun3 = new Function("var b=2;console.log('document=',document)"); fun3();
 
           console.log(name);
 
@@ -70,7 +70,6 @@
 
           bar();
 
-
       }
 
       foo()
@@ -86,4 +85,8 @@
     `)
 
   fun.call(proxy)
+
+  window.onload = function () {
+    console.log("parent ---> window.foo=", window.foo)
+  }
 </script>
