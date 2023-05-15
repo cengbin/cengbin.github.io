@@ -1,20 +1,20 @@
-# 前端模块,以及发展过程
+# JavaScript模块及发展过程
 
 > 时间：2020.05.21  
 > 作者：阿彬
 
 #### 目录
 
-* 一、前言
-* 二、模块化的理解
-* 三、模块化规范
-* 四、参考链接
+* 前言
+* 模块化的理解
+* 模块化规范
+* 参考链接
 
-## 一、前言
+## 前言
 
 在JavaScript发展初期就是为了实现简单的页面交互逻辑，寥寥数语即可；如今CPU、浏览器性能得到了极大的提升，很多页面逻辑迁移到了客户端（表单验证等），随着web2.0时代的到来，Ajax技术得到广泛应用，jQuery等前端库层出不穷，前端代码日益膨胀，此时在JS方面就会考虑使用模块化规范去管理。
 
-## 二、模块化的理解
+## 一、模块化的理解
 ### 1.什么是模块？
 * 将一个复杂的程序依据一定的规则(规范)封装成几个块(文件), 并进行组合在一起
 * 块的内部数据与实现是私有的, 只是向外部暴露一些接口(方法)与外部其它模块通信
@@ -77,14 +77,95 @@ __代码参考demo__
 * 依赖模糊
 * 难以维护
 
-## 三、模块化规范
+## 二、模块化规范
 
-1. CommonJS模块规范 主要用于Node
-2. AMD规范 (RequireJS是一个工具库，主要用于客户端的模块管理。它的模块管理遵守AMD规范，RequireJS的基本思想是，通过define方法，将代码定义为模块；通过require方法，实现代码的模块加载。)
-3. CMD规范专门用于浏览器端，模块的加载是异步的，模块使用时才会加载执行。CMD规范整合了CommonJS和AMD规范的特点。在 Sea.js 中，所有 JavaScript 模块都遵循 CMD模块定义规范。
-4. ES6模块化
+1. CommonJS（Node.js）
+
+模块规范 主要用于Node
+
+2. AMD规范
+
+
+ (RequireJS是一个工具库，主要用于客户端的模块管理。它的模块管理遵守AMD规范，RequireJS的基本思想是，通过define方法，将代码定义为模块；通过require方法，实现代码的模块加载。)
+ 
+# CMD 
+
+CMD (Common Module Definition, 通用模块定义),[CMD 模块定义规范](https://github.com/cmdjs/specification/blob/master/draft/module.md)
+
+规范专门用于浏览器端，模块的加载是异步的，模块使用时才会加载执行。CMD规范整合了CommonJS和AMD规范的特点。在 Sea.js 中，所有 JavaScript 模块都遵循 CMD模块定义规范。
+
+
+
+[sea.js JavaScript模块](https://github.com/seajs/seajs/issues/242)
+
+SeaJS 具有以下核心特性：
+
+* 简单一致的模块格式。
+* 依赖的自动管理。
+* 脚本的异步并行加载。
+* 丰富的插件。
+* 友好的调试。
+
+经常使用的 API 只有 `define`, `require`, `require.async`, `exports`, `module.exports` 这五个。其他 API 有个印象就好，在需要时再来查文档，不用刻意去记。
+
+# UMD
+
+UMD (Universal Module Definition)就是一种javascript通用模块定义规范，让你的模块能在javascript所有运行环境（Node环境、浏览器环境）中发挥作用。
+
+NodeJS环境javascript遵循的是：CommonJS模块规范  
+浏览器环境javascript遵循的是：AMD模块规范、CMD模块规范、IIFE模式  
+
+
+实现一个UMD模块，就要考虑现有的主流javascript模块规范了，如CommonJS, AMD, CMD等。那么如何才能同时满足这几种规范呢？
+
+首先要想到，模块最终是要导出一个对象，函数，或者变量。
+
+而不同的模块规范，关于模块导出这部分的定义是完全不一样的。
+
+因此，我们需要一种过渡机制。
+
+首先，我们需要一个factory，也就是工厂函数，它只负责返回你需要导出的内容（对象，函数，变量等）。
+
+我们从导出一个简单的对象开始。
+
+```
+function factory() {
+    return {
+        name: '我是一个umd模块'
+    }
+}
+```
+
+```
+(function(root, factory) {
+    if (typeof module === 'object' && typeof module.exports === 'object') {
+        console.log('是commonjs模块规范，nodejs环境')
+        module.exports = factory();
+    } else if (typeof define === 'function' && define.amd) {
+        console.log('是AMD模块规范，如require.js')
+        define(factory)
+    } else if (typeof define === 'function' && define.cmd) {
+        console.log('是CMD模块规范，如sea.js')
+        define(function(require, exports, module) {
+            module.exports = factory()
+        })
+    } else {
+        console.log('没有模块环境，直接挂载在全局对象上')
+        root.umdModule = factory();
+    }
+}(this, function() {
+    return {
+        name: '我是一个umd模块'
+    }
+}))
+```
+参考链接：https://juejin.cn/post/6844903927104667662
+
+
+5. ES6模块化
 
 
 ## 四、参考链接
 
 * [https://segmentfault.com/a/1190000017466120](https://segmentfault.com/a/1190000017466120)
+* [https://juejin.cn/post/6844903961128861704](https://juejin.cn/post/6844903961128861704)

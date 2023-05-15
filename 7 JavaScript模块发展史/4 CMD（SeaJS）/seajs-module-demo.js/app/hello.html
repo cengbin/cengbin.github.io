@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>hello</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <script src="../sea-modules/sea-debug.js"></script>
+    <script src="../sea-modules/seajs-css.js"></script>
+    <script src="../sea-modules/seajs-text.js"></script>
+    <!--<script src="../static/plugins/sea-plugin.js"></script>-->
+    <script>
+      seajs.config({
+        base: "../sea-modules",
+        alias: {
+          "jquery": "jquery-1.7.2.min.js"
+        }
+      })
+
+      seajs.use(['jquery', "../static/hello/src/main"], function ($, main) {
+        // console.log($, main)
+        setTimeout(() => {
+          main.init()
+        }, 1000)
+      })
+    </script>
+  </body>
+</html>
