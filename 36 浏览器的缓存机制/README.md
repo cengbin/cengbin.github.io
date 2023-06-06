@@ -81,8 +81,7 @@ If-None-Match是客户端再次发起该请求时，携带上次请求返回的�
 
 ## 参考
 
-* [https://mp.weixin.qq.com/s/d2zeGhUptGUGJpB5xHQbOA  
-](https://mp.weixin.qq.com/s/d2zeGhUptGUGJpB5xHQbOA  
-)
+* [https://mp.weixin.qq.com/s/d2zeGhUptGUGJpB5xHQbOA](https://mp.weixin.qq.com/s/d2zeGhUptGUGJpB5xHQbOA)
 * [https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Cache-Control)
 * [https://juejin.cn/post/6969208073944727589](https://juejin.cn/post/6969208073944727589)
+* [https://juejin.cn/post/6960988505816186894](https://juejin.cn/post/6960988505816186894)
