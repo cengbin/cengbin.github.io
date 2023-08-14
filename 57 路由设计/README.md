@@ -2,9 +2,11 @@
 
 ## 前端
 
-/activity/read  
-/activity/create  
-/activity/update  
-/activity/delete  
+https://example.com/${布局}/${平台}/${页面}
 
-## 后端
+例子：
+
+/index/activity/read
+/index/activity/create
+/index/activity/update
+/index/activity/delete
