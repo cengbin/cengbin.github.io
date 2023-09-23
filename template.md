@@ -23,3 +23,7 @@
 ###### H6
 
 Emphasis, aka italics, with _asterisks_ or _underscores_.
+
+|a|b|
+|---|---|
+|c|d|

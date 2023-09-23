@@ -20,7 +20,8 @@
 	<module>
 		<table>
 			<table-header>
-				<button>新增</button>
+				<button>新增活动</button>
+				<button>新增服务器</button>
 			</table-header>
 		</table>
 	</module>
@@ -32,3 +33,28 @@
 ```
 
 ## 优化之后
+
+```
+<page>
+	<module>
+		<form type='search'>
+		</form>
+	</module>
+
+	<module>
+		<table>
+			<table-header>
+				<button>新增</button>
+			</table-header>
+		</table>
+	</module>
+
+	<activity ref='activity'></activity>
+
+	<service ref='service'></service>
+<page>
+```
+
+```
+this.$refs['activity'].show(type,data);
+```
