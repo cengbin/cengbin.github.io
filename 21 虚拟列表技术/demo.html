@@ -24,8 +24,14 @@
     </style>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="x-template" id="app-template">
+    <div id="app">
+      <goods-list :data="data"></goods-list>
+    </div>
+  </body>
+</html>
+<script>
+  Vue.component('goods-list', {
+    template: `
       <div class="goods-content" ref="goods-content">
         <div class="goods-list-container" :style="{padding}">
           <ul class="goods-list">
@@ -33,13 +39,8 @@
           </ul>
         </div>
       </div>
-    </script>
-  </body>
-</html>
-<script>
-  new Vue({
-    el: '#app',
-    template: '#app-template',
+    `,
+    props: ['data'],
     data() {
       return {
         // 记录是否开启虚拟列表
@@ -50,8 +51,8 @@
         rowHeight: 30,
         visibleCount: 15,
 
-        goodsList: null,
-        renderGoodsList: null,
+        list: null,
+        renderList: null,
       }
     },
     computed: {
@@ -59,17 +60,14 @@
         let {startIndex, endIndex, rowHeight} = this
 
         let paddingTop = (startIndex - 0) * rowHeight
-        let paddingBottom = (this.goodsList.length - endIndex) * rowHeight
+        let paddingBottom = (this.list.length - endIndex) * rowHeight
 
         return `${paddingTop}px 0 ${paddingBottom}px 0`
       }
     },
     created() {
-      this.goodsList = Array.apply(null, {length: 100000}).map((currentValue, index, array) => ({
-        id: index,
-        name: `商品${index + 1}`
-      }))
-      this.renderGoodsList = []
+      this.list = this.data
+      this.renderList = []
     },
     mounted() {
       let {rowHeight, visibleCount} = this
@@ -87,19 +85,32 @@
 
         // console.log('+ 之前，endIndex:', endIndex)
         endIndex += buffer
-        if (endIndex > this.goodsList.length)
-          endIndex = this.goodsList.length
+        if (endIndex > this.list.length)
+          endIndex = this.list.length
         // console.log('+ 之后，endIndex:', endIndex)
 
         this.startIndex = startIndex
         this.endIndex = endIndex
-        this.renderGoodsList = this.goodsList.slice(this.startIndex, this.endIndex)
+        this.renderList = this.list.slice(this.startIndex, this.endIndex)
         // console.log('start:', this.startIndex, ' end:', this.endIndex)
       }
 
       contentEle.addEventListener('scroll', onScrollListener)
 
       onScrollListener()
+    },
+  })
+
+  new Vue({
+    el: '#app',
+    data() {
+      return {data: null}
+    },
+    created() {
+      this.data = Array.apply(null, {length: 100000}).map((currentValue, index, array) => ({
+        id: index,
+        name: `商品${index + 1}`
+      }))
     },
   })
 </script>
