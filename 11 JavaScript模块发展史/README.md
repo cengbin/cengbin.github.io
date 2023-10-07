@@ -15,6 +15,7 @@
 在JavaScript发展初期就是为了实现简单的页面交互逻辑，寥寥数语即可；如今CPU、浏览器性能得到了极大的提升，很多页面逻辑迁移到了客户端（表单验证等），随着web2.0时代的到来，Ajax技术得到广泛应用，jQuery等前端库层出不穷，前端代码日益膨胀，此时在JS方面就会考虑使用模块化规范去管理。
 
 ## 一、模块化的理解
+
 ### 1.什么是模块？
 * 将一个复杂的程序依据一定的规则(规范)封装成几个块(文件), 并进行组合在一起
 * 块的内部数据与实现是私有的, 只是向外部暴露一些接口(方法)与外部其它模块通信
@@ -79,22 +80,21 @@ __代码参考demo__
 
 ## 二、模块化规范
 
-1. CommonJS（Node.js）
+1. CommonJS 模块化规范
 
-模块规范 主要用于Node
+CommonJS是一种模块化规范，最初是为Node.js设计的。
 
-2. AMD规范
+2. AMD 模块化规范
 
+异步模块定义（Asynchronous Module Definition, AMD）
 
- (RequireJS是一个工具库，主要用于客户端的模块管理。它的模块管理遵守AMD规范，RequireJS的基本思想是，通过define方法，将代码定义为模块；通过require方法，实现代码的模块加载。)
+RequireJS是一个工具库，主要用于客户端的模块管理。它的模块管理遵守AMD规范，RequireJS的基本思想是，通过define方法，将代码定义为模块；通过require方法，实现代码的模块加载。
  
-# CMD 
+3. CMD 模块化规范
 
-CMD (Common Module Definition, 通用模块定义),[CMD 模块定义规范](https://github.com/cmdjs/specification/blob/master/draft/module.md)
+通用模块定义 (Common Module Definition, CMD)，[CMD 模块定义规范](https://github.com/cmdjs/specification/blob/master/draft/module.md)专门用于浏览器端，模块的加载是异步的，模块使用时才会加载执行。CMD规范整合了CommonJS和AMD规范的特点。
 
-规范专门用于浏览器端，模块的加载是异步的，模块使用时才会加载执行。CMD规范整合了CommonJS和AMD规范的特点。在 Sea.js 中，所有 JavaScript 模块都遵循 CMD模块定义规范。
-
-
+在 Sea.js 中，所有 JavaScript 模块都遵循 CMD模块定义规范。
 
 [sea.js JavaScript模块](https://github.com/seajs/seajs/issues/242)
 
@@ -106,9 +106,7 @@ SeaJS 具有以下核心特性：
 * 丰富的插件。
 * 友好的调试。
 
-经常使用的 API 只有 `define`, `require`, `require.async`, `exports`, `module.exports` 这五个。其他 API 有个印象就好，在需要时再来查文档，不用刻意去记。
-
-# UMD
+4. UMD
 
 UMD (Universal Module Definition)就是一种javascript通用模块定义规范，让你的模块能在javascript所有运行环境（Node环境、浏览器环境）中发挥作用。
 
