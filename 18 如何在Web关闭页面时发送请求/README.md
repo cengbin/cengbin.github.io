@@ -84,3 +84,9 @@ web：
 const blob = new Blob([JSON.stringify(myData)], {type: 'text/plain; charset=UTF-8'});
 navigator.sendBeacon(appData.ReleaseSessionUrl, blob); 
 ```
+
+### 参考
+
+如何在 Web 关闭页面时发送 Ajax 请求
+
+https://juejin.im/post/5c7e541b6fb9a049e06415a5
