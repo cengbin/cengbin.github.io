@@ -8,7 +8,7 @@ console.log(arr1[1]);
 
 /**
  * 1、apply(),的第二个参数不光可以是数组还可以是个类数组对象（即包含length属性，且length属性值是个数字的对象），所有其实{length：2}也是一个类数组对象，只是没有进行初始化而已，取值的话返回undefined。
- * 2、调用Array.apply(null,类数组对象），就是把类数组对象初始化了，并返回了一个数组。
+ * 2、调用Array.apply(null,类数组对象），就是把数组对象初始化了，并返回了一个数组。
  * */
 let arr2 = Array.apply(null, {length: 2})
 console.log(arr2) // [undefined, undefined]
