@@ -1,4 +1,4 @@
-# window/document事件汇总
+# window、document 事件汇总
 
 [Window](https://developer.mozilla.org/zh-CN/docs/Web/API/Window)
 
