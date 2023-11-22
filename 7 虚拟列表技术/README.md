@@ -26,3 +26,9 @@
 计算endIndex： 等于(startIndex + visibleCount)
 
 计算当前渲染的数据：this.renderGoodsList = this.goodsList.slice(this.startIndex, this.endIndex)
+
+### 参考
+
+Vue 插槽：https://v2.cn.vuejs.org/v2/guide/components-slots.html
+
+Vue Virtual Scroller：https://github.com/Akryum/vue-virtual-scroller/tree/v1/packages/vue-virtual-scroller
