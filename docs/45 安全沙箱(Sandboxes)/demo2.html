@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    我是iframe页面
+    <br/>
+    在iframe中通过window.parent访问，可以实现沙箱逃逸。
+    <script>
+      document.write('window.parent.window=' + window.parent.window)
+    </script>
+    <br/>
+    <script>
+      document.write('window.parent.document=' + window.parent.document)
+    </script>
+  </body>
+</html>
+<script>
+  console.log('child ---> window.parent=', window.parent)
+
+  window.parent.foo = 'foo'
+  console.log('child ---> window.parent.foo=', window.parent.foo)
+
+  console.log('child ---> window.parent.document=', window.parent.document)
+  console.log('child ---> window.parent.document.body=', window.parent.document.body)
+  console.log('child ---> ', window.parent.document.getElementById("iframe"))
+</script>

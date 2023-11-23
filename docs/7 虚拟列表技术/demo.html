@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>虚拟列表示例</title>
+    <script src="./vue.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      .goods-content {
+        width: 200px;
+        height: 200px;
+        overflow: scroll;
+        border: 1px solid black;
+      }
+
+      .goods-list-item {
+        line-height: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <goods-list :data="data"></goods-list>
+    </div>
+  </body>
+</html>
+<script>
+  Vue.component('goods-list', {
+    template: `
+      <div class="goods-content" ref="goods-content">
+        <div class="goods-list-container" :style="{padding}">
+          <ul class="goods-list">
+            <li class="goods-list-item" v-for="goods,index in renderGoodsList" :key="goods.id">{{goods.name}}</li>
+          </ul>
+        </div>
+      </div>
+    `,
+    props: ['data'],
+    data() {
+      return {
+        // 记录是否开启虚拟列表
+        virtualized: false,
+
+        startIndex: 0,
+        endIndex: 0,
+        rowHeight: 30,
+        visibleCount: 15,
+
+        list: null,
+        renderList: null,
+      }
+    },
+    computed: {
+      padding() {
+        let {startIndex, endIndex, rowHeight} = this
+
+        let paddingTop = (startIndex - 0) * rowHeight
+        let paddingBottom = (this.list.length - endIndex) * rowHeight
+
+        return `${paddingTop}px 0 ${paddingBottom}px 0`
+      }
+    },
+    created() {
+      this.list = this.data
+      this.renderList = []
+    },
+    mounted() {
+      let {rowHeight, visibleCount} = this
+      let contentEle = this.$refs['goods-content']
+      let onScrollListener = () => {
+        let scrollTop = contentEle.scrollTop
+
+        let buffer = 1
+        let startIndex = parseInt(scrollTop / rowHeight)
+        let endIndex = (startIndex + visibleCount)
+
+        startIndex -= buffer
+        if (startIndex < 0)
+          startIndex = 0
+
+        // console.log('+ 之前，endIndex:', endIndex)
+        endIndex += buffer
+        if (endIndex > this.list.length)
+          endIndex = this.list.length
+        // console.log('+ 之后，endIndex:', endIndex)
+
+        this.startIndex = startIndex
+        this.endIndex = endIndex
+        this.renderList = this.list.slice(this.startIndex, this.endIndex)
+        // console.log('start:', this.startIndex, ' end:', this.endIndex)
+      }
+
+      contentEle.addEventListener('scroll', onScrollListener)
+
+      onScrollListener()
+    },
+  })
+
+  new Vue({
+    el: '#app',
+    data() {
+      return {data: null}
+    },
+    created() {
+      this.data = Array.apply(null, {length: 100000}).map((currentValue, index, array) => ({
+        id: index,
+        name: `商品${index + 1}`
+      }))
+    },
+  })
+</script>

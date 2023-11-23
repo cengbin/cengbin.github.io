@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>A页面</title>
+    <style>
+      input, textarea {
+        font-size: 1em;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px #C4C4C4 solid;
+        padding: 3px 8px;
+        box-sizing: border-box;
+      }
+
+      input[type=button] {
+        display: inline-block;
+        width: auto;
+        margin-bottom: 10px;
+        padding: 5px 20px;
+        color: white;
+        background-color: #8BC53F;
+        border: 0;
+        outline: none;
+        cursor: pointer;
+        -webkit-appearance: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <input type="button" id="btn7" value="跳转到b.html">
+    <input type="button" id="btn8" value="触发JS Error">
+    <input type="button" id="btn9" value="更改hash">
+  </body>
+</html>
+<script src="./documentReady.js"></script>
+<script src="./visibility.js"></script>
+<script>
+  documentReady(() => {
+    console.log(['document: 执行了DOMContentLoaded事件1次'])
+  })
+  documentReady(() => {
+    console.log(['document: 执行了DOMContentLoaded事件2次'])
+  })
+  documentReady(() => {
+    console.log(['document: 执行了DOMContentLoaded事件3次'])
+  })
+
+  window.onload = function () {
+    console.log(['window: 执行了onload事件'])
+
+    document.getElementById('btn7').onclick = function () {
+      window.location.href = 'b.html'
+    }
+    document.getElementById('btn8').onclick = function () {
+      let num = parseInt(Math.random() * 2)
+      if (num === 0) {
+        var err = undefined
+        err.a = 1
+      } else if (num === 1) {
+        throw new Error('js error')
+      }
+    }
+    document.getElementById('btn9').onclick = function () {
+      window.location.hash = 'abc'
+    }
+  }
+
+  window.addEventListener('beforeunload', () => {
+    console.log('window: 执行了 beforeunload 事件')
+  })
+  window.addEventListener('unload', () => {
+    console.log('window: 执行了 unload 事件')
+  })
+
+  window.addEventListener('pagehide', () => {
+    console.log('window: 执行 pagehide 事件')
+  })
+  window.addEventListener('pageshow', () => {
+    console.log('window: 执行 pageshow')
+  })
+
+  // https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onerror
+  // window.addEventListener('error', function (message, source, lineNo, colNo, error) {
+  // window.addEventListener('error' 与 window.onerror 监听函数message实参值不一样
+  window.onerror = function (message, source, lineNo, colNo, error) {
+    console.log('window: 执行 onerror 事件')
+    console.log(message, source, lineNo, colNo, error)
+    var string = message.toLowerCase()
+    var substring = 'script error'
+    if (string.indexOf(substring) > -1) {
+      console.log('Script Error: See Browser Console for Detail')
+    } else {
+      let msg = message
+      if (source) {
+        msg += '\n' + source.replace(location.origin, '')
+      }
+      if (lineNo || colNo) {
+        msg += ':' + lineNo + ':' + colNo
+      }
+      console.log({type: 'error', text: msg})
+    }
+  }
+
+  window.onhashchange = function () {
+    console.log('window: 执行 onhashchange 事件')
+  }
+
+  window.addEventListener('hidden', function () {
+    console.log('window: 执行 hidden 事件')
+  })
+
+  window.addEventListener('visible', function () {
+    console.log('window: 执行 visible 事件')
+  })
+</script>

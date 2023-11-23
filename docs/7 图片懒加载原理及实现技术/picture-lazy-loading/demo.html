@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>图片懒加载</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      display: block;
+      max-width: 200px;
+      margin-bottom: 100px;
+    }
+  </style>
+</head>
+<body>
+  <img src="default.gif" data-src='http://ww1.sinaimg.cn/large/0065oQSqly1g2pquqlp0nj30n00yiq8u.jpg'>
+  <img src="default.gif"
+       data-src='https://hbimg.huabanimg.com/73860e0e7de3710828ef5dc6abda0fce81f3ec8731d0f-EtxNw8_fw236'>
+  <img src="default.gif"
+       data-src='https://hbimg.huabanimg.com/7699cd52dc6dceca4ff9445969f4c3b68610269f17045-66O0Ee_fw236'>
+  <img src="default.gif"
+       data-src='https://hbimg.huabanimg.com/430670d6fc1f5975a1bc9cd2e32bf7cb1b50ce7e692cc-SlbvP9_fw236'>
+  <img src="default.gif"
+       data-src='https://hbimg.huabanimg.com/e59d3ec27560507fe9bac31aa653bc2eb7bf8b566189e-hlHygn_fw236'>
+  <img src="default.gif"
+       data-src='https://hbimg.huabanimg.com/3027dc89e16d69dd20d2f0de63e91b251461d6b99d2e1-BrA8nh_fw236'>
+  <img src="default.gif"
+       data-src='https://hbimg.huabanimg.com/db6d5ca7d3b7e9e57b504a0b6c23e051e2a4d5047968f-Shh1Ib_fw236'>
+  <img src="default.gif"
+       data-src='https://hbimg.huabanimg.com/acf66b232739364d5ab8c0f53add8445b3add3bb96c3d-a1mdLM_fw236'>
+  <img src="default.gif"
+       data-src='https://hbimg.huabanimg.com/240a31a6688fb9e8b6ba8465b041436119ad28791100a8-mgAMa9_fw236'>
+  <img src="default.gif"
+       data-src='https://hbimg.huabanimg.com/0265d2a0469a1bc1c4324d81391c3eb8e9aec80d8162d-0NxLoO_fw236'>
+  <img src="default.gif"
+       data-src='https://hbimg.huabanimg.com/8ecc8c31cca23e594999e5b486e63245763386e98da3-Mi84Pz_fw236'>
+</body>
+</html>
+<script>
+  window.addEventListener('DOMContentLoaded', function () {
+    let windowHeight = window.innerHeight
+    let imgs = [].concat(...document.querySelectorAll('img'))
+
+    window.addEventListener('scroll', function () {
+      imgs.forEach((item, idx) => {
+        let sourceSrc = item.getAttribute('data-src')
+        if (sourceSrc) {
+          let currentSrc = item.getAttribute('src')
+          let rect = item.getBoundingClientRect()
+          if (rect.top < windowHeight && currentSrc !== sourceSrc) {
+            // console.log('加载图片', item)
+            item.setAttribute('src', sourceSrc)
+            imgs.splice(idx, 1)
+          }
+        }
+      })
+
+      if (imgs.length <= 0) window.removeEventListener('scroll', arguments.callee, false)
+    }, false)
+  })
+</script>

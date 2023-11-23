@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>模块化开发</title>
+  </head>
+</html>
+<!-- 引入的js必须有一定顺序 -->
+<!-- moduleA 模块引用了 jquery，所以要先引入jquery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- 再引入moduleA模块 -->
+<script src="./module.js"></script>
+
+<script>
+  !function (window, $, moduleA) {
+    console.log("window.moduleA.data:", window.moduleA.data)
+
+    moduleA.data = 'xxx' // 不能修改模块内部的data
+    moduleA.bar()
+    moduleA.foo()
+
+  }(window, window.jQuery, window.moduleA)
+</script>

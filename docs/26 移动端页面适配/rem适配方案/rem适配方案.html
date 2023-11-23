@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>页面rem适配方案</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      p {
+        box-sizing: border-box;
+        border: 1px solid black;
+        font-size: 0.32rem;
+      }
+
+      span {
+        font-size: 0.5rem;
+      }
+    </style>
+    <script>
+      //参考链接 https://m.taobao.com/
+      //浏览器默认的字体大小16px
+
+      /**
+       * @baseSize 基本字体大小
+       * @baseWidth 设计图的基本宽度
+       * */
+      function setRemFontSize(baseSize, baseWidth) {
+        baseSize = baseSize || 100
+        baseWidth = baseWidth || 750
+        var clientWidth = document.documentElement.clientWidth || document.body.clientWidth
+        if (clientWidth >= 768) {
+          clientWidth = 768
+        } else if (clientWidth <= 320) {
+          clientWidth = 320
+        }
+
+        document.getElementsByTagName('html')[0].style.fontSize = clientWidth / baseWidth * baseSize + 'px'
+      }
+
+      setRemFontSize()
+      window.addEventListener("resize", function () {
+        setTimeout(function () {setRemFontSize()}, 200)
+      })
+    </script>
+  </head>
+  <body>
+    <body>
+      <p>
+        我是一行文字改变现实区域的宽度看看效果
+      </p>
+      <span>我是span</span>
+    </body>
+  </body>
+</html>

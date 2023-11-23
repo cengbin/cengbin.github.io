@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<script>
+  // ---------- ES5 ----------
+  !function () {
+    function Animal() {
+      this.sayName = function () {
+        console.log("我是超人")
+      }
+    }
+
+    function Dog(name) {
+      Animal.apply(this)
+      this.name = name
+      this.sayHello = function () {
+        console.log("我的名字叫", this.name)
+      }
+    }
+
+    Dog.prototype = Animal.prototype
+    Dog.prototype.constructor = Dog
+
+    var dog = new Dog("劳斯奈斯")
+    dog.sayHello()
+    dog.sayName()
+    console.log(dog)
+    console.log('\n')
+  }()
+
+
+  // ---------- ES6 ----------
+  !function () {
+    class Animal {
+      constructor() {
+
+      }
+
+      sayName() {
+        console.log("我是超人")
+      }
+    }
+
+    class Dog extends Animal {
+      constructor(name) {
+        super()
+        this.name = name
+      }
+
+      sayHello() {
+        console.log('我的名字叫', this.name)
+      }
+    }
+
+    var dog = new Dog("劳斯奈斯")
+    dog.sayHello()
+    dog.sayName()
+    console.log(dog)
+    console.log('\n')
+  }()
+
+</script>

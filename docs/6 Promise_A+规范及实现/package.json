@@ -1,0 +1,12 @@
+{
+  "name": "PromiseA",
+  "version": "1.0.0",
+  "description": "",
+  "main": "PromiseA.js",
+  "scripts": {
+    "test1": "node ./test/index.js",
+    "test2": "node ./test/index2.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
