@@ -12,6 +12,7 @@ let menus = {
 }
 
 let exclude = [
+  'node_modules',
   'ESLint + Prettier',
   'husky + lint-staged + commitlint',
   '其他',
@@ -97,7 +98,7 @@ sidebar.forEach(item=>{
 // console.log('menus:', menus)
 
 module.exports = {
-  base: '/web-blog',
+  base: '/web-blog/',
   outDir: '../dist',
   title: '前端开发技术文档',
   themeConfig: {
