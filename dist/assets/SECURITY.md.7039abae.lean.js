@@ -1,0 +1,1 @@
+import{_ as t,o as e,c as r,Q as o}from"./chunks/framework.6ae5a3d9.js";const y=JSON.parse('{"title":"Security Policy","description":"","frontmatter":{},"headers":[],"relativePath":"SECURITY.md","filePath":"SECURITY.md"}'),a={name:"SECURITY.md"},i=o("",7),d=[i];function l(n,s,c,p,h,u){return e(),r("div",null,d)}const b=t(a,[["render",l]]);export{y as __pageData,b as default};

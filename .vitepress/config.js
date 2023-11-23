@@ -13,6 +13,7 @@ let menus = {
 
 let exclude = [
   'node_modules',
+  'dist',
   '51 面试',
   'ESLint + Prettier',
   'husky + lint-staged + commitlint',
@@ -72,7 +73,7 @@ function deepReadDirSync(dirPath, parent) {
       }
       parent.items.push(item)
 
-      console.log('item:', item)
+      // console.log('item:', item)
 
       deepReadDirSync(dirPath + '/' + file, item)
     }
@@ -110,10 +111,11 @@ module.exports = {
   base: '/web-blog/',
   outDir: './dist',
   title: '前端开发知识库',
+  srcExclude: [
+    '2 前端优化/页面性能优化/1 基础篇/old/*.md',
+    '51 面试/*.md',
+  ],
   themeConfig: {
-    socialLinks: [
-      {icon: 'github', link: 'https://github.com/cengbin/web-blog'}
-    ],
     search: {
       provider: 'local'
     },
@@ -133,11 +135,15 @@ module.exports = {
         ]
       },
       {
-        text: '其他',
+        text: '开发环境',
         items: [
-          {text: 'google', link: 'https://www.google.com'},
+          {text: 'Windows', link: 'https://www.google.com'},
+          {text: 'Mac OS', link: 'https://www.google.com'},
         ]
       },
+    ],
+    socialLinks: [
+      {icon: 'github', link: 'https://github.com/cengbin/web-blog'}
     ],
     sidebar: menus.items,
   }

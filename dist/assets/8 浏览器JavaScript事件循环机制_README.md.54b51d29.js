@@ -1,0 +1,29 @@
+import{_ as s,o as e,c as a,Q as l}from"./chunks/framework.6ae5a3d9.js";const n="/web-blog/assets/eventloop.991b9953.png",b=JSON.parse('{"title":"浏览器JavaScript事件循环机制","description":"","frontmatter":{},"headers":[],"relativePath":"8 浏览器JavaScript事件循环机制/README.md","filePath":"8 浏览器JavaScript事件循环机制/README.md"}'),t={name:"8 浏览器JavaScript事件循环机制/README.md"},o=l('<h1 id="浏览器javascript事件循环机制" tabindex="-1">浏览器JavaScript事件循环机制 <a class="header-anchor" href="#浏览器javascript事件循环机制" aria-label="Permalink to &quot;浏览器JavaScript事件循环机制&quot;">​</a></h1><p><img src="'+n+`" alt=""></p><ul><li><p>这里提及了 macrotask 和 microtask 两个概念，这表示异步任务的两种分类。在挂起任务时，JS 引擎会将所有任务按照类别分到这两个队列中，首先在 macrotask 的队列（这个队列也被叫做 task queue）中取出第一个任务，执行完毕后取出 microtask 队列中的所有任务顺序执行；之后再取 macrotask 任务，周而复始，直至两个队列的任务都取完。</p><p>两个类别的具体分类如下：</p><ul><li>macro-task: script（整体代码）, <label style="color:red;">setTimeout, setInterval, setImmediate,</label> I/O, UI rendering</li><li>micro-task: <label style="color:red;">process.nextTick, Promises</label>（这里指浏览器实现的原生 Promise）, <label style="color:red;">Object.observe, MutationObserver</label></li></ul></li></ul><p>白话解释上面 事件循环过程</p><ul><li>第一步： 检查宏任务队列是否为空 <ul><li>否 -&gt; 从宏任务队列中拿出一个任务 -&gt; 这个任务压栈执行</li><li>是 -&gt; 跳第二步</li></ul></li><li>第二步： 检查微任务队列是否为空 <ul><li>否 -&gt; 从微任务队列中拿出一个任务 -&gt; 这个任务压栈执行 -&gt; 回到第二步(循环执行微任务队列，一次取一个微任务压栈执行，直到这次事件循环中微任务队列为空)</li><li>是 -&gt; 跳第三步</li></ul></li><li>第三步：是否需要渲染 <ul><li>否 -&gt; 下一次事件循环</li><li>是 -&gt; 更新渲染 -&gt; 完成后进入下一次事件循环</li></ul></li></ul><h3 id="参考链接" tabindex="-1">参考链接 <a class="header-anchor" href="#参考链接" aria-label="Permalink to &quot;参考链接&quot;">​</a></h3><ul><li><a href="https://github.com/ProtoTeam/blog/blob/master/201801/2.md" target="_blank" rel="noreferrer">https://github.com/ProtoTeam/blog/blob/master/201801/2.md</a></li><li><a href="https://juejin.im/post/59e85eebf265da430d571f89" target="_blank" rel="noreferrer">这一次，彻底弄懂 JavaScript 执行机制</a></li><li><a href="https://www.ituring.com.cn/article/66566" target="_blank" rel="noreferrer">https://www.ituring.com.cn/article/66566</a></li></ul><h3 id="翻译" tabindex="-1">翻译 <a class="header-anchor" href="#翻译" aria-label="Permalink to &quot;翻译&quot;">​</a></h3><ul><li>event loop (事件循环）</li><li></li><li>Macrotask queue (宏任务队列)</li><li>Mouse events (鼠标事件)</li><li>Keyboard events (键盘事件)</li><li>Network events (网络事件)</li><li>HTML parsing (HTML解析)</li><li></li><li>Microtask queue (微任务队列)</li><li>DOM mutations (DOM突变？不明白！！！)</li><li>Promises (Promise.then().then())</li></ul><hr><h3 id="一些问题" tabindex="-1">一些问题 <a class="header-anchor" href="#一些问题" aria-label="Permalink to &quot;一些问题&quot;">​</a></h3><blockquote><p>以下代码不会导致js线程挂起，因为一次事件循环只会执行一个宏任务。如果浏览器的刷新率是60fps，那么setTimeout的最小间隔时间也是16.666。即使设置了0，也不会按照间隔0ms执行，而是16.66ms毫秒之后执行。</p></blockquote><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki github-dark vp-code-dark"><code><span class="line"><span style="color:#e1e4e8;">let i = 0</span></span>
+<span class="line"><span style="color:#e1e4e8;">function a() {</span></span>
+<span class="line"><span style="color:#e1e4e8;">	console.log(i++)</span></span>
+<span class="line"><span style="color:#e1e4e8;">	setTimeout(a, 0)</span></span>
+<span class="line"><span style="color:#e1e4e8;">}</span></span>
+<span class="line"><span style="color:#e1e4e8;">a()</span></span></code></pre><pre class="shiki github-light vp-code-light"><code><span class="line"><span style="color:#24292e;">let i = 0</span></span>
+<span class="line"><span style="color:#24292e;">function a() {</span></span>
+<span class="line"><span style="color:#24292e;">	console.log(i++)</span></span>
+<span class="line"><span style="color:#24292e;">	setTimeout(a, 0)</span></span>
+<span class="line"><span style="color:#24292e;">}</span></span>
+<span class="line"><span style="color:#24292e;">a()</span></span></code></pre></div><blockquote><p>以下代码会导致js线程挂起，因为一次事件循环会把所有的微任务执行完毕。当调用then()函数被调用后往微任务队列中又插入了一个任务，循环往复，导致微任务队列永远无法为空。所以js线程挂起。</p></blockquote><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki github-dark vp-code-dark"><code><span class="line"><span style="color:#e1e4e8;">let i = 0</span></span>
+<span class="line"><span style="color:#e1e4e8;">function a() {</span></span>
+<span class="line"><span style="color:#e1e4e8;">	console.log(i++)</span></span>
+<span class="line"><span style="color:#e1e4e8;">	new Promise((resolve, reject) =&gt; {</span></span>
+<span class="line"><span style="color:#e1e4e8;">	  resolve()</span></span>
+<span class="line"><span style="color:#e1e4e8;">	}).then(value =&gt; {</span></span>
+<span class="line"><span style="color:#e1e4e8;">	  a()</span></span>
+<span class="line"><span style="color:#e1e4e8;">	})</span></span>
+<span class="line"><span style="color:#e1e4e8;">}</span></span>
+<span class="line"><span style="color:#e1e4e8;">a()</span></span></code></pre><pre class="shiki github-light vp-code-light"><code><span class="line"><span style="color:#24292e;">let i = 0</span></span>
+<span class="line"><span style="color:#24292e;">function a() {</span></span>
+<span class="line"><span style="color:#24292e;">	console.log(i++)</span></span>
+<span class="line"><span style="color:#24292e;">	new Promise((resolve, reject) =&gt; {</span></span>
+<span class="line"><span style="color:#24292e;">	  resolve()</span></span>
+<span class="line"><span style="color:#24292e;">	}).then(value =&gt; {</span></span>
+<span class="line"><span style="color:#24292e;">	  a()</span></span>
+<span class="line"><span style="color:#24292e;">	})</span></span>
+<span class="line"><span style="color:#24292e;">}</span></span>
+<span class="line"><span style="color:#24292e;">a()</span></span></code></pre></div>`,15),p=[o];function i(c,r,u,d,h,m){return e(),a("div",null,p)}const y=s(t,[["render",i]]);export{b as __pageData,y as default};
