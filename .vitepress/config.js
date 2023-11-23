@@ -59,7 +59,7 @@ function deepReadDirSync(dirPath, parent) {
       // 判断路径是否存在
       let bo = fs.existsSync(readmePath)
       if (bo) {
-        link = parent.path + `/${file}/README`
+        link = '/frontend/' + parent.path + `/${file}/README`
       }
 
       let item = {
@@ -80,7 +80,7 @@ function deepReadDirSync(dirPath, parent) {
   })
 }
 
-deepReadDirSync(resolvePath('../'), menus)
+deepReadDirSync(resolvePath('../frontend'), menus)
 
 // 排序
 let sidebar = menus.items;
@@ -101,19 +101,13 @@ for (let i = 1; i <= n - 1; i++) {
   }
 }
 
-sidebar.forEach(item => {
-  // item.text = item.text.split(" ").slice(1).join(" ");
-})
-
-// console.log('menus:', menus)
-
 module.exports = {
   base: '/web-blog/',
   outDir: './dist',
-  title: '前端开发知识库',
+  title: '我的知识库',
   srcExclude: [
-    '2 前端优化/页面性能优化/1 基础篇/old/*.md',
-    '51 面试/*.md',
+    'frontend/2 前端优化/页面性能优化/1 基础篇/old/*.md',
+    'frontend/51 面试/*.md',
   ],
   themeConfig: {
     search: {
@@ -122,14 +116,26 @@ module.exports = {
     nav: [
       {text: '首页', link: '/'},
       {
-        text: '前端技术栈',
+        text: '前端',
         items: [
-          {text: '前端工程化', link: '/1 前端工程化/README'},
-          {text: 'TCP 与 HTTP', link: '/27 TCP与HTTP/README'},
+          {text: '前端工程化', link: '/frontend/1 前端工程化/README'},
+          {text: '前端优化', link: '/frontend/2 前端优化/README'},
         ]
       },
       {
-        text: '后端技术栈',
+        text: '后端',
+        items: [
+          {text: '微服务', link: 'https://www.baidu.com'},
+        ]
+      },
+      {
+        text: '数据库',
+        items: [
+          {text: '微服务', link: 'https://www.baidu.com'},
+        ]
+      },
+      {
+        text: '服务器',
         items: [
           {text: '微服务', link: 'https://www.baidu.com'},
         ]
@@ -145,6 +151,10 @@ module.exports = {
     socialLinks: [
       {icon: 'github', link: 'https://github.com/cengbin/web-blog'}
     ],
-    sidebar: menus.items,
+    sidebar: {
+      '/frontend/': sidebar,
+      '/backend/': [],
+      '/database/': [],
+    }
   }
 };
