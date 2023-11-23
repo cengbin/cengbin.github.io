@@ -104,7 +104,7 @@ for (let i = 1; i <= n - 1; i++) {
 module.exports = {
   base: '/web-blog/',
   outDir: 'dist',
-  assetsDir: 'assets',
+  assetsDir: 'static',
   title: '我的知识库',
   srcExclude: [
     'frontend/2 前端优化/页面性能优化/1 基础篇/old/*.md',
