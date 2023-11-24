@@ -15,19 +15,19 @@ hero:
 
 features:
   - icon:
-      src: /assets/vue.svg
+      src: https://image.tz12306.com/media/frontResources/wechat/images/vue.svg
     title: 前端技术栈
     details: Lorem ipsum...
   - icon:
-      src: /assets/spring.svg
+      src: https://image.tz12306.com/media/frontResources/wechat/images/spring.svg
     title: 后端技术栈
     details: Lorem ipsum...
   - icon:
-      src: /assets/idea.svg
+      src: https://image.tz12306.com/media/frontResources/wechat/images/idea.svg
     title: 开发工具
     details: Lorem ipsum...
   - icon:
-      src: /assets/java.svg
+      src: https://image.tz12306.com/media/frontResources/wechat/images/java.svg
     title: 开发环境
     details: Lorem ipsum...
 ---

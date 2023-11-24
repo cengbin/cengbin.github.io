@@ -102,7 +102,7 @@ for (let i = 1; i <= n - 1; i++) {
 }
 
 module.exports = {
-  base: '/web-blog/',
+  base: '/',
   outDir: 'dist',
   assetsDir: 'static',
   title: '我的知识库',
