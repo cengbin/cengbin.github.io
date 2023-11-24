@@ -1,19 +1,15 @@
 const fs = require('fs')
 const path = require('path')
+const {bubble_sort} = require('./util')
 
 function resolvePath(dir) {
   return path.resolve(__dirname, './', dir)
 }
 
-let menus = {
-  text: '',
-  items: [],
-  path: '',
-}
-
 let exclude = [
   'node_modules',
   'dist',
+
   '51 面试',
   'ESLint + Prettier',
   'husky + lint-staged + commitlint',
@@ -39,6 +35,8 @@ let exclude = [
   '6 ES6 Module',
 ]
 
+let rootTree = {text: 'web-blog', items: [], path: '',}
+
 function deepReadDirSync(dirPath, parent) {
   console.log('dirPath:', dirPath)
   // 该文件夹下的所有文件名称 (文件夹 + 文件)
@@ -59,7 +57,7 @@ function deepReadDirSync(dirPath, parent) {
       // 判断路径是否存在
       let bo = fs.existsSync(readmePath)
       if (bo) {
-        link = '/frontend/' + parent.path + `/${file}/README`
+        link = parent.path + `/${file}/README`
       }
 
       let item = {
@@ -80,26 +78,10 @@ function deepReadDirSync(dirPath, parent) {
   })
 }
 
-deepReadDirSync(resolvePath('../frontend'), menus)
+deepReadDirSync(resolvePath('../'), rootTree)
 
 // 排序
-let sidebar = menus.items;
-let n = sidebar.length;
-for (let i = 1; i <= n - 1; i++) {
-  for (let j = 1; j <= n - i; j++) {
-    let prevItem = sidebar[j - 1]
-    let curItem = sidebar[j]
-    let prevValue = Number(prevItem.text.split(" ")[0])
-    let curValue = Number(curItem.text.split(" ")[0])
-    if (!isNaN(prevValue) && !isNaN(curValue)) {
-      if (prevValue > curValue) {
-        let temp = sidebar[j - 1];
-        sidebar[j - 1] = sidebar[j]
-        sidebar[j] = temp;
-      }
-    }
-  }
-}
+rootTree.items.forEach(item => bubble_sort(item.items))
 
 module.exports = {
   base: '/',
@@ -126,19 +108,21 @@ module.exports = {
       {
         text: '后端',
         items: [
-          {text: '微服务', link: 'https://www.baidu.com'},
+          {text: '首页', link: '/backend/'},
+          {text: 'Spring', link: 'https://spring.io/'},
         ]
       },
       {
         text: '数据库',
         items: [
-          {text: '微服务', link: 'https://www.baidu.com'},
+          {text: 'MySQL', link: 'https://www.baidu.com'},
         ]
       },
       {
         text: '服务器',
         items: [
-          {text: '微服务', link: 'https://www.baidu.com'},
+          {text: 'Nginx', link: 'https://www.baidu.com'},
+          {text: 'Tomcat', link: 'https://www.baidu.com'},
         ]
       },
       {
@@ -150,12 +134,11 @@ module.exports = {
       },
     ],
     socialLinks: [
-      {icon: 'github', link: 'https://github.com/cengbin/web-blog'}
+      {icon: 'github', link: 'https://github.com/cengbin/cengbin.github.io'}
     ],
     sidebar: {
-      '/frontend/': sidebar,
-      '/backend/': [],
-      '/database/': [],
+      '/frontend/': rootTree.items[1].items,
+      '/backend/': rootTree.items[0].items,
     }
   }
 };
