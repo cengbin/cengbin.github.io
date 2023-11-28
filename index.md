@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: 研发知识库
+  name: 曾彬'技术博客
   text:
   tagline: Vue 是渐进式 JavaScript 框架。 易学易用，性能出色，适用场景丰富的 Web 前端框架。
   actions:
