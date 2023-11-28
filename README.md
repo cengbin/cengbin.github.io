@@ -5,6 +5,6 @@
 
 [博客首页](https://cengbin.github.io)
 
-[前端开发博客](https://cengbin.github.io/frontend)
+[前端开发技术博客](https://cengbin.github.io/frontend)
 
-[后端开发博客](https://cengbin.github.io/backend)
+[后端开发技术博客](https://cengbin.github.io/backend)
