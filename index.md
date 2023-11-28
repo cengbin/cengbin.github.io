@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: 曾彬'技术博客
+  name: 技术博客
   text:
   tagline: Vue 是渐进式 JavaScript 框架。 易学易用，性能出色，适用场景丰富的 Web 前端框架。
   actions:
@@ -15,19 +15,19 @@ hero:
 
 features:
   - icon:
-      src: https://image.tz12306.com/media/frontResources/wechat/images/vue.svg
+      src: /assets/vue.svg
     title: 前端技术栈
     details: Lorem ipsum...
   - icon:
-      src: https://image.tz12306.com/media/frontResources/wechat/images/spring.svg
+      src: /assets/spring.svg
     title: 后端技术栈
     details: Lorem ipsum...
   - icon:
-      src: https://image.tz12306.com/media/frontResources/wechat/images/idea.svg
+      src: /assets/idea.svg
     title: 开发工具
     details: Lorem ipsum...
   - icon:
-      src: https://image.tz12306.com/media/frontResources/wechat/images/java.svg
+      src: /assets/java.svg
     title: 开发环境
     details: Lorem ipsum...
 ---
