@@ -1,8 +1,5 @@
 # JavaScript模块及发展过程
 
-> 时间：2020.05.21  
-> 作者：阿彬
-
 #### 目录
 
 * 前言
@@ -80,17 +77,17 @@ __代码参考demo__
 
 ## 二、模块化规范
 
-1. CommonJS 模块化规范
+### 1. CommonJS 模块化规范
 
 CommonJS是一种模块化规范，最初是为Node.js设计的。
 
-2. AMD 模块化规范
+### 2. AMD 模块化规范
 
 异步模块定义（Asynchronous Module Definition, AMD）
 
 RequireJS是一个工具库，主要用于客户端的模块管理。它的模块管理遵守AMD规范，RequireJS的基本思想是，通过define方法，将代码定义为模块；通过require方法，实现代码的模块加载。
  
-3. CMD 模块化规范
+### 3. CMD 模块化规范
 
 通用模块定义 (Common Module Definition, CMD)，[CMD 模块定义规范](https://github.com/cmdjs/specification/blob/master/draft/module.md)专门用于浏览器端，模块的加载是异步的，模块使用时才会加载执行。CMD规范整合了CommonJS和AMD规范的特点。
 
@@ -106,7 +103,7 @@ SeaJS 具有以下核心特性：
 * 丰富的插件。
 * 友好的调试。
 
-4. UMD
+### 4. UMD
 
 UMD (Universal Module Definition)就是一种javascript通用模块定义规范，让你的模块能在javascript所有运行环境（Node环境、浏览器环境）中发挥作用。
 
@@ -160,10 +157,26 @@ function factory() {
 参考链接：https://juejin.cn/post/6844903927104667662
 
 
-5. ES6模块化
+### 5. ES6模块化
 
+#### 概述
+在 ES6 前， 实现模块化使用的是 RequireJS 或者 seaJS（分别是基于 AMD 规范的模块化库，  和基于 CMD 规范的模块化库）。
+
+ES6 引入了模块化，其设计思想是在编译时就能确定模块的依赖关系，以及输入和输出的变量。
+
+ES6 的模块化分为导出（export） @与导入（import）两个模块。
+
+#### 特点
+ES6 的模块自动开启严格模式，不管你有没有在模块头部加上 use strict;。
+
+模块中可以导入和导出各种类型的变量，如函数，对象，字符串，数字，布尔值，类等。
+
+每个模块都有自己的上下文，每一个模块内声明的变量都是局部变量，不会污染全局作用域。
+
+每一个模块只加载一次（是单例的）， 若再去加载同目录下同文件，直接从内存中读取。
 
 ## 四、参考链接
 
 * [https://segmentfault.com/a/1190000017466120](https://segmentfault.com/a/1190000017466120)
 * [https://juejin.cn/post/6844903961128861704](https://juejin.cn/post/6844903961128861704)
+* [https://www.runoob.com/w3cnote/es6-module.html](https://www.runoob.com/w3cnote/es6-module.html)
