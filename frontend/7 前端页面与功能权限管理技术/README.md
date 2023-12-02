@@ -2,7 +2,7 @@
 
 ## 1、页面权限
 
-#### 页面路由设计
+### 页面路由设计
 
 https://example.com/${布局}/${系统code}/${一级菜单code}/${二级菜单code}
 
@@ -16,7 +16,19 @@ https://example.com/index/system1/activity/update
 
 https://example.com/index/system1/activity/delete
 
-#### 实现
+### 后台权限配置
+
+name 菜单名称
+
+code 菜单code（唯一）
+
+parent 当前菜单的父级
+
+hidden 当前菜单是否在菜单栏中显示
+
+sort 当前菜单显示的顺序
+
+### 实现
 
 1. 第一步配置用户拥有的页面权限。
 2. 第二步通过接口拿到系统与菜单权限code。
@@ -24,7 +36,7 @@ https://example.com/index/system1/activity/delete
 
 ## 2、页面 -> 功能权限
 
-#### 功能权限分类
+### 功能权限分类
 
 按钮(button)权限
 
@@ -37,7 +49,7 @@ https://example.com/index/system1/activity/delete
 
 其他权限
 
-#### 实现
+### 实现
 
 1. 第一步配置功能权限及功能权限所对应的接口。
 2. 第二步接口拿功能权限。
