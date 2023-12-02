@@ -10,6 +10,7 @@ let exclude = [
 	'node_modules',
 	'dist',
 
+	'微前端',
 	'51 面试',
 	'ESLint + Prettier',
 	'husky + lint-staged + commitlint',
@@ -81,7 +82,14 @@ function deepReadDirSync(dirPath, parent) {
 deepReadDirSync(resolvePath('../'), rootTree)
 
 // 排序
-rootTree.items.forEach(item => bubble_sort(item.items))
+rootTree.items.forEach(item => {
+	item.items.forEach(item => {
+		let arr = item.text.split(" ")
+		if (arr.length)
+			item.text = arr.slice(1).join(" ")
+	})
+	bubble_sort(item.items)
+})
 
 module.exports = {
 	base: '/',
