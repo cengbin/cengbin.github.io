@@ -11,6 +11,8 @@ let exclude = [
 	'dist',
 
 	'微前端',
+	'4 深入理解WebGL渲染原理',
+	'10 源码学习',
 	'51 面试',
 	'ESLint + Prettier',
 	'husky + lint-staged + commitlint',
@@ -83,12 +85,13 @@ deepReadDirSync(resolvePath('../'), rootTree)
 
 // 排序
 rootTree.items.forEach(item => {
+	bubble_sort(item.items)
+
 	item.items.forEach(item => {
 		let arr = item.text.split(" ")
 		if (arr.length)
 			item.text = arr.slice(1).join(" ")
 	})
-	bubble_sort(item.items)
 })
 
 module.exports = {
@@ -99,6 +102,7 @@ module.exports = {
 	srcExclude: [
 		'frontend/2 前端优化/页面性能优化/1 基础篇/old/*.md',
 		'frontend/51 面试/*.md',
+		// 'server/nginx/README.md',
 	],
 	themeConfig: {
 		search: {
@@ -129,8 +133,8 @@ module.exports = {
 			{
 				text: '服务器',
 				items: [
-					{text: 'Nginx', link: 'https://www.baidu.com'},
-					{text: 'Tomcat', link: 'https://www.baidu.com'},
+					{text: 'Nginx', link: '/server/nginx/README'},
+					{text: 'Tomcat', link: '/server/tomcat/README'},
 				]
 			},
 			{

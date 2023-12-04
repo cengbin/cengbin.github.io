@@ -24,7 +24,7 @@ sudo nginx
 
 4.查看nginx是否启动成功
 
-在浏览器中访问 http://localhost:8080 ，如果出现如下界面，则说明启动成功.
+在浏览器中访问 `http://localhost:8080` ，如果出现如下界面，则说明启动成功.
 
 ![](./welcome-to-nginx.png)
 
