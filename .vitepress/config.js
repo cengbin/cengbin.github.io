@@ -98,7 +98,7 @@ module.exports = {
 	base: '/',
 	outDir: 'dist',
 	assetsDir: 'static',
-	title: `曾彬'技术博客`,
+	title: `彬彬'技术博客`,
 	srcExclude: [
 		'frontend/2 前端优化/页面性能优化/1 基础篇/old/*.md',
 		'frontend/51 面试/*.md',
