@@ -1,7 +1,7 @@
 {
-  "name": "web-blog",
+  "name": "binbin-blog",
   "version": "0.0.1",
-  "description": "知识库",
+  "description": "彬彬'技术博客",
   "scripts": {
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
