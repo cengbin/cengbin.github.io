@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const {bubble_sort} = require('./util')
+const { bubble_sort } = require('./util')
 
 function resolvePath(dir) {
 	return path.resolve(__dirname, './', dir)
@@ -38,7 +38,7 @@ let exclude = [
 	'6 ES6 Module',
 ]
 
-let rootTree = {text: 'web-blog', items: [], path: '',}
+let rootTree = { text: 'web-blog', items: [], path: '', }
 
 function deepReadDirSync(dirPath, parent) {
 	console.log('dirPath:', dirPath)
@@ -89,7 +89,7 @@ rootTree.items.forEach(item => {
 
 	item.items.forEach(item => {
 		let arr = item.text.split(" ")
-		if (arr.length)
+		if (arr.length && Number(arr[0]))
 			item.text = arr.slice(1).join(" ")
 	})
 })
@@ -102,55 +102,55 @@ module.exports = {
 	srcExclude: [
 		'frontend/2 前端优化/页面性能优化/1 基础篇/old/*.md',
 		'frontend/51 面试/*.md',
-		// 'server/nginx/README.md',
 	],
 	themeConfig: {
 		search: {
 			provider: 'local'
 		},
 		nav: [
-			{text: '首页', link: '/'},
+			{ text: '首页', link: '/' },
 			{
 				text: '前端',
 				items: [
-					{text: '前端工程化', link: '/frontend/1 前端工程化/README'},
-					{text: '前端优化', link: '/frontend/2 前端优化/README'},
+					{ text: '前端工程化', link: '/frontend/1 前端工程化/README' },
+					{ text: '前端优化', link: '/frontend/2 前端优化/README' },
 				]
 			},
 			{
 				text: '后端',
 				items: [
-					{text: '首页', link: '/backend/'},
-					{text: 'Spring', link: 'https://spring.io/'},
+					{ text: '首页', link: '/backend/' },
+					{ text: 'Spring', link: 'https://spring.io/' },
 				]
 			},
 			{
 				text: '数据库',
 				items: [
-					{text: 'MySQL', link: 'https://www.baidu.com'},
+					{ text: 'MySQL', link: 'https://www.baidu.com' },
 				]
 			},
 			{
 				text: '服务器',
 				items: [
-					{text: 'Nginx', link: '/server/nginx/README'},
-					{text: 'Tomcat', link: '/server/tomcat/README'},
+					{ text: 'Nginx', link: '/server/nginx/README' },
+					{ text: 'Tomcat', link: '/server/tomcat/README' },
 				]
 			},
 			{
 				text: '开发环境',
 				items: [
-					{text: 'Windows', link: 'https://www.google.com'},
-					{text: 'Mac OS', link: 'https://www.google.com'},
+					{ text: 'Windows', link: 'https://www.google.com' },
+					{ text: 'Mac OS', link: 'https://www.google.com' },
 				]
 			},
 		],
 		socialLinks: [
-			{icon: 'github', link: 'https://github.com/cengbin/cengbin.github.io'}
+			{ icon: 'github', link: 'https://github.com/cengbin/cengbin.github.io' }
 		],
 		sidebar: {
 			'/frontend/': rootTree.items[1].items,
 			'/backend/': rootTree.items[0].items,
+			'/server/': rootTree.items[2].items,
 		}
 	}
 }
