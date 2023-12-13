@@ -120,7 +120,6 @@ module.exports = {
 			{
 				text: '后端',
 				items: [
-					{ text: '首页', link: '/backend/' },
 					{ text: 'Spring', link: 'https://spring.io/' },
 				]
 			},
