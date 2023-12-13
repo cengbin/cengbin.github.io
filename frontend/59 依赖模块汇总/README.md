@@ -12,6 +12,7 @@
     * https://dayjs.gitee.io/zh-CN/
 * qs
     * 一个轻量的 url 参数转换的 JavaScript 库
+    * https://github.com/ljharb/qs
 * js-cookie
     * 一个简单的、轻量的处理 cookies 的 js API
 * vConsole
@@ -25,6 +26,8 @@
 * mescroll.js
     * 一款精致的、在H5端运行的下拉刷新和上拉加载插件，主要用于列表分页、刷新等场景。
 * vant
+	* Vant 是一个轻量、可靠的移动端组件库，于 2017 年开源。
+	* https://vant-contrib.gitee.io/vant/v2/#/zh-CN/ 
 * echarts
     * ECharts是一款基于JavaScript的数据可视化图表库，提供直观，生动，可交互，可个性化定制的数据可视化图表。
     * https://echarts.apache.org/zh/index.html

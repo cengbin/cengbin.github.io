@@ -70,7 +70,5 @@ grunt/gulp和webpack有什么不同呢？
 * 相同的组织结构
 * 相同的开发范式
 * 相同的模块依赖
-* 相同的工具配置
-* Gulp 
-* ESlint 
+* 相同的工具配置(webpack、vite、eslint...）
 * 相同的基础代码
