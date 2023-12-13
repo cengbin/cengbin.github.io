@@ -9,6 +9,7 @@ function resolvePath(dir) {
 let exclude = [
 	'node_modules',
 	'dist',
+	'public',
 
 	'微前端',
 	'5.前后端分离接口规范',
