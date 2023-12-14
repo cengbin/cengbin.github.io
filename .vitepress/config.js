@@ -152,6 +152,8 @@ module.exports = {
 			'/frontend/': rootTree.items[1].items,
 			'/backend/': rootTree.items[0].items,
 			'/server/': rootTree.items[2].items,
-		}
+		},
+		docFooter: { prev: '上一篇', next: '下一篇' },
+		outlineTitle: '目录'
 	}
 }
