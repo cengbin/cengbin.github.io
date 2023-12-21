@@ -9,7 +9,7 @@ Vue.use(Element, {
 
 参考：https://element.eleme.cn/2.14/#/zh-CN/component/quickstart#quan-ju-pei-zhi
 
-`<el-table/>`
+## `<el-table/>`
 
 支持树类型的数据的显示。
 当 row 中包含 children 字段时，被视为树形数据。
@@ -17,7 +17,7 @@ Vue.use(Element, {
 设置 Table 的 lazy 属性为 true 与加载函数 load 。
 通过指定 row 中的 hasChildren 字段来指定哪些行是包含子节点。children 与 hasChildren 都可以通过 tree-props 配置。
 
-`<el-from/>`
+## `<el-from/>`
 
 Form 的 model 属性是给表单验证的时候用的，
 调用From的validate 方法的时候，会通过FormItem 的 prop属性名 去model对象上取prop属性的值，然后进行FormItem的rules规则校验。
@@ -26,18 +26,55 @@ Form 的 model 属性是给表单验证的时候用的，
 
 当<el-from/>设置了size=‘small’的时候，<el-select/> <el-input/> 元素必须要放到<el-form-item/>下才能生效，否者只能在<el-select/>元素上单独设置size属性才能生效。
 
-`<el-input/>`
+#### validator 自定义校验规则
+
+https://element.eleme.cn/#/zh-CN/component/form#zi-ding-yi-xiao-yan-gui-ze
+
+```
+rules: {
+	settingName: [
+		{required: true, message: "必填项"},
+		{
+			validator(rule, value, callback) {
+				console.log({rule, value});
+				if (value.length > 10) {
+					return callback(new Error('名字最多不能超过10个字符'));
+				}
+				return callback()
+			},
+			trigger: 'blur'
+		}
+	],
+	settingUri: [
+		{required: true, message: '必填项'}
+	],
+},
+```
+
+## `<el-input/>`
 
 * .number - 输入字符串转为有效的数字
 * .trim - 输入首尾空格过滤
 
-`<el-input v-model.number="item.property.skill[0]”/>`
+`<el-input v-model.trim.number="item.property.skill[0]”/>`
 
 // 监听原生事件，可以拿到event对象，通过event.target可以获取到目标对象
-@change.native="onChangeInputNumber($event,item)"
 
+`<el-input @change.native="onChangeInputNumber($event,item)"/>`
 
-`<el-select/>`
+// 显示最大输入字符数量、监听input事件
+```
+<el-input v-model.trim="form.settingUri" maxlength="10"  show-word-limit placeholder="请输入" @input="onInputUri">
+  <!--<template slot="prepend">Http://</template>-->
+  <template slot="append">.merchant.tz12306.com</template>
+</el-input>
+
+onInputUri(value) {
+  this.form.settingUri = value.replace(/[^A-z]/g, '')
+},
+```
+
+## `<el-select/>`
 ```
 // 备选项进行分组展示
 <el-select v-model="value" placeholder="请选择">
@@ -55,7 +92,7 @@ Form 的 model 属性是给表单验证的时候用的，
   </el-select>
 ```
 
-`<el-date-picker/>`
+## `<el-date-picker/>`
 ```
 // 时间区间
 <el-date-picker
@@ -73,7 +110,7 @@ Form 的 model 属性是给表单验证的时候用的，
 // time: [new Date(), new Date(new Date().valueOf() + 24 * 60 * 60 * 1000)],
 ```
 
-`<el-dropdown/>`
+## `<el-dropdown/>`
 
 ```
 <el-dropdown
@@ -91,7 +128,7 @@ Form 的 model 属性是给表单验证的时候用的，
 ```
 
 
-`<el-button/>`
+## `<el-button/>`
 ```
 <el-row>
   <el-button>默认按钮</el-button>
@@ -103,7 +140,16 @@ Form 的 model 属性是给表单验证的时候用的，
 </el-row>
 ```
 
-Loading 加载
+// 红色删除文本按钮
+```
+<el-button type="text" size="small" @click="onClickOperation('delete',scope.row)" class="red">删除</el-button>
+
+.red {
+  color: #f56c6c;
+}
+```
+
+## Loading 加载
 
 网络提交loading提示代码
 ```
