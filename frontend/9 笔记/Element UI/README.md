@@ -63,6 +63,7 @@ rules: {
 `<el-input @change.native="onChangeInputNumber($event,item)"/>`
 
 // 显示最大输入字符数量、监听input事件
+
 ```
 <el-input v-model.trim="form.settingUri" maxlength="10"  show-word-limit placeholder="请输入" @input="onInputUri">
   <!--<template slot="prepend">Http://</template>-->
@@ -71,6 +72,16 @@ rules: {
 
 onInputUri(value) {
   this.form.settingUri = value.replace(/[^A-z]/g, '')
+},
+```
+
+// 只能输入手机号
+
+```
+<el-input v-model.trim="form.phone" maxlength="11"  show-word-limit placeholder="请输入手机号" @input="onInputPhone">
+
+onInputPhone(value) {
+  this. form.phone = value.replace(/[^0-9]/g, '')
 },
 ```
 

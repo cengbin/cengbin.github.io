@@ -19,12 +19,12 @@
   <script>
     function throuttle(fn, interval) {
       let lastTime = new Date().valueOf()
-      return function () {
+      return function (...args) {
         let now = new Date().valueOf()
 
         if (now - lastTime > interval) {
           lastTime = now
-          fn()
+          fn.apply(this,args)
         }
       }
     }
@@ -71,14 +71,13 @@
   <input type="text">
   <p id="tips"></p>
   <script>
-    function debounce(fn, interval) {
-      let num = null
-      return function () {
-        if (num) clearTimeout(num)
-
-        num = setTimeout(fn, interval)
-      }
-    }
+    function debounce(fun, delay = 300) {
+	  let id = null;
+	  return function (...args) {
+	    id && clearTimeout(id);
+	    id = setTimeout(() => fun.apply(this, args), delay);
+	  }
+	}
 
     let input = document.getElementsByTagName('input')[0]
     let p = document.getElementsByTagName('p')[0]
