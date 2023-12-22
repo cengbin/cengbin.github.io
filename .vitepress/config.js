@@ -104,6 +104,7 @@ module.exports = {
 	srcExclude: [
 		'frontend/2 前端优化/页面性能优化/1 基础篇/old/*.md',
 		'frontend/51 面试/*.md',
+		'frontend/60 案例/*.md',
 	],
 	themeConfig: {
 		search: {
