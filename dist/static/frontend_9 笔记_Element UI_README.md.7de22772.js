@@ -52,6 +52,14 @@ import{_ as r,C as n,o as u,c as d,k as l,a as s,H as e,Q as t}from"./chunks/fra
 <span class="line"><span style="color:#24292e;"></span></span>
 <span class="line"><span style="color:#24292e;">onInputUri(value) {</span></span>
 <span class="line"><span style="color:#24292e;">  this.form.settingUri = value.replace(/[^A-z]/g, &#39;&#39;)</span></span>
+<span class="line"><span style="color:#24292e;">},</span></span></code></pre></div><p>// 只能输入手机号</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki github-dark vp-code-dark"><code><span class="line"><span style="color:#e1e4e8;">&lt;el-input v-model.trim=&quot;form.phone&quot; maxlength=&quot;11&quot;  show-word-limit placeholder=&quot;请输入手机号&quot; @input=&quot;onInputPhone&quot;&gt;</span></span>
+<span class="line"><span style="color:#e1e4e8;"></span></span>
+<span class="line"><span style="color:#e1e4e8;">onInputPhone(value) {</span></span>
+<span class="line"><span style="color:#e1e4e8;">  this. form.phone = value.replace(/[^0-9]/g, &#39;&#39;)</span></span>
+<span class="line"><span style="color:#e1e4e8;">},</span></span></code></pre><pre class="shiki github-light vp-code-light"><code><span class="line"><span style="color:#24292e;">&lt;el-input v-model.trim=&quot;form.phone&quot; maxlength=&quot;11&quot;  show-word-limit placeholder=&quot;请输入手机号&quot; @input=&quot;onInputPhone&quot;&gt;</span></span>
+<span class="line"><span style="color:#24292e;"></span></span>
+<span class="line"><span style="color:#24292e;">onInputPhone(value) {</span></span>
+<span class="line"><span style="color:#24292e;">  this. form.phone = value.replace(/[^0-9]/g, &#39;&#39;)</span></span>
 <span class="line"><span style="color:#24292e;">},</span></span></code></pre></div><h2 id="el-select" tabindex="-1"><code>&lt;el-select/&gt;</code> <a class="header-anchor" href="#el-select" aria-label="Permalink to &quot;\`&lt;el-select/&gt;\`&quot;">​</a></h2><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki github-dark vp-code-dark"><code><span class="line"><span style="color:#e1e4e8;">// 备选项进行分组展示</span></span>
 <span class="line"><span style="color:#e1e4e8;">&lt;el-select v-model=&quot;value&quot; placeholder=&quot;请选择&quot;&gt;</span></span>
 <span class="line"><span style="color:#e1e4e8;">    &lt;el-option-group</span></span>
@@ -176,4 +184,4 @@ import{_ as r,C as n,o as u,c as d,k as l,a as s,H as e,Q as t}from"./chunks/fra
 <span class="line"><span style="color:#24292e;">    loading.close();</span></span>
 <span class="line"><span style="color:#24292e;">  });</span></span>
 <span class="line"><span style="color:#24292e;">}).catch(() =&gt; {</span></span>
-<span class="line"><span style="color:#24292e;">});</span></span></code></pre></div>`,23);function q(h,b,v,k,f,_){const p=n("form-item"),o=n("el-from"),a=n("el-select"),c=n("el-input"),i=n("el-form-item");return u(),d("div",null,[g,l("p",null,[s("如果要调用resetFields方法，必须要在"),e(p),s("组件上设置prop属性。")]),l("p",null,[s("当"),e(o),s("设置了size=‘small’的时候，"),e(a),s(),e(c),s(" 元素必须要放到"),e(i),s("下才能生效，否者只能在"),e(a),s("元素上单独设置size属性才能生效。")]),m])}const z=r(y,[["render",q]]);export{C as __pageData,z as default};
+<span class="line"><span style="color:#24292e;">});</span></span></code></pre></div>`,25);function q(h,b,v,k,f,_){const p=n("form-item"),o=n("el-from"),a=n("el-select"),c=n("el-input"),i=n("el-form-item");return u(),d("div",null,[g,l("p",null,[s("如果要调用resetFields方法，必须要在"),e(p),s("组件上设置prop属性。")]),l("p",null,[s("当"),e(o),s("设置了size=‘small’的时候，"),e(a),s(),e(c),s(" 元素必须要放到"),e(i),s("下才能生效，否者只能在"),e(a),s("元素上单独设置size属性才能生效。")]),m])}const x=r(y,[["render",q]]);export{C as __pageData,x as default};

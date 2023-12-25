@@ -1,4 +1,4 @@
-import{_ as s,o as n,c as a,Q as e}from"./chunks/framework.0f4e1e9e.js";const g=JSON.parse('{"title":"函数节流与函数防抖","description":"","frontmatter":{},"headers":[],"relativePath":"frontend/7 函数节流与函数防抖技术/README.md","filePath":"frontend/7 函数节流与函数防抖技术/README.md"}'),l={name:"frontend/7 函数节流与函数防抖技术/README.md"},p=e(`<h1 id="函数节流与函数防抖" tabindex="-1">函数节流与函数防抖 <a class="header-anchor" href="#函数节流与函数防抖" aria-label="Permalink to &quot;函数节流与函数防抖&quot;">​</a></h1><h2 id="节流-throttle" tabindex="-1">节流 throttle <a class="header-anchor" href="#节流-throttle" aria-label="Permalink to &quot;节流 throttle&quot;">​</a></h2><p>节流(Throttle):函数间隔一段时间后才能再触发，避免某些函数触发频率过高，比如滚动条滚动事件触发的函数。</p><h3 id="应用场景" tabindex="-1">应用场景 <a class="header-anchor" href="#应用场景" aria-label="Permalink to &quot;应用场景&quot;">​</a></h3><ul><li>鼠标不断点击触发，click（单位时间内只触发一次）</li><li>监听页面滚动事件，当滚动到某一个div时给div添加动画</li></ul><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki github-dark vp-code-dark"><code><span class="line"><span style="color:#e1e4e8;">&lt;body&gt;</span></span>
+import{_ as s,o as n,c as a,Q as e}from"./chunks/framework.0f4e1e9e.js";const h=JSON.parse('{"title":"函数节流与函数防抖","description":"","frontmatter":{},"headers":[],"relativePath":"frontend/7 函数节流与函数防抖技术/README.md","filePath":"frontend/7 函数节流与函数防抖技术/README.md"}'),l={name:"frontend/7 函数节流与函数防抖技术/README.md"},p=e(`<h1 id="函数节流与函数防抖" tabindex="-1">函数节流与函数防抖 <a class="header-anchor" href="#函数节流与函数防抖" aria-label="Permalink to &quot;函数节流与函数防抖&quot;">​</a></h1><h2 id="节流-throttle" tabindex="-1">节流 throttle <a class="header-anchor" href="#节流-throttle" aria-label="Permalink to &quot;节流 throttle&quot;">​</a></h2><p>节流(Throttle):函数间隔一段时间后才能再触发，避免某些函数触发频率过高，比如滚动条滚动事件触发的函数。</p><h3 id="应用场景" tabindex="-1">应用场景 <a class="header-anchor" href="#应用场景" aria-label="Permalink to &quot;应用场景&quot;">​</a></h3><ul><li>鼠标不断点击触发，click（单位时间内只触发一次）</li><li>监听页面滚动事件，当滚动到某一个div时给div添加动画</li></ul><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki github-dark vp-code-dark"><code><span class="line"><span style="color:#e1e4e8;">&lt;body&gt;</span></span>
 <span class="line"><span style="color:#e1e4e8;">  &lt;style&gt;</span></span>
 <span class="line"><span style="color:#e1e4e8;">    body {</span></span>
 <span class="line"><span style="color:#e1e4e8;">      height: 2000px;</span></span>
@@ -7,12 +7,12 @@ import{_ as s,o as n,c as a,Q as e}from"./chunks/framework.0f4e1e9e.js";const g=
 <span class="line"><span style="color:#e1e4e8;">  &lt;script&gt;</span></span>
 <span class="line"><span style="color:#e1e4e8;">    function throuttle(fn, interval) {</span></span>
 <span class="line"><span style="color:#e1e4e8;">      let lastTime = new Date().valueOf()</span></span>
-<span class="line"><span style="color:#e1e4e8;">      return function () {</span></span>
+<span class="line"><span style="color:#e1e4e8;">      return function (...args) {</span></span>
 <span class="line"><span style="color:#e1e4e8;">        let now = new Date().valueOf()</span></span>
 <span class="line"><span style="color:#e1e4e8;"></span></span>
 <span class="line"><span style="color:#e1e4e8;">        if (now - lastTime &gt; interval) {</span></span>
 <span class="line"><span style="color:#e1e4e8;">          lastTime = now</span></span>
-<span class="line"><span style="color:#e1e4e8;">          fn()</span></span>
+<span class="line"><span style="color:#e1e4e8;">          fn.apply(this,args)</span></span>
 <span class="line"><span style="color:#e1e4e8;">        }</span></span>
 <span class="line"><span style="color:#e1e4e8;">      }</span></span>
 <span class="line"><span style="color:#e1e4e8;">    }</span></span>
@@ -34,12 +34,12 @@ import{_ as s,o as n,c as a,Q as e}from"./chunks/framework.0f4e1e9e.js";const g=
 <span class="line"><span style="color:#24292e;">  &lt;script&gt;</span></span>
 <span class="line"><span style="color:#24292e;">    function throuttle(fn, interval) {</span></span>
 <span class="line"><span style="color:#24292e;">      let lastTime = new Date().valueOf()</span></span>
-<span class="line"><span style="color:#24292e;">      return function () {</span></span>
+<span class="line"><span style="color:#24292e;">      return function (...args) {</span></span>
 <span class="line"><span style="color:#24292e;">        let now = new Date().valueOf()</span></span>
 <span class="line"><span style="color:#24292e;"></span></span>
 <span class="line"><span style="color:#24292e;">        if (now - lastTime &gt; interval) {</span></span>
 <span class="line"><span style="color:#24292e;">          lastTime = now</span></span>
-<span class="line"><span style="color:#24292e;">          fn()</span></span>
+<span class="line"><span style="color:#24292e;">          fn.apply(this,args)</span></span>
 <span class="line"><span style="color:#24292e;">        }</span></span>
 <span class="line"><span style="color:#24292e;">      }</span></span>
 <span class="line"><span style="color:#24292e;">    }</span></span>
@@ -61,14 +61,13 @@ import{_ as s,o as n,c as a,Q as e}from"./chunks/framework.0f4e1e9e.js";const g=
 <span class="line"><span style="color:#e1e4e8;">  &lt;input type=&quot;text&quot;&gt;</span></span>
 <span class="line"><span style="color:#e1e4e8;">  &lt;p id=&quot;tips&quot;&gt;&lt;/p&gt;</span></span>
 <span class="line"><span style="color:#e1e4e8;">  &lt;script&gt;</span></span>
-<span class="line"><span style="color:#e1e4e8;">    function debounce(fn, interval) {</span></span>
-<span class="line"><span style="color:#e1e4e8;">      let num = null</span></span>
-<span class="line"><span style="color:#e1e4e8;">      return function () {</span></span>
-<span class="line"><span style="color:#e1e4e8;">        if (num) clearTimeout(num)</span></span>
-<span class="line"><span style="color:#e1e4e8;"></span></span>
-<span class="line"><span style="color:#e1e4e8;">        num = setTimeout(fn, interval)</span></span>
-<span class="line"><span style="color:#e1e4e8;">      }</span></span>
-<span class="line"><span style="color:#e1e4e8;">    }</span></span>
+<span class="line"><span style="color:#e1e4e8;">    function debounce(fun, delay = 300) {</span></span>
+<span class="line"><span style="color:#e1e4e8;">	  let id = null;</span></span>
+<span class="line"><span style="color:#e1e4e8;">	  return function (...args) {</span></span>
+<span class="line"><span style="color:#e1e4e8;">	    id &amp;&amp; clearTimeout(id);</span></span>
+<span class="line"><span style="color:#e1e4e8;">	    id = setTimeout(() =&gt; fun.apply(this, args), delay);</span></span>
+<span class="line"><span style="color:#e1e4e8;">	  }</span></span>
+<span class="line"><span style="color:#e1e4e8;">	}</span></span>
 <span class="line"><span style="color:#e1e4e8;"></span></span>
 <span class="line"><span style="color:#e1e4e8;">    let input = document.getElementsByTagName(&#39;input&#39;)[0]</span></span>
 <span class="line"><span style="color:#e1e4e8;">    let p = document.getElementsByTagName(&#39;p&#39;)[0]</span></span>
@@ -98,14 +97,13 @@ import{_ as s,o as n,c as a,Q as e}from"./chunks/framework.0f4e1e9e.js";const g=
 <span class="line"><span style="color:#24292e;">  &lt;input type=&quot;text&quot;&gt;</span></span>
 <span class="line"><span style="color:#24292e;">  &lt;p id=&quot;tips&quot;&gt;&lt;/p&gt;</span></span>
 <span class="line"><span style="color:#24292e;">  &lt;script&gt;</span></span>
-<span class="line"><span style="color:#24292e;">    function debounce(fn, interval) {</span></span>
-<span class="line"><span style="color:#24292e;">      let num = null</span></span>
-<span class="line"><span style="color:#24292e;">      return function () {</span></span>
-<span class="line"><span style="color:#24292e;">        if (num) clearTimeout(num)</span></span>
-<span class="line"><span style="color:#24292e;"></span></span>
-<span class="line"><span style="color:#24292e;">        num = setTimeout(fn, interval)</span></span>
-<span class="line"><span style="color:#24292e;">      }</span></span>
-<span class="line"><span style="color:#24292e;">    }</span></span>
+<span class="line"><span style="color:#24292e;">    function debounce(fun, delay = 300) {</span></span>
+<span class="line"><span style="color:#24292e;">	  let id = null;</span></span>
+<span class="line"><span style="color:#24292e;">	  return function (...args) {</span></span>
+<span class="line"><span style="color:#24292e;">	    id &amp;&amp; clearTimeout(id);</span></span>
+<span class="line"><span style="color:#24292e;">	    id = setTimeout(() =&gt; fun.apply(this, args), delay);</span></span>
+<span class="line"><span style="color:#24292e;">	  }</span></span>
+<span class="line"><span style="color:#24292e;">	}</span></span>
 <span class="line"><span style="color:#24292e;"></span></span>
 <span class="line"><span style="color:#24292e;">    let input = document.getElementsByTagName(&#39;input&#39;)[0]</span></span>
 <span class="line"><span style="color:#24292e;">    let p = document.getElementsByTagName(&#39;p&#39;)[0]</span></span>
@@ -126,4 +124,4 @@ import{_ as s,o as n,c as a,Q as e}from"./chunks/framework.0f4e1e9e.js";const g=
 <span class="line"><span style="color:#24292e;">      console.log(&#39;last click window&#39;)</span></span>
 <span class="line"><span style="color:#24292e;">    }, 300))</span></span>
 <span class="line"><span style="color:#24292e;">  &lt;/script&gt;</span></span>
-<span class="line"><span style="color:#24292e;">&lt;/body&gt;</span></span></code></pre></div>`,13),o=[p];function t(c,i,r,y,d,u){return n(),a("div",null,o)}const f=s(l,[["render",t]]);export{g as __pageData,f as default};
+<span class="line"><span style="color:#24292e;">&lt;/body&gt;</span></span></code></pre></div>`,13),t=[p];function o(c,i,r,y,d,u){return n(),a("div",null,t)}const f=s(l,[["render",o]]);export{h as __pageData,f as default};
