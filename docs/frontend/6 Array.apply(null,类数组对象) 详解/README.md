@@ -13,11 +13,12 @@ console.log(arr1[1]);
 let arr2 = Array.apply(null, {length: 2})
 console.log(arr2) // [undefined, undefined]
 
-/**
- * map()函数并不会遍历数组中没有初始化或者被delete的元素（有相同限制还有forEach, reduce方法）
- * */
-var arr3 = Array.apply(null, {length: 2}).map(function (currentValue, index, array) {
-  return index
-})
+// map() 函数并不会遍历数组中没有初始化或者被delete的元素（有相同限制还有forEach, reduce方法）
+var arr3 = Array.apply(null, {length: 2}).map((value,index)=>index);
 console.log(arr3)
+
+// fill() 方法用一个固定值填充一个数组中从起始索引（默认为 0）到终止索引（默认为array.length）内的全部元素。它返回修改后的数组。
+var arr4 = new Array(10).fill(null).map((value,index)=>index);
+console.log(arr4)
 ```
+
