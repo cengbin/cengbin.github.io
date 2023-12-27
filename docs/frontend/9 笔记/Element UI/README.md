@@ -31,24 +31,41 @@ Form 的 model 属性是给表单验证的时候用的，
 https://element.eleme.cn/#/zh-CN/component/form#zi-ding-yi-xiao-yan-gui-ze
 
 ```
-rules: {
-	settingName: [
-		{required: true, message: "必填项"},
-		{
-			validator(rule, value, callback) {
-				console.log({rule, value});
-				if (value.length > 10) {
-					return callback(new Error('名字最多不能超过10个字符'));
-				}
-				return callback()
-			},
-			trigger: 'blur'
-		}
-	],
-	settingUri: [
-		{required: true, message: '必填项'}
-	],
-},
+data() {
+      // 如果要在校验规则中访问this，就这样写。
+      var validatePass = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error('请输入密码'));
+        } else {
+          if (this.ruleForm.checkPass !== '') {
+            this.$refs.ruleForm.validateField('checkPass');
+          }
+          callback();
+        }
+      };
+      
+      return {
+      		rules: {
+				settingName: [
+					{required: true, message: "必填项"},
+					{
+						validator(rule, value, callback) {
+							console.log({rule, value});
+							if (value.length > 10) {
+								return callback(new Error('名字最多不能超过10个字符'));
+							}
+							return callback()
+						},
+						trigger: 'blur'
+					}
+				],
+				settingUri: [
+					{required: true, message: '必填项'},
+					{validator: validatePass, trigger: 'blur'}
+				],
+			}
+		},
+  }
 ```
 
 ## `<el-input/>`
