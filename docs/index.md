@@ -4,7 +4,7 @@ layout: home
 hero:
   name: 技术博客
   text: 
-  tagline: 撰写技术博客时，要多思考技术点背后的“What，Why，How”。<br/>What 原理是什么？<br/>Why 为什么要这么做？<br/>How 如何实现的？
+  tagline: 勤学如春起之苗，不见其增，日有所涨<br/>辍学如磨刀之石，不见其损，日有所亏
   actions:
     - theme: brand
       text: 前端
