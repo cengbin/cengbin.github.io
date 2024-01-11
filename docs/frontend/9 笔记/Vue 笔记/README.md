@@ -1,6 +1,6 @@
 # Vue 笔记
 
-## Vue computed 还可以返回函数
+## 1 Vue computed 还可以返回函数
 
 ```
 computed: {
@@ -21,7 +21,7 @@ computed: {
 >
 ```
 
-## 关闭 vue cli 中的 eslint 检查工具
+## 2 关闭 vue cli 中的 eslint 检查工具
 
 ```
 // vue.config.js
@@ -36,7 +36,7 @@ module.exports = {
 }
 ```
 
-## Vue 深度选择器 :v-deep
+## 3 Vue 深度选择器 :v-deep
 
 ```
 .area {
@@ -52,8 +52,48 @@ module.exports = {
 }
 ```
 
-## Vue 80端口无法使用，直接运行到1024问题
+## 5 Vue 80端口无法使用，直接运行到1024问题
 
 [在mac os中，非root用户是无法使用小于1024的常用端口的。如果开发中需要用到80端口, 就要设置端口转发。](https://blog.csdn.net/samuelandkevin/article/details/80279773)
 
 ![](./781589-20210819154746534-814249557.png)
+
+## 6 解决 vue2 数组内交换位置后无法重新渲染的问题
+
+背景：如下代码，list 是一个响应式数组，调用swap(1,2) 交互数组中的元素，通过vue devtools查看data已经变了，但是 vue 不会触发重新渲染！
+
+```
+new Vue({
+	el: "#app",
+	data() {
+		return {
+			list: [0, 1, 3, 4],
+		}
+	},
+	methods: {
+		swap(index1, index2) {
+			let temp = this.list[index1];
+
+			this.list[index1] = this.list[index2];
+			this.list[index2] = temp;
+
+			// console.log(this.list);
+
+			// 方法一
+			// this.$set(this.list, index1, this.list[index2])
+			// this.$set(this.list, index2, temp)
+
+			// 方法二
+			this.$forceUpdate();
+		},
+	}
+})
+```
+
+原因：vue2 只对数组的push pop shift unshift splice ... 等等这些方法做了代理，当做了这些之外的操作是监听不到的。
+
+解决：
+
+方法一：用this.$set();
+
+方法二：用this.$forceUpdate(); 强制触发重新渲染。
