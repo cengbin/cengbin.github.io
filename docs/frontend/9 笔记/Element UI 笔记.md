@@ -68,6 +68,22 @@ data() {
   }
 ```
 
+#### 问题描述：表单有多个元素需要校验，但是其中某些元素是根据另一个元素的值去用v-if控制显示与隐藏,切换值得时候，就会出现校验错乱
+
+解决方法: 
+
+方法一：
+
+给表单的el-form-item去绑定一个key,这样每次刷新验证，就会找对应的key去校验，这是唯一的
+
+```
+<el-form-item v-if="formInline.type == 'SYSTEM'" key="EvaluationContent" label="评估内容:" prop="EvaluationContent">
+```
+
+方法二：
+
+如果有 el-select，可以使用 el-form 自带的 方法 clearValidate 移除整个表单的校验结果,见 element Form Methods
+
 ## `<el-input/>`
 
 * .number - 输入字符串转为有效的数字
@@ -79,7 +95,7 @@ data() {
 
 `<el-input @change.native="onChangeInputNumber($event,item)"/>`
 
-// 显示最大输入字符数量、监听input事件
+// 显示最大输入字符数量与监听input事件
 
 ```
 <el-input v-model.trim="form.settingUri" maxlength="10"  show-word-limit placeholder="请输入" @input="onInputUri">
@@ -100,6 +116,18 @@ onInputUri(value) {
 onInputPhone(value) {
   this. form.phone = value.replace(/[^0-9]/g, '')
 },
+```
+
+// 只能输入数字、小数点
+
+```
+oninput =“value=value.replace(/[^\d]/g,‘’)” //只能输入数字
+
+oninput =“value=value.replace(/[^0-9.]/g,‘’)” //只能输入数字和小数
+
+<el-input v-model="sjje" oninput ="value=value.replace(/[^0-9.]/g,'')">
+	<span slot="suffix">/ 元 </span>
+</el-input>                           
 ```
 
 ## `<el-select/>`
