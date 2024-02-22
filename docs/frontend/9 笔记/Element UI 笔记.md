@@ -131,6 +131,69 @@ oninput =“value=value.replace(/[^0-9.]/g,‘’)” //只能输入数字和小
 ```
 
 ## `<el-select/>`
+
+### 解决el-select数据量过大的3种方案
+
+以下方法都需要支持开启filterable支持搜索。
+
+|标题	|具体	|问题|
+|---|---|---|
+|方案1|	只展示前100条数据，这个的话配合filter-method每次只返回前100条数据。	|限制展示的条数可能不全，搜索需要多搜索点内容|
+|方案2|	分页方式，通过指令实现上拉加载，不断上拉数据展示数据。	|仅过滤加载出来的数据，需要配合filterMethod过滤数据|
+|方案3|	options列表采用虚拟列表实现。	|成本高，需要引入虚拟列表组件或者自己手写|
+
+#### 方案一：filterMethod直接过滤数据量
+```vue
+<template>
+    <el-select
+      v-model="value"
+      clearable
+      filterable
+      :filter-method="filterMethod">
+      <el-option
+        v-for="(option, index) in options"
+        :key="option.value"
+        :label="option.label"
+        :value="option.value">
+      </el-option>
+    </el-select>
+</template>
+<script>
+ export default {
+  name: 'Demo',
+  data() {
+    return {
+      list:[],
+      options: [],
+      value: ''
+    }
+  },
+  created() {
+    this.getList();
+  },
+  methods: {
+    // 模拟获取大量数据
+    getList() {
+      let array = []
+      for (let i = 0; i < 25000; i++) {
+        array.push({label: "选择"+i,value:i});
+      } 
+      this.list = array;
+      this.options = array.slice(0, 100);
+    },
+    filterMethod(query) {
+      let array = query !== ''
+          ? this.list.filter(item => (item.label.toLowerCase().indexOf(query.toLowerCase()) > -1))
+          : this.list
+      this.options = array.slice(0, 100);
+    }
+  }
+}
+</script>
+```
+
+参考：https://www.jb51.net/javascript/298200ahl.htm
+
 ```
 // 备选项进行分组展示
 <el-select v-model="value" placeholder="请选择">
@@ -198,10 +261,27 @@ oninput =“value=value.replace(/[^0-9.]/g,‘’)” //只能输入数字和小
 
 // 红色删除文本按钮
 ```
-<el-button type="text" size="small" @click="onClickOperation('delete',scope.row)" class="red">删除</el-button>
+<el-button type="text" size="small" @click="action('delete',scope.row)" class="red">删除</el-button>
 
 .red {
   color: #f56c6c;
+}
+```
+
+## `<el-dialog/>`
+
+### 弹框垂直居中
+
+```css
+.el-dialog-vertical-center .el-dialog {
+  margin: 0 !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: calc(100% - 30px);
+  max-width: calc(100% - 30px);
+  overflow: auto;
 }
 ```
 
