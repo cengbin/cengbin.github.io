@@ -5,8 +5,11 @@
 ESLint 是一个检查代码质量与风格的工具，配置一套规则，就能检查出你代码中不符合规则的地方，部分问题支持自动修复；
 
 总结起来就两个功能：
-* 代码质量检查 可以发现代码中存在的可能错误，如使用未声明变量、声明而未使用的变量、修改 const 变量、代码中使用debugger等等 
-* 代码格式化 可以用来统一团队的代码风格，比如加不加分号、使用 tab 还是空格、字符串使用单引号 等等
+
+* 代码质量检查
+	* 可以发现代码中存在的可能错误，如使用未声明变量、声明而未使用的变量、修改 const 变量、代码中使用debugger等等  
+
+* 代码格式化   	* 可以用来统一团队的代码风格，比如加不加分号、使用 tab 还是空格、字符串使用单引号 等等
 
 
 ESLint是一个插件化的代码检测工具，正如它官网描述的slogan：
@@ -20,6 +23,7 @@ ESLint不仅可以检测JS，还支持JSX和Vue，它的高可扩展性让它能
 2015年，ES6规范发布后，由于大部分浏览器支持程度不高，因此需要Babel将代码转换编译成ES5或者更低版本；同时由于ES6变化很大，短期内JSHint无法完全支持，这时ESLint的高扩展性的优点显现出来了，不仅可以扩展规则，连默认的解析器也能替换；Babel团队就为ESLint开发了babel-eslint替换默认的解析器esprima，让ESLint率先支持ES6。
 
 ESLint扩展性好；ESLint的核心是检测AST是否符合规则；
+
 1. 第一步：解析器把源码转成AST；ESLint的解析器可自定义，源码用了啥高级语法或者换成TS，可直接换解析器得到最终的AST，eslint就可做规则匹配了；
 2. 第二步：执行规则；ESLint的检测规则可自定义；
 
@@ -31,11 +35,13 @@ npx eslint --init // 生成 .eslintrc*  配置文件
 
 一般我们会把eslint命令行配置到packages.json中：
 
+```
 "scripts": {
   "lint": "npx eslint src”,
   "lint:fix": "npx eslint src --fix",
   "lint:create": "npx eslint --init"
 }
+```
 
 ## 配置
 
@@ -139,7 +145,7 @@ rule 规则配置
 
 内置规则：https://zh-hans.eslint.org/
 
-Webstrom 配置 ESLint的autofix功能
+## Webstrom 配置 ESLint的autofix功能
 
 1、项目绑定Eslint，并提示错误。
 ![](./1.jpg)

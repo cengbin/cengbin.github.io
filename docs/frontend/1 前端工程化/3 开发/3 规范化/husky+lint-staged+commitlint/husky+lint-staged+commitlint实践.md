@@ -128,6 +128,7 @@ echo "husky commit-msg" && npx --no-install commitlint --edit $1
 
 在 commit-msg 钩子内执行 npx --no-install commitlint --edit $1 的作用是调用 commitlint 来对提交消息进行校验并编辑。
 具体作用如下：
+
 1. --no-install 参数告诉 npx 命令不要自动安装 commitlint，而是使用当前项目中已安装的 commitlint。
 2. commitlint 是执行实际的 commitlint 命令，用于校验提交消息的规范性。
 3. --edit 参数告诉 commitlint 打开文本编辑器，以便你可以在编辑器中查看和编辑提交消息。
