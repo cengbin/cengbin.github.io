@@ -63,6 +63,7 @@ npm i -D eslint-config-prettier
 通过使用eslint-config-prettier配置，能够关闭一些不必要的或者是与prettier冲突的lint选项。这样我们就不会看到一些error同时出现两次。使用的时候需要确保，这个配置在extends的最后一项。
 
 // .eslintrc.js
+
 ```
 {
     extends: [
@@ -73,6 +74,7 @@ npm i -D eslint-config-prettier
 ```
 
 // .prettierrc.js
+
 ```
 module.exports = {
     "printWidth": 80, //一行的字符数，如果超过会进行换行，默认为80
@@ -92,5 +94,5 @@ module.exports = {
 
 ### 参考
 
-使用ESLint+Prettier来统一前端代码风格
-https://juejin.cn/post/6844903621805473800?searchId=2023101113021452187A2E209592665B00
+[使用ESLint+Prettier来统一前端代码风格](
+https://juejin.cn/post/6844903621805473800?searchId=2023101113021452187A2E209592665B00)
