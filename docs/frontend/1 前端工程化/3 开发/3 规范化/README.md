@@ -15,7 +15,7 @@
 3. [开发代码规范](./3.开发代码规范.md)
     1. [代码质量规范](./ESLint+Prettier/ESLint实践.md)
     2. [代码风格规范](./ESLint+Prettier/Prettier实践.md)
-4. [git commit规范](./husky+lint-staged+commitlint/husky+lint-staged+commitlint实践.md)
+4. [git commit规范](husky+lint-staged+commitlint实践.md)
 5. [前后端分离接口规范](./5.前后端分离接口规范/README.md)
 
 #### 参考
