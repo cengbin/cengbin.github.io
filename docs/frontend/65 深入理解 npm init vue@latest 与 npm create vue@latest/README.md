@@ -1,20 +1,16 @@
 # 深入理解 npm init vue@latest 与 npm create vue@latest
 
+npm 官方文档 [点击这里](https://docs.npmjs.com)
+
 我系统的 node 版本是v16.13.1，npm 版本是 8.6.0。
-
-##npm
-
-官方文档 [点击这里](https://docs.npmjs.com)
 
 ## npm init
 
 npm init 用来初始化我们本地项目的 package.json。还可以使用 npm init -y 来实现跳过手动配置，一键初始化本地项目。
 
-npm init v6 文档
-https://docs.npmjs.com/cli/v6/commands/npm-init 
+[npm init v6 文档](https://docs.npmjs.com/cli/v6/commands/npm-init)
 
-npm init v8 文档
-https://docs.npmjs.com/cli/v8/commands/npm-init
+[npm init v8 文档](https://docs.npmjs.com/cli/v8/commands/npm-init)
 
 ![](./screenshot-20240412-230142.png)
 
@@ -25,7 +21,9 @@ https://docs.npmjs.com/cli/v8/commands/npm-init
 * npm init @包名（类似于 npx @包名-create）
 * npm init foo -> npm exec create-foo，当执行 npm init foo时，实际是将init命令转化为了相应的npm exec操作，也就是相当于执行：npm exec create-foo
 
-注意：npm v6 没有 npm create 命令，npm v8 有 npm create 命令。
+注意：npm create 是 npm v6 之后才有的，详情见下图（ [CHANGELOG 点击这里](https://github.com/npm/cli/blob/release/v6/CHANGELOG.md#v600-2018-04-20)）。
+
+![](./screenshot-20240412-233002.png)
 
 ## 执行 npm init vue@latest
 
@@ -36,7 +34,7 @@ https://docs.npmjs.com/cli/v8/commands/npm-init
 
 npx 官方文档[点击这里](https://docs.npmjs.com/cli/v8/commands/npx)
 
-![](./Pasted Graphic 1.jpg)
+![](./npx.jpg)
 
 npx作用：从本地或远程 npm 包运行命令。
 
