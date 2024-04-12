@@ -78,7 +78,11 @@ module.exports = {
 	outDir: '../dist',
 	assetsDir: 'static',
 	title: `彬彬'技术博客`,
-	themeConfig: {
+  srcExclude: [
+    'frontend/2 前端优化/页面性能优化/1 基础篇/old/*.md',
+    'frontend/51 面试/*.md',
+  ],
+  themeConfig: {
 		search: {
 			provider: 'local'
 		},
