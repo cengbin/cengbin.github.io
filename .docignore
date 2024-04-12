@@ -2,25 +2,31 @@ node_modules
 dist
 public
 微前端
-5.前后端分离接口规范
 4 深入理解WebGL渲染原理
 10 源码学习
 51 面试
-1.开发流程规范.md
-2.项目目录与文件结构规范.md
-3.开发代码规范.md
-4.git commit规范.md
+开发代码规范.md
+开发流程规范.md
+其他
+前后端分离接口规范.md
+项目目录与文件结构规范.md
+assets
+Code Review 编码标准.md
+CommitLint.md
+ESLint+Prettier
+git commit规范.md
+Husky.md
+husky+lint-staged+commitlint实践.md
+lint-staged.md
+README.md
+StyleLint.md
 JS沙箱隔离.md
 使用Node如何制作一个专业的命令行工具以及命令执行的原理.md
 README-old-20230409.md
 Request Header里Cache-Control的取值.md
 浏览器缓存机制详解-20211019.md
-讲讲从输入URL到页面加载完成都发生了什么.md
 AMD模块与CMD模块对比.md
 ES6模块与CommonJS模块对比.md
-ESLint+Prettier
-husky+lint-staged+commitlint
-其他
 html-examples
 image
 old
@@ -40,3 +46,4 @@ render
 4 CMD（SeaJS）
 5 UMD
 6 ES6 Module
+other

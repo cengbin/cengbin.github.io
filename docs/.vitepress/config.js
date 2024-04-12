@@ -6,59 +6,14 @@ function resolvePath(dir) {
 	return path.resolve(__dirname, './', dir)
 }
 
-let exclude = [
-	'node_modules',
-	'dist',
-	'public',
-
-	'微前端',
-	'4 深入理解WebGL渲染原理',
-	'10 源码学习',
-	'51 面试',
-
-  '开发代码规范.md',
-  '开发流程规范.md',
-  '其他',
-  '前后端分离接口规范.md',
-  '项目目录与文件结构规范.md',
-  'assets',
-  'Code Review 编码标准.md',
-  'CommitLint.md',
-  'ESLint+Prettier',
-  'git commit规范.md',
-  'Husky.md',
-  'husky+lint-staged+commitlint实践.md',
-  'lint-staged.md',
-  'README.md',
-  'StyleLint.md',
-
-	'JS沙箱隔离.md',
-	'使用Node如何制作一个专业的命令行工具以及命令执行的原理.md',
-	'README-old-20230409.md',
-	'Request Header里Cache-Control的取值.md',
-	'浏览器缓存机制详解-20211019.md',
-	'AMD模块与CMD模块对比.md',
-	'ES6模块与CommonJS模块对比.md',
-	'html-examples',
-	'image',
-	'old',
-	'test',
-	'demo',
-	'demo1',
-	'demo2',
-	'demo3',
-	'picture-lazy-loading',
-	'img',
-	'seajs-module-demo.js',
-	'es6-module-demo',
-	'render',
-	'1 IIFE-module-demo',
-	'2 CommonJS（Node.js）',
-	'3 AMD（RequireJS）',
-	'4 CMD（SeaJS）',
-	'5 UMD',
-	'6 ES6 Module',
-]
+const content = fs.readFileSync('.docignore', 'utf-8');
+const lines = content.split('\n');
+const exclude = []
+for (let line = 0; line < lines.length; line++) {
+  const text = lines[line]
+  if (text)
+    exclude.push(text)
+}
 
 let rootTree = { text: '', items: [], path: '', }
 
@@ -108,7 +63,6 @@ function deepReadDirSync(dirPath, parent) {
 
 deepReadDirSync(resolvePath('../'), rootTree)
 
-// 排序
 rootTree.items.forEach(item => {
 	bubble_sort(item.items)
 
@@ -124,10 +78,6 @@ module.exports = {
 	outDir: '../dist',
 	assetsDir: 'static',
 	title: `彬彬'技术博客`,
-	srcExclude: [
-		'frontend/2 前端优化/页面性能优化/1 基础篇/old/*.md',
-		'frontend/51 面试/*.md',
-	],
 	themeConfig: {
 		search: {
 			provider: 'local'
@@ -142,29 +92,10 @@ module.exports = {
 				]
 			},
 			{
-				text: '后端',
-				items: [
-					{ text: 'Spring', link: 'https://spring.io/' },
-				]
-			},
-			{
-				text: '数据库',
-				items: [
-					{ text: 'MySQL', link: 'https://www.baidu.com' },
-				]
-			},
-			{
 				text: '服务器',
 				items: [
 					{ text: 'Nginx', link: '/server/nginx/README' },
 					{ text: 'Tomcat', link: '/server/tomcat/README' },
-				]
-			},
-			{
-				text: '开发环境',
-				items: [
-					{ text: 'Windows', link: 'https://www.google.com' },
-					{ text: 'Mac OS', link: 'https://www.google.com' },
 				]
 			},
 		],
