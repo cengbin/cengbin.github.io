@@ -22,7 +22,7 @@
 
 ### 配置 CommitLint
 
-在项目根目录下创建`commitlint.config.js`文件，并编辑：
+在项目根目录下创建`commitlint.config.js` 或 `.commitlintrc.js`文件，并编辑：
 
 ```
 module.exports = {

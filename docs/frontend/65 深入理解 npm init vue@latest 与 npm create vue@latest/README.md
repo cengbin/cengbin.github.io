@@ -27,7 +27,7 @@ npm init 用来初始化我们本地项目的 package.json。还可以使用 
 
 ## 执行 npm init vue@latest
 
-* 当执行 npm init vue@latest，可以理解成 npx create-vue
+* 当执行 npm init vue@latest，可以理解成 npx create-vue，这一指令将会安装并执行 create-vue。(正如官方所说[点击这里查看](https://cn.vuejs.org/guide/quick-start.html))
 * @latest是从注册表中获取并运行最新的版本
 
 ## npx
