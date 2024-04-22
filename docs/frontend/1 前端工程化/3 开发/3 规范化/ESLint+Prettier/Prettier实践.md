@@ -42,7 +42,7 @@ var a = {
 console.log(a)
 ```
 
-ESLint 与 Prettier 配合使用
+实际中通常 ESLint 与 Prettier 配合使用。
 
 ## 安装
 
@@ -52,7 +52,7 @@ npm i --save-dev prettier
 
 npm i --save-dev eslint-plugin-prettier
 
-eslint-plugin-prettier插件会调用prettier对你的代码风格进行检查，其原理是先使用prettier对你的代码进行格式化，然后与格式化之前的代码进行对比，如果过出现了不一致，这个地方就会被prettier进行标记。
+eslint-plugin-prettier 是一个插件，会调用prettier对你的代码风格进行检查，其原理是先使用prettier对你的代码进行格式化，然后与格式化之前的代码进行对比，如果过出现了不一致，这个地方就会被prettier进行标记。
 
 接下来，我们需要在rules中添加，"prettier/prettier": "error"，表示被prettier标记的地方抛出错误信息。
 
@@ -66,10 +66,17 @@ npm i -D eslint-config-prettier
 
 ```
 {
+	 ...
     extends: [
-      'standard', //使用standard做代码规范
-      "prettier",
+      'standard', //使用 standard 做代码规范
+      "prettier", //使用 eslint-config-prettier 的规则进行代码检查
     ],
+    plugins: ["prettier"], // 使用 eslint-plugin-prettier插件调用prettier对你的代码风格进行检查
+    rules: {
+	    ...
+	    "prettier/prettier": "error", // 被prettier标记的地方报error
+  	},
+  	...
 }
 ```
 

@@ -53,7 +53,7 @@ root: true 这个配置，这个配置是让eslint不要往父级去继续查找
 
 ### globals和env 配置
 
-（对环境定义的一组全局变量的预设 详细看：https://zh-hans.eslint.org/docs/latest/use/configure/language-options ）
+对环境定义的一组全局变量的预设，详细[点击这里](https://zh-hans.eslint.org/docs/latest/use/configure/language-options)
 
 通常我们在项目里面会使用很多全局变量，比如浏览器环境下的windows，node环境下的global等，通常一些规则集像eslint:recommended等，是会校验不过的，因为在它看来你是使用了未定义的变量，这个时候globals就派上用场了
 
@@ -112,6 +112,8 @@ root: true 这个配置，这个配置是让eslint不要往父级去继续查找
 ```
 
 ### parser和parserOptions
+
+通过parser我们指定了项目所使用的语法解析器，parserOptions就相当于给出解析器更详细的解析配置，比如如下配置，parserOptions就具体指定了@typescript-eslint/parser解析器应该支持最新版本的es标准（"ecmaVersion": "latest"）以及项目的模块化标准为esModule（"sourceType": "module"）
 
 eslint默认的解析器是espree，只支持转换js，默认支持到ES5的语法，假如需要支持更高版本的语法，则可以通过parserOptions来指定版本号
 

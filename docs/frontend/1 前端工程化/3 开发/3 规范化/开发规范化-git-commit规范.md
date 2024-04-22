@@ -2,11 +2,15 @@
 
 ## husky
 
-参考 [Husky](Husky.md)
+参考 [Husky](./Husky.md)
 
 ## lint-staged
 
+参考 [Husky](./lint-staged.md)
+
 ## CommitLint
+
+参考 [Husky](./CommitLint.md)
 
 参考：
 
