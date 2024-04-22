@@ -5,16 +5,16 @@ public
 4 深入理解WebGL渲染原理
 10 源码学习
 51 面试
-开发代码规范.md
-开发流程规范.md
+开发规范化-开发代码规范.md
+开发规范化-开发流程规范.md
+开发规范化-前后端分离接口规范.md
+开发规范化-项目目录与文件结构规范.md
+开发规范化-git-commit规范.md
 其他
-前后端分离接口规范.md
-项目目录与文件结构规范.md
 assets
 Code Review 编码标准.md
 CommitLint.md
 ESLint+Prettier
-git commit规范.md
 Husky.md
 husky+lint-staged+commitlint实践.md
 lint-staged.md
