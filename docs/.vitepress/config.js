@@ -79,7 +79,7 @@ module.exports = {
 	assetsDir: 'static',
 	title: `彬彬'技术博客`,
   srcExclude: [
-    'frontend/2 前端优化/页面性能优化/1 基础篇/old/*.md',
+    'frontend/2 前端优化/页面性能优化/old/*.md',
     'frontend/51 面试/*.md',
   ],
   themeConfig: {
