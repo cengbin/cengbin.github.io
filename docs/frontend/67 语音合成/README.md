@@ -1,4 +1,4 @@
-# AudioContext 详解
+# 语音合成
 
 ## 音频基础知识了解：波、采样、采样率、采样位深度、声道、PCM
 
@@ -77,7 +77,7 @@ PCM 是指脉冲编码调制（Pulse Code Modulation）
 
 https://cjting.me/2021/08/07/fourier-transform-and-audio-visualization/
 
-## 音频上下文 AudioContext
+## 音频上下文 AudioContext 详解
 
 ```
 const audioContext = new AudioContext();
