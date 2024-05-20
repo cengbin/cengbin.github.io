@@ -7,6 +7,10 @@
 ### 1. 概念介绍
 **ArrayBuffer** 对象代表储存二进制数据的一段内存，它不能直接读写，只能通过视图（**TypedArray**视图和**DataView**视图）来读写，视图的作用是以指定格式解读二进制数据。
 
+ArrayBuffer是默认的浏览器流类型。 
+
+可以使用生成的 ArrayBuffer 对象来实现任何自定义行为。 ArrayBuffer 是浏览器中接收的并使用此格式播放的常见类型。
+
 ## 2、Blob对象
 
 **Blob** 全称：Binary Large Object （二进制大型对象）。
