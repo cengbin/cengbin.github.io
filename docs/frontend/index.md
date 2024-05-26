@@ -9,5 +9,5 @@
 
 * SSO登录设计
 * 权限管理设计
-* 数据加密与解密
+* [数据加密与解密](https://cengbin.github.io/frontend/frontend/68%20JavaScript常见加密与解密算法/README.html)
 * CRUD页面开发
