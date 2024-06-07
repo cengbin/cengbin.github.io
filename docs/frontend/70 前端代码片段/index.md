@@ -191,3 +191,37 @@ document.body.style.overflow = 'hidden';
 // 恢复滚动
 document.body.style.removeProperty('overflow');
 ```
+
+## 17. 读取mp3文件的信息
+
+```
+// 监听文件输入字段的变化
+document.getElementById('mp3-file-input').addEventListener('change', function(event) {
+    // 获取选中的文件
+    var file = event.target.files[0];
+ 
+    // 创建一个Audio元素
+    var audio = new Audio();
+ 
+    // 当音频可以播放时，获取元数据
+    audio.onloadedmetadata = function() {
+        // 输出音频的元数据
+        console.log('音频标题:', audio.title);
+        console.log('音频艺术家:', audio.artist);
+        console.log('音频专辑:', audio.album);
+        console.log('音频时长(秒):', audio.duration.toFixed(2));
+    };
+ 
+    // 创建一个FileReader来读取文件
+    var reader = new FileReader();
+ 
+    // 当文件读取完毕
+    reader.onload = function(e) {
+        // 为Audio元素设置加载的数据URL
+        audio.src = e.target.result;
+    };
+ 
+    // 以DataURL的形式读取文件
+    reader.readAsDataURL(file);
+});
+```
