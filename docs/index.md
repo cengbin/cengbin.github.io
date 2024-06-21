@@ -7,13 +7,13 @@ hero:
   tagline: 勤学如春起之苗，不见其增，日有所涨<br/>辍学如磨刀之石，不见其损，日有所亏
   actions:
     - theme: brand
-      text: 前端
+      text: 前端知识库
       link: /frontend/
     - theme: alt
-      text: 后端
+      text: 后端知识库
       link: /backend/
     - theme: alt
-      text: 服务器
+      text: 服务器知识库
       link: /server/
 
 features:
@@ -26,13 +26,13 @@ features:
   - icon:
       src: /assets/spring.svg
     title: 后端技术栈
-    details: Lorem ipsum...
+    details: Spring使Java编程对每个人来说都更快、更容易、更安全。Spring对速度、简单性和生产力的关注使其成为世界上最流行的Java框架。
+    link: https://spring.io
+    linkText: 官网
   - icon:
       src: /assets/idea.svg
     title: 开发工具
-    details: Lorem ipsum...
   - icon:
       src: /assets/java.svg
     title: 开发环境
-    details: Lorem ipsum...
 ---
