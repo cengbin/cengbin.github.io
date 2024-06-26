@@ -38,7 +38,7 @@ jsonp({
 
 服务端返回的 Access-Control-Allow-Origin 标头的 Access-Control-Allow-Origin: * 值表明，该资源可以被任意外源访问。
 
-https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS
+[MDN 跨源资源共享（CORS）](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS)
 
 ### 1.2.3 服务器解决
 
