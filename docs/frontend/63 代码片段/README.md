@@ -225,3 +225,12 @@ document.getElementById('mp3-file-input').addEventListener('change', function(ev
     reader.readAsDataURL(file);
 });
 ```
+
+## 18. CSS使页面不滚动
+
+```
+.noscroll,.noscroll body{
+  overflow: hidden !important;
+  height: 100% !important;
+}
+```
