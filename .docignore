@@ -1,6 +1,9 @@
 node_modules
 dist
 
+CSS模块化.md
+JavaScript模块化.md
+
 2 进阶篇
 4 深入理解WebGL渲染原理
 8 源码学习
@@ -13,6 +16,7 @@ public
 开发规范化-前后端分离接口规范.md
 开发规范化-项目目录与文件结构规范.md
 开发规范化-git-commit规范.md
+开发规范化-提交规范.md
 其他
 assets
 Code Review 编码标准.md
