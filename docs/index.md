@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: 技术博客
+  name: 晋·陶渊明
   text: 
-  tagline: 勤学如春起之苗，不见其增，日有所涨<br/>辍学如磨刀之石，不见其损，日有所亏
+  tagline: 勤学如春起之苗，不见其增，日有所长。<br/>辍学如磨刀之石，不见其损，日有所亏。
   actions:
     - theme: brand
       text: 前端知识库
