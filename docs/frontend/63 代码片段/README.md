@@ -234,3 +234,37 @@ document.getElementById('mp3-file-input').addEventListener('change', function(ev
   height: 100% !important;
 }
 ```
+
+
+## 19. 【奖励】增加、删除
+```
+
+<div v-for="(reward,index) in info.rewards" :key="index" class="condition-group">
+	<el-input v-model="reward.product_id"
+	          placeholder="请输入奖励ID"
+	          :disabled="server_opening"
+	          style="width:160px;margin-right: 8px;"/>
+	<el-input v-model="reward.amount" placeholder="请输入数值"
+	          :disabled="server_opening"
+	          style="width:160px;margin-right: 8px;"/>
+	<el-button v-if="info.rewards.length>1 && !server_opening"
+	           class="button-custom"
+	           icon="el-icon-minus2"
+	           @click="onClickReward('delete',index)"/>
+	<el-button v-if="index===info.rewards.length-1 && !server_opening"
+	           icon="el-icon-plus2"
+	           class="button-custom"
+	           @click="onClickReward('add',index)"/>
+</div>
+
+onClickReward(type, index) {
+	if (type === 'add') {
+		this.info.rewards.push({
+			"product_id": null,
+			"amount": null,
+		})
+	} else if (type === 'delete') {
+		this.info.rewards.splice(index, 1)
+	}
+},
+```
