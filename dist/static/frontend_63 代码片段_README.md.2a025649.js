@@ -1,4 +1,4 @@
-import{_ as s,o as n,c as a,Q as e}from"./chunks/framework.0f4e1e9e.js";const l="/static/640.76b22e50.gif",p="/static/WX20240606-093541@2x.0db97dba.png",m=JSON.parse('{"title":"前端代码片段","description":"","frontmatter":{},"headers":[],"relativePath":"frontend/63 代码片段/README.md","filePath":"frontend/63 代码片段/README.md"}'),o={name:"frontend/63 代码片段/README.md"},c=e(`<h1 id="前端代码片段" tabindex="-1">前端代码片段 <a class="header-anchor" href="#前端代码片段" aria-label="Permalink to &quot;前端代码片段&quot;">​</a></h1><p><a href="https://mp.weixin.qq.com/s/778hr32KnLFEw7oBNt38sg" target="_blank" rel="noreferrer">N 个值得一看的前端代码片段</a></p><h2 id="_1-快速打开官网" tabindex="-1">1. 快速打开官网 <a class="header-anchor" href="#_1-快速打开官网" aria-label="Permalink to &quot;1. 快速打开官网&quot;">​</a></h2><p>当你想查看第三方库的主页和代码仓库时，你可以使用一下命令快速打开：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki github-dark vp-code-dark"><code><span class="line"><span style="color:#e1e4e8;">// 打开主页</span></span>
+import{_ as s,o as n,c as a,Q as e}from"./chunks/framework.0f4e1e9e.js";const l="/static/640.76b22e50.gif",p="/static/WX20240606-093541@2x.0db97dba.png",m=JSON.parse('{"title":"前端代码片段","description":"","frontmatter":{},"headers":[],"relativePath":"frontend/63 代码片段/README.md","filePath":"frontend/63 代码片段/README.md"}'),o={name:"frontend/63 代码片段/README.md"},t=e(`<h1 id="前端代码片段" tabindex="-1">前端代码片段 <a class="header-anchor" href="#前端代码片段" aria-label="Permalink to &quot;前端代码片段&quot;">​</a></h1><p><a href="https://mp.weixin.qq.com/s/778hr32KnLFEw7oBNt38sg" target="_blank" rel="noreferrer">N 个值得一看的前端代码片段</a></p><h2 id="_1-快速打开官网" tabindex="-1">1. 快速打开官网 <a class="header-anchor" href="#_1-快速打开官网" aria-label="Permalink to &quot;1. 快速打开官网&quot;">​</a></h2><p>当你想查看第三方库的主页和代码仓库时，你可以使用一下命令快速打开：</p><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki github-dark vp-code-dark"><code><span class="line"><span style="color:#e1e4e8;">// 打开主页</span></span>
 <span class="line"><span style="color:#e1e4e8;">npm home PACKAGE_NAME</span></span>
 <span class="line"><span style="color:#e1e4e8;">npm home react</span></span>
 <span class="line"><span style="color:#e1e4e8;"></span></span>
@@ -270,4 +270,60 @@ import{_ as s,o as n,c as a,Q as e}from"./chunks/framework.0f4e1e9e.js";const l=
 <span class="line"><span style="color:#e1e4e8;">}</span></span></code></pre><pre class="shiki github-light vp-code-light"><code><span class="line"><span style="color:#24292e;">.noscroll,.noscroll body{</span></span>
 <span class="line"><span style="color:#24292e;">  overflow: hidden !important;</span></span>
 <span class="line"><span style="color:#24292e;">  height: 100% !important;</span></span>
-<span class="line"><span style="color:#24292e;">}</span></span></code></pre></div>`,37),t=[c];function i(r,d,y,h,u,g){return n(),a("div",null,t)}const v=s(o,[["render",i]]);export{m as __pageData,v as default};
+<span class="line"><span style="color:#24292e;">}</span></span></code></pre></div><h2 id="_19-【奖励】增加、删除" tabindex="-1">19. 【奖励】增加、删除 <a class="header-anchor" href="#_19-【奖励】增加、删除" aria-label="Permalink to &quot;19. 【奖励】增加、删除&quot;">​</a></h2><div class="language- vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre class="shiki github-dark vp-code-dark"><code><span class="line"><span style="color:#e1e4e8;"></span></span>
+<span class="line"><span style="color:#e1e4e8;">&lt;div v-for=&quot;(reward,index) in info.rewards&quot; :key=&quot;index&quot; class=&quot;condition-group&quot;&gt;</span></span>
+<span class="line"><span style="color:#e1e4e8;">	&lt;el-input v-model=&quot;reward.product_id&quot;</span></span>
+<span class="line"><span style="color:#e1e4e8;">	          placeholder=&quot;请输入奖励ID&quot;</span></span>
+<span class="line"><span style="color:#e1e4e8;">	          :disabled=&quot;server_opening&quot;</span></span>
+<span class="line"><span style="color:#e1e4e8;">	          style=&quot;width:160px;margin-right: 8px;&quot;/&gt;</span></span>
+<span class="line"><span style="color:#e1e4e8;">	&lt;el-input v-model=&quot;reward.amount&quot; placeholder=&quot;请输入数值&quot;</span></span>
+<span class="line"><span style="color:#e1e4e8;">	          :disabled=&quot;server_opening&quot;</span></span>
+<span class="line"><span style="color:#e1e4e8;">	          style=&quot;width:160px;margin-right: 8px;&quot;/&gt;</span></span>
+<span class="line"><span style="color:#e1e4e8;">	&lt;el-button v-if=&quot;info.rewards.length&gt;1 &amp;&amp; !server_opening&quot;</span></span>
+<span class="line"><span style="color:#e1e4e8;">	           class=&quot;button-custom&quot;</span></span>
+<span class="line"><span style="color:#e1e4e8;">	           icon=&quot;el-icon-minus2&quot;</span></span>
+<span class="line"><span style="color:#e1e4e8;">	           @click=&quot;onClickReward(&#39;delete&#39;,index)&quot;/&gt;</span></span>
+<span class="line"><span style="color:#e1e4e8;">	&lt;el-button v-if=&quot;index===info.rewards.length-1 &amp;&amp; !server_opening&quot;</span></span>
+<span class="line"><span style="color:#e1e4e8;">	           icon=&quot;el-icon-plus2&quot;</span></span>
+<span class="line"><span style="color:#e1e4e8;">	           class=&quot;button-custom&quot;</span></span>
+<span class="line"><span style="color:#e1e4e8;">	           @click=&quot;onClickReward(&#39;add&#39;,index)&quot;/&gt;</span></span>
+<span class="line"><span style="color:#e1e4e8;">&lt;/div&gt;</span></span>
+<span class="line"><span style="color:#e1e4e8;"></span></span>
+<span class="line"><span style="color:#e1e4e8;">onClickReward(type, index) {</span></span>
+<span class="line"><span style="color:#e1e4e8;">	if (type === &#39;add&#39;) {</span></span>
+<span class="line"><span style="color:#e1e4e8;">		this.info.rewards.push({</span></span>
+<span class="line"><span style="color:#e1e4e8;">			&quot;product_id&quot;: null,</span></span>
+<span class="line"><span style="color:#e1e4e8;">			&quot;amount&quot;: null,</span></span>
+<span class="line"><span style="color:#e1e4e8;">		})</span></span>
+<span class="line"><span style="color:#e1e4e8;">	} else if (type === &#39;delete&#39;) {</span></span>
+<span class="line"><span style="color:#e1e4e8;">		this.info.rewards.splice(index, 1)</span></span>
+<span class="line"><span style="color:#e1e4e8;">	}</span></span>
+<span class="line"><span style="color:#e1e4e8;">},</span></span></code></pre><pre class="shiki github-light vp-code-light"><code><span class="line"><span style="color:#24292e;"></span></span>
+<span class="line"><span style="color:#24292e;">&lt;div v-for=&quot;(reward,index) in info.rewards&quot; :key=&quot;index&quot; class=&quot;condition-group&quot;&gt;</span></span>
+<span class="line"><span style="color:#24292e;">	&lt;el-input v-model=&quot;reward.product_id&quot;</span></span>
+<span class="line"><span style="color:#24292e;">	          placeholder=&quot;请输入奖励ID&quot;</span></span>
+<span class="line"><span style="color:#24292e;">	          :disabled=&quot;server_opening&quot;</span></span>
+<span class="line"><span style="color:#24292e;">	          style=&quot;width:160px;margin-right: 8px;&quot;/&gt;</span></span>
+<span class="line"><span style="color:#24292e;">	&lt;el-input v-model=&quot;reward.amount&quot; placeholder=&quot;请输入数值&quot;</span></span>
+<span class="line"><span style="color:#24292e;">	          :disabled=&quot;server_opening&quot;</span></span>
+<span class="line"><span style="color:#24292e;">	          style=&quot;width:160px;margin-right: 8px;&quot;/&gt;</span></span>
+<span class="line"><span style="color:#24292e;">	&lt;el-button v-if=&quot;info.rewards.length&gt;1 &amp;&amp; !server_opening&quot;</span></span>
+<span class="line"><span style="color:#24292e;">	           class=&quot;button-custom&quot;</span></span>
+<span class="line"><span style="color:#24292e;">	           icon=&quot;el-icon-minus2&quot;</span></span>
+<span class="line"><span style="color:#24292e;">	           @click=&quot;onClickReward(&#39;delete&#39;,index)&quot;/&gt;</span></span>
+<span class="line"><span style="color:#24292e;">	&lt;el-button v-if=&quot;index===info.rewards.length-1 &amp;&amp; !server_opening&quot;</span></span>
+<span class="line"><span style="color:#24292e;">	           icon=&quot;el-icon-plus2&quot;</span></span>
+<span class="line"><span style="color:#24292e;">	           class=&quot;button-custom&quot;</span></span>
+<span class="line"><span style="color:#24292e;">	           @click=&quot;onClickReward(&#39;add&#39;,index)&quot;/&gt;</span></span>
+<span class="line"><span style="color:#24292e;">&lt;/div&gt;</span></span>
+<span class="line"><span style="color:#24292e;"></span></span>
+<span class="line"><span style="color:#24292e;">onClickReward(type, index) {</span></span>
+<span class="line"><span style="color:#24292e;">	if (type === &#39;add&#39;) {</span></span>
+<span class="line"><span style="color:#24292e;">		this.info.rewards.push({</span></span>
+<span class="line"><span style="color:#24292e;">			&quot;product_id&quot;: null,</span></span>
+<span class="line"><span style="color:#24292e;">			&quot;amount&quot;: null,</span></span>
+<span class="line"><span style="color:#24292e;">		})</span></span>
+<span class="line"><span style="color:#24292e;">	} else if (type === &#39;delete&#39;) {</span></span>
+<span class="line"><span style="color:#24292e;">		this.info.rewards.splice(index, 1)</span></span>
+<span class="line"><span style="color:#24292e;">	}</span></span>
+<span class="line"><span style="color:#24292e;">},</span></span></code></pre></div>`,39),c=[t];function i(r,d,y,u,h,g){return n(),a("div",null,c)}const v=s(o,[["render",i]]);export{m as __pageData,v as default};
