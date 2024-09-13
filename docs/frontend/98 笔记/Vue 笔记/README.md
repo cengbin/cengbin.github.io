@@ -121,3 +121,15 @@ new Vue({
 方法一：用this.$set();
 
 方法二：用this.$forceUpdate(); 强制触发重新渲染。
+
+## vue 查看全局已经注册的指令
+```
+import Vue from 'vue'
+
+console.log(Vue.options.directives);
+
+// 遍历并打印所有指令
+for (const directiveName in Vue.options.directives) {
+  console.log(`指令名称: ${directiveName}`);
+}
+```
