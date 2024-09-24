@@ -1,7 +1,5 @@
 # 前端代码片段
 
-[N 个值得一看的前端代码片段](https://mp.weixin.qq.com/s/778hr32KnLFEw7oBNt38sg)
-
 ## 1. 快速打开官网
 
 当你想查看第三方库的主页和代码仓库时，你可以使用一下命令快速打开：
@@ -31,7 +29,7 @@ const formatSeconds = (s) =>
 
 如果你想显示“刚刚”、“5分钟前”之类的内容，可以尝试 timeago.js 库。
 
-## 8. 文件下载
+## 3. 文件下载
 
 使用 `a` 标签的 `download` 属性，同源才能触发下载，IE 不支持，移动端兼容性也不太好。
 
@@ -76,7 +74,7 @@ window.URL.revokeObjectURL(url);
 ```
 
 
-## 10. 多行省略号
+## 4. 多行省略号
 
 单行或多行截断显示省略号，很常用的 CSS 片段。
 
@@ -95,7 +93,7 @@ window.URL.revokeObjectURL(url);
 }
 ```
 
-## 11. 选中最后几个元素
+## 5. 选中最后几个元素
 
 ```
 // 前三个
@@ -116,7 +114,7 @@ li:nth-last-child(-n + 2) {
 
 ![图片](./WX20240606-093541@2x.png)
 
-## 12. 滚动条样式
+## 6. 滚动条样式
 
 自定义滚动条样式也是很常见的需求，除了通过样式，也可以通过第三方库（如 better-scroll 等）来实现自定义滚动条样式。
 
@@ -146,7 +144,7 @@ body {
 }
 ```
 
-## 14. 限制并发
+## 7. 限制并发
 
 当有大量请求需要发起时，往往需求限制并发数量保证其他请求能优先返回。
 
@@ -180,7 +178,7 @@ asyncPool(2, [1000, 5000, 3000, 2000], timeout).then(results => {
 })
 ```
 
-## 16. 打开 Modal 时禁止 body 滚动
+## 8. 打开 Modal 时禁止 body 滚动
 
 打开弹窗的时候，会发现背后的内容还是可以滚动，我们需要在弹窗出现时禁用滚动，在弹窗消失时恢复。
 
@@ -192,7 +190,7 @@ document.body.style.overflow = 'hidden';
 document.body.style.removeProperty('overflow');
 ```
 
-## 17. 读取mp3文件的信息
+## 9. 读取mp3文件的信息
 
 ```
 // 监听文件输入字段的变化
@@ -226,7 +224,7 @@ document.getElementById('mp3-file-input').addEventListener('change', function(ev
 });
 ```
 
-## 18. CSS使页面不滚动
+## 10. CSS使页面不滚动
 
 ```
 .noscroll,.noscroll body{
@@ -235,10 +233,9 @@ document.getElementById('mp3-file-input').addEventListener('change', function(ev
 }
 ```
 
+## 11. 【奖励】增加、删除
 
-## 19. 【奖励】增加、删除
 ```
-
 <div v-for="(reward,index) in info.rewards" :key="index" class="condition-group">
 	<el-input v-model="reward.product_id"
 	          placeholder="请输入奖励ID"
@@ -268,3 +265,29 @@ onClickReward(type, index) {
 	}
 },
 ```
+
+## 12. 将文本复制到剪贴板
+
+```
+navigator.clipboard.writeText('Text to copy')
+```
+
+通过使用 Clipboard API 以编程方式将文本复制到剪贴板。这是一种最新的复制方法，可让文本复制变得无缝且高效（但目前各大浏览器支持度还不是很高，需要考虑兼容性问题）。
+
+## 13. 离开页面弹出确认对话框
+```
+window.onbeforeunload =（）=>‘你确定要离开吗？
+```
+
+这行代码与 window 的 onbeforeunload 事件挂钩，当用户离开页面时会弹出一个确认对话框，一般用于防止用户因未保存更改就关闭页面而导致数据丢失。
+
+## 14. 日志格式
+日志的格式应该统一，以便于阅读和解析。一个常见的日志格式如下：
+
+```
+［时间戳］【日志等级］［消息内容］［错误堆栈］
+例如：
+[2024-04-01T12:00:00.000Z] [ERROR] Failed to load.
+```
+
+[N 个值得一看的前端代码片段](https://mp.weixin.qq.com/s/778hr32KnLFEw7oBNt38sg)
