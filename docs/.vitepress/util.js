@@ -1,5 +1,8 @@
 // 冒泡排序
 function bubble_sort(array) {
+  if(!array || !array.length)
+    return
+
   let n = array.length;
   for (let i = 1; i <= n - 1; i++) {
     for (let j = 1; j <= n - i; j++) {

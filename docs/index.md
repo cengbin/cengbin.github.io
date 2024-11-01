@@ -12,9 +12,6 @@ hero:
     - theme: alt
       text: 后端知识库
       link: /backend/
-    - theme: alt
-      text: 服务器知识库
-      link: /server/
 
 features:
   - icon:

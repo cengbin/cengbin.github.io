@@ -64,7 +64,10 @@ function deepReadDirSync(dirPath, parent) {
 deepReadDirSync(resolvePath('../'), rootTree)
 
 rootTree.items.forEach(item => {
-	bubble_sort(item.items)
+  if(!item.items)
+    return;
+
+  bubble_sort(item.items)
 
 	item.items.forEach(item => {
 		let arr = item.text.split(" ")
@@ -93,6 +96,13 @@ module.exports = {
 				items: [
 					{ text: '前端工程化', link: '/frontend/1 前端工程化/README' },
 					{ text: '前端优化', link: '/frontend/2 前端优化/README' },
+					{ text: '前端架构', link: '/frontend/3 前端架构/README' },
+				]
+			},
+			{
+				text: '后端',
+				items: [
+					{ text: '首页', link: '/backend/' },
 				]
 			},
 			{
@@ -108,8 +118,8 @@ module.exports = {
 		],
 		sidebar: {
 			'/backend/': rootTree.items[0].items,
-			'/frontend/': rootTree.items[1].items,
-			'/server/': rootTree.items[2].items,
+			'/frontend/': rootTree.items[2].items,
+			'/server/': rootTree.items[4].items,
 		},
 		docFooter: { prev: '上一篇', next: '下一篇' },
 		outlineTitle: '目录'
