@@ -1,7 +1,8 @@
 # Vue 笔记
 
+## 未匹配到路由，则重定向到404页面
+
 ```
-// 未匹配到路由，则重定向到404页面
 routes.unshift({
 	path: '*',
 	redirect: `/404`,
@@ -24,7 +25,7 @@ new Vue({
 })
 ```
 
-## 1 Vue computed 还可以返回函数
+## Vue computed 可以返回函数
 
 ```
 computed: {
@@ -45,7 +46,24 @@ computed: {
 >
 ```
 
-## 2 关闭 vue cli 中的 eslint 检查工具
+## Vuex getters 可以返回函数
+
+```
+getters: {
+	getMenuByPath: state => path => {
+	  let menu = state.menuList.find(menu => menu.path === path)
+	  return menu;
+	}
+},
+```
+
+使用
+
+```
+let menu = store.getters.getMenuByPath(to.path)
+```
+
+## 关闭 vue cli 中的 eslint 检查工具
 
 ```
 // vue.config.js
@@ -60,7 +78,7 @@ module.exports = {
 }
 ```
 
-## 3 Vue 深度选择器 :v-deep
+## Vue 深度选择器 :v-deep
 
 ```
 .area {
@@ -76,13 +94,13 @@ module.exports = {
 }
 ```
 
-## 5 Vue 80端口无法使用，直接运行到1024问题
+## Vue 80端口无法使用，直接运行到1024问题
 
-[在mac os中，非root用户是无法使用小于1024的常用端口的。如果开发中需要用到80端口, 就要设置端口转发。](https://blog.csdn.net/samuelandkevin/article/details/80279773)
+参考：[在mac os中，非root用户是无法使用小于1024的常用端口的。如果开发中需要用到80端口, 就要设置端口转发。](https://blog.csdn.net/samuelandkevin/article/details/80279773)
 
 ![](./781589-20210819154746534-814249557.png)
 
-## 6 解决 vue2 数组内交换位置后无法重新渲染的问题
+## 解决 vue2 数组内交换位置后无法重新渲染的问题
 
 背景：如下代码，list 是一个响应式数组，调用swap(1,2) 交互数组中的元素，通过vue devtools查看data已经变了，但是 vue 不会触发重新渲染！
 

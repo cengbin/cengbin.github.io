@@ -1,5 +1,7 @@
 # Element UI 笔记
 
+## 组件库全局设置
+
 ```
 Vue.use(Element, {
  size: 'small', // 修改组件的默认尺寸

@@ -10,8 +10,8 @@ hero:
       text: 前端知识库
       link: /frontend/
     - theme: alt
-      text: 后端知识库
-      link: /backend/
+      text: 作品集
+      link: /works/
 
 features:
   - icon:

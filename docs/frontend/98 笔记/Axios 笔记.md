@@ -1,6 +1,6 @@
 # Axios 笔记
 
-ajax.js
+request.js
 
 ```
 /**
