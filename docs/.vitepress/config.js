@@ -63,8 +63,6 @@ function deepReadDirSync(dirPath, parent) {
 
 deepReadDirSync(resolvePath('../'), rootTree)
 
-console.log(rootTree)
-
 rootTree.items.forEach(item => {
   if (!item.items)
     return;
