@@ -1,5 +1,25 @@
 # Vue 笔记
 
+## `<script/>` 标签的 type 类型为 text/template
+
+`<script>`设置type="text/template"，标签里面的内容不会被执行，也不会显示在页面上，但是可以在另一个script里面通过获取插入到页面中。这样就把大段的HTML操作从js里面分离开了。
+
+## .env文件的使用
+
+[Vue CLI 关于 .env的介绍点击这里](https://cli.vuejs.org/zh/guide/mode-and-env.html#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F)
+
+用途: 一般用于区分开发者与生产者环境
+
+本文用途: 用于定义全局变量,实现不同模块访问不同域名的微服务.
+
+注意事项: vite构建vue3项目与vue2-cli文档配置不相同
+
+vue2 变量定义需要用VUE_APP_开头   取值使用process.env.变量名来获取
+
+vue3 变量定义需要用VITE_开头   由于vue3移除了process.env 所以取值使用import.meta.env.变量名来获取  并且在vite.config.js文件中配置envPrefix: "VITE_",
+
+原文链接：[点击这里](https://blog.csdn.net/weixin_43741911/article/details/127553961)
+
 ## 未匹配到路由，则重定向到404页面
 
 ```
