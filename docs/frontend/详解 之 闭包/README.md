@@ -108,12 +108,11 @@ fooContext.Scope = fooContext.AO + foo.[[Scopes]]
 
 如下图：firstClosure函数在创建完成之后，函数内部引用的自由变量就已经打包成Closure闭包，挂到函数的[[Scopes]]上了。
 
-
-![1.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fa894fd8a8984faf98c003f7f7c992b4~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1398&h=1318&s=589839&e=png&b=ffffff)
+![1.png](./1.jpg)
 
 调用 firstClosure 函数的时候，JS 引擎 会取出 [[Scopes]] 中的打包的 Closure + Global 链，设置成新的作用域链， 这就是函数用到的所有外部环境了，有了外部环境，自然就可以运行了。
 
-![2.jpg](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/199bd302638e4ece84d3c275cc20e10e~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1376&h=1042&s=208806&e=jpg&b=fefdfd)
+![2.jpg](2.jpg)
 
 ## 4. 闭包的应用场景
 
