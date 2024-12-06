@@ -103,6 +103,7 @@ module.exports = {
               {text: 'Vue', link: 'frontend/98 笔记/Vue 笔记/README'},
               {text: 'Element UI', link: 'frontend/98 笔记/Element UI 笔记'},
               {text: 'Webpack', link: 'frontend/98 笔记/Webpack 笔记'},
+              {text: '代码片段', link: 'frontend/63 代码片段/README'},
             ]
           },
         ]
