@@ -15,3 +15,17 @@ devServer: {
   openPage: '/different/page?id=123&name=456'
 },
 ```
+
+## Webstrom 添加 Vue 项目的 Webpack 的配置的方法
+
+1. 在项目根目录下添加 `webstrom.config.js` 文件。
+
+2. 输入内容：
+
+```
+'use strict'
+const webpackConfig = require('@vue/cli-service/webpack.config.js')
+module.exports = webpackConfig
+```
+
+完整文件[点击这里](./webstrom.config.js)
