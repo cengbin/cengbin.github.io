@@ -4,9 +4,9 @@
   "description": "彬彬的博客",
   "scripts": {
     "init": "npm install --registry=https://registry.npmmirror.com",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs"
   },
   "author": "",
   "license": "ISC",

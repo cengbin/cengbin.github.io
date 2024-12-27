@@ -94,7 +94,7 @@ Token应该存储在cookie中，还是storage中？
 
 理由：考虑到如果有业务逻辑调整只需要服务端一端修改校验逻辑即可，前端不需要做业务逻辑校验调整。
 
-### 单点登录
+## 单点登录
 
 [单点登录（Single Sign-On，简称SSO）](https://sa-token.cc/doc.html#/sso/readme)
 
