@@ -104,6 +104,7 @@ module.exports = {
                     {
                         text: '笔记',
                         items: [
+                            {text: 'PIXI', link: 'frontend/98 笔记/PIXI 笔记/README'},
                             {text: 'Axios', link: 'frontend/98 笔记/Axios 笔记'},
                             {text: 'React', link: 'frontend/98 笔记/React 笔记'},
                             {text: 'Vue', link: 'frontend/98 笔记/Vue 笔记/README'},
