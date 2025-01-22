@@ -8,17 +8,26 @@
 
 ![](./管理后台布局.png)
 
-## 组件开发
+## 组件设计
 
-* 布局
-    * `<Container>`
-    * `<Header>`
-    * `<Content>`
-    * `<Footer>`
-    * `<Sider>`
-* 导航
-    * `<Menu>` 菜单
-    * `<Breadcrumb>` 面包屑
-    * `<Tags>` 标签页
+* 布局组件：`<Layout>` `<Container>` `<Header>` `<Main>` `<Footer>` `<Sider>`
+* 导航组件：`<Menu>` 菜单 `<Breadcrumb>` 面包屑 `<Tags>` 标签页
 
-最终只需要在页面中引入 `<Layout>` 组件即可
+## 组件概述
+
+* `<Layout>`：管理后台布局组件。
+* `<Container>`：外层容器。
+* `<Header>`：顶栏容器。
+* `<Main>`：主要区域容器。
+* `<Footer>`：底栏容器。
+* `<Sider>`：侧边栏容器。
+
+## 组件实现
+
+## 示例
+
+```shell
+<Layout>
+  <Outlet/>
+</Layout>
+```
