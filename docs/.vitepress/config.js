@@ -11,7 +11,6 @@ const excludeList = fs
     .split('\n')
     .map(line => line.slice(0, -1))
     .filter(line => line)
-// console.log({excludeList})
 
 let rootTree = { items: [], path: '',}
 
@@ -66,8 +65,6 @@ function deepReadDirSync(dirPath, parent) {
 }
 
 deepReadDirSync(resolvePath('docs'), rootTree)
-
-console.log(rootTree)
 
 rootTree.items.forEach(item => {
     if (!item.items)

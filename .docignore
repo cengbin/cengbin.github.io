@@ -13,7 +13,6 @@
 25 浏览器的垃圾回收机制
 26 浏览器中JavaScript事件循环机制
 27 浏览器的策略
-28 Web安全.md
 30 如何在Web关闭页面时发送请求
 31 TCP与HTTP
 32 CSS与JavaScript是这样阻塞DOM解析和渲染
