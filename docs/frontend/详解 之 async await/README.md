@@ -56,7 +56,7 @@ console.log(gen.next())
     })
   }
 
-  /*var gen = generator()
+  var gen = generator()
   console.log("gen:", gen)
   var value1 = gen.next()
   console.log(value1)
@@ -75,20 +75,20 @@ console.log(gen.next())
         })
       })
     })
-  })*/
+  })
 ```
 
 如上代码如果yield返回的是Promise 就会出现回调地狱的问题。
 
-### ES7 async await
+## ES7 async await
 
 async await 语法的出现就是为了解决这种回调地狱的问题。
 
-### 总结
+## 总结
 
 * 首先 async/await 是一种用于处理异步操作的语法糖，在ES2017中被引入，用于更简洁地编写基于Promise的链式回调代码。
 * 使用 async/await 主要是避免了传统的回调函数或 Promise 链的嵌套。
 
-#### 参考
+## 参考
 
 https://juejin.cn/post/7281535380590559243?searchId=202310310948531CA24C843535DA63EB62
