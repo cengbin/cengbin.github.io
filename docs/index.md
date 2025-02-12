@@ -15,21 +15,21 @@ hero:
 
 features:
   - icon:
-      src: /assets/vue.svg
+      src: https://cengbin.github.io/web-static/images/icon/vue.svg
     title: 前端技术栈
     details: Vue 是渐进式JavaScript 框架。 易学易用，性能出色，适用场景丰富的 Web 前端框架。
     link: https://cn.vuejs.org
     linkText: 官网
   - icon:
-      src: /assets/spring.svg
+      src: https://cengbin.github.io/web-static/images/icon/spring.svg
     title: 后端技术栈
     details: Spring使Java编程对每个人来说都更快、更容易、更安全。Spring对速度、简单性和生产力的关注使其成为世界上最流行的Java框架。
     link: https://spring.io
     linkText: 官网
   - icon:
-      src: /assets/idea.svg
+      src: https://cengbin.github.io/web-static/images/icon/idea.svg
     title: 开发工具
   - icon:
-      src: /assets/java.svg
+      src: https://cengbin.github.io/web-static/images/icon/java.svg
     title: 开发环境
 ---
