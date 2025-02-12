@@ -36,11 +36,13 @@ jobs:
           node-version: 18
       - name: Setup Pages
         uses: actions/configure-pages@v4
+      - name: List directory contents
+        run: ls -la
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # Upload dist repository
-          path: './dist'
+          path: 'dist'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
