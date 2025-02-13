@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: static-files
-          path: './docs/.vitepress/dist'
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
