@@ -44,11 +44,9 @@ jobs:
         run: ls -la dist || echo "dist directory does not exist or is empty"
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v1
         with:
-          name: static-files
-          path: './dist'
+          path: './build'  # 替换为你的构建产物目录
 
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v1
