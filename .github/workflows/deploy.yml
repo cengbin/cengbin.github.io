@@ -31,8 +31,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18  # 替换为你的 Node.js 版本
 
       - name: Install dependencies
         run: npm ci
@@ -40,13 +42,13 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Verify build output
-        run: ls -la dist || echo "dist directory does not exist or is empty"
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: './build'  # 替换为你的构建产物目录
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
