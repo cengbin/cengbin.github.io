@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const {bubble_sort} = require('./util')
+const { bubble_sort } = require('./util')
 
 function resolvePath(dir) {
     return path.resolve(__dirname, '../../', dir)
@@ -9,16 +9,20 @@ function resolvePath(dir) {
 const excludeList = fs
     .readFileSync('.docignore', 'utf-8')
     .split('\n')
-    .map(line => line.slice(0, -1))
+    // .map(line => line.slice(0, -1))
     .filter(line => line)
 
-let rootTree = { items: [], path: '',}
+// console.log(excludeList)
+
+let rootTree = { items: [], path: '', }
 
 function deepReadDirSync(dirPath, parent) {
     // console.log('===> deepReadDirSync:', dirPath)
     // 该文件夹下的所有文件名称 (文件夹 + 文件)
     let files = fs.readdirSync(dirPath)
     files.forEach(fileName => {
+        // console.log({ fileName, include: excludeList.includes(fileName) })
+
         // 文件或文件夹以 . 开头忽略
         if (fileName.substring(0, 1) === '.') return;
 
@@ -93,21 +97,21 @@ module.exports = {
             provider: 'local'
         },
         nav: [
-            {text: '首页', link: '/'},
+            { text: '首页', link: '/' },
             {
                 text: '前端',
                 items: [
-                    {text: '技术栈汇总', link: '/frontend/54 技术栈汇总.md'},
+                    { text: '技术栈汇总', link: '/frontend/54 技术栈汇总.md' },
                     {
                         text: '笔记',
                         items: [
-                            {text: 'PIXI', link: 'frontend/98 笔记/PIXI 笔记/README'},
-                            {text: 'Axios', link: 'frontend/98 笔记/Axios 笔记'},
-                            {text: 'React', link: 'frontend/98 笔记/React 笔记'},
-                            {text: 'Vue', link: 'frontend/98 笔记/Vue 笔记/README'},
-                            {text: 'Element UI', link: 'frontend/98 笔记/Element UI 笔记'},
-                            {text: 'Webpack', link: 'frontend/98 笔记/Webpack 笔记'},
-                            {text: '代码片段', link: 'frontend/63 代码片段/README'},
+                            { text: 'PIXI', link: 'frontend/98 笔记/PIXI 笔记/README' },
+                            { text: 'Axios', link: 'frontend/98 笔记/Axios 笔记' },
+                            { text: 'React', link: 'frontend/98 笔记/React 笔记' },
+                            { text: 'Vue', link: 'frontend/98 笔记/Vue 笔记/README' },
+                            { text: 'Element UI', link: 'frontend/98 笔记/Element UI 笔记' },
+                            { text: 'Webpack', link: 'frontend/98 笔记/Webpack 笔记' },
+                            { text: '代码片段', link: 'frontend/63 代码片段/README' },
                         ]
                     },
                 ]
@@ -115,27 +119,27 @@ module.exports = {
             {
                 text: '后端',
                 items: [
-                    {text: '首页', link: '/backend/'},
+                    { text: '首页', link: '/backend/' },
                 ]
             },
             {
                 text: '服务器',
                 items: [
-                    {text: 'Nginx', link: '/server/nginx/README'},
-                    {text: 'Tomcat', link: '/server/tomcat/README'},
+                    { text: 'Nginx', link: '/server/nginx/README' },
+                    { text: 'Tomcat', link: '/server/tomcat/README' },
                 ]
             },
             {
                 text: '作品集',
                 items: [
-                    {text: '《哈利·波特与大红狗》', link: '/works/《哈利·波特与大红狗》.md'},
-                    {text: '《来客》', link: '/works/《来客》.md'},
-                    {text: '《推倒ta》', link: '/works/《推倒ta》.md'},
+                    { text: '《哈利·波特与大红狗》', link: '/works/《哈利·波特与大红狗》.md' },
+                    { text: '《来客》', link: '/works/《来客》.md' },
+                    { text: '《推倒ta》', link: '/works/《推倒ta》.md' },
                 ]
             },
         ],
         socialLinks: [
-            {icon: 'github', link: 'https://github.com/cengbin/cengbin.github.io'}
+            { icon: 'github', link: 'https://github.com/cengbin/cengbin.github.io' }
         ],
         sidebar: {
             '/backend/': rootTree.items.find(item => item.path === '/backend').items,
@@ -143,7 +147,7 @@ module.exports = {
             '/server/': rootTree.items.find(item => item.path === '/server').items,
             '/works/': rootTree.items.find(item => item.path === '/works').items,
         },
-        docFooter: {prev: '上一篇', next: '下一篇'},
+        docFooter: { prev: '上一篇', next: '下一篇' },
         outlineTitle: '目录'
     }
 }
