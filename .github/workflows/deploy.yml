@@ -1,5 +1,5 @@
 # 构建 VitePress 站点并将其部署到 GitHub Pages 的示例工作流程
-#
+# 参考的 VitePress 官网部署配置 https://vitepress.dev/zh/guide/deploy
 name: Deploy VitePress site to Pages
 
 on:
@@ -39,7 +39,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 18
           cache: npm # 或 pnpm / yarn
       - name: Setup Pages
         uses: actions/configure-pages@v4
