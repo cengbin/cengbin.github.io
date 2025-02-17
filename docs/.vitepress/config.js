@@ -9,7 +9,7 @@ function resolvePath(dir) {
 const excludeList = fs
     .readFileSync('.docignore', 'utf-8')
     .split('\n')
-    // .map(line => line.slice(0, -1))
+    .map(line => line.trim())
     .filter(line => line)
 
 // console.log(excludeList)
