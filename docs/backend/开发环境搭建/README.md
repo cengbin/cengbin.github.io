@@ -1,11 +1,16 @@
-# 开发环境安装
+# 开发环境搭建
 
 ## 安装 Java JDK(Java Development Kit )
 
-1. 下载 JDK
+1. 注册ORACLE账号：
+```
+596659597@qq.com
+Abin7987~~.
+```
+2. 下载 JDK
    * oracle 官方下载地址：https://www.oracle.com/java/technologies/downloads/#jdk17-windows
    * java8 下载链接：https://www.oracle.com/java/technologies/downloads/#java8
-2. 配置环境变量：
+3. 配置环境变量：
 
 **设置 JAVA_HOME**
 
@@ -15,7 +20,9 @@
 **添加到 Path**
 - 在“系统变量”中的“Path”变量上点击“编辑”，然后点击“新建”，添加 %JAVA_HOME%\bin。
 
-验证是否安装成功：见截图
+验证是否安装成功：
+
+![](./验证%20Java%20是否正确安装.png)
 
 对于Java 8，推荐使用Tomcat 8.5.x 或 Tomcat 9.x 版本
 
@@ -78,6 +85,8 @@ Maven的安装和配置。
 3. 环境变量配置（下载完成后我来帮您配置）：
    * 新建系统变量 MAVEN_HOME，指向Maven安装目录
    * 将 %MAVEN_HOME%\bin 添加到 Path 环境变量
+4. 验证：
+   * `mvn -version`
 
 * 我注意到您已经有：
 
@@ -89,5 +98,3 @@ Maven的安装和配置。
 ## 安装 IDE(Integrated Development Environment)
 
 https://www.jetbrains.com/idea/
-
-# 项目创建
