@@ -1,1 +1,0 @@
-import{_ as a,o as e,c as r,Q as t}from"./chunks/framework.0f4e1e9e.js";const m=JSON.parse('{"title":"多点《来客》SAAS平台","description":"","frontmatter":{},"headers":[],"relativePath":"works/《来客》.md","filePath":"works/《来客》.md"}'),p={name:"works/《来客》.md"},o=t("",16),s=[o];function n(_,l,i,c,h,d){return e(),r("div",null,s)}const f=a(p,[["render",n]]);export{m as __pageData,f as default};

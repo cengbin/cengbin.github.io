@@ -1,1 +1,0 @@
-import{_ as e,o as a,c as t,Q as r}from"./chunks/framework.0f4e1e9e.js";const p=JSON.parse('{"title":"作品集","description":"","frontmatter":{},"headers":[],"relativePath":"works/index.md","filePath":"works/index.md"}'),o={name:"works/index.md"},i=r("",2),_=[i];function s(n,l,c,d,h,m){return a(),t("div",null,_)}const u=e(o,[["render",s]]);export{p as __pageData,u as default};

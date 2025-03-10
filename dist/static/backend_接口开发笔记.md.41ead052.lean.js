@@ -1,1 +1,0 @@
-import{_ as s,o as n,c as a,Q as e}from"./chunks/framework.0f4e1e9e.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"backend/接口开发笔记.md","filePath":"backend/接口开发笔记.md"}'),o={name:"backend/接口开发笔记.md"},t=e("",2),l=[t];function p(c,u,r,q,i,d){return n(),a("div",null,l)}const g=s(o,[["render",p]]);export{_ as __pageData,g as default};
