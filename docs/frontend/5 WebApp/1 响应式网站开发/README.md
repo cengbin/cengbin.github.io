@@ -2,6 +2,10 @@
 
 响应式网站指一个网站要适配PC端、Pad端、Mobile端。
 
+媒体查询
+
+em / rem
+
 ## PC端
 
 px em 
