@@ -2,7 +2,7 @@
 
 解决办法：
 1. 写成代码：`http://localhost:8080`
-2. 写成连接：[http://localhost:8080](http://localhost:8080`)
+2. 写成连接：`[http://localhost:8080](http://localhost:8080`)`
 
 ## 2、md文件中【图片文件名带有空格】打包失败
 
