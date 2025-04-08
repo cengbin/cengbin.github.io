@@ -8,7 +8,6 @@
 
 出于安全性，浏览器限制脚本内发起的跨源HTTP请求。 例如，XMLHttpRequest 和 Fetch API 遵循同源策略。这意味着使用这些 API 的 Web 应用程序只能从加载应用程序的同一个域请求 HTTP 资源，除非响应报文包含了正确 CORS 响应头。
 
-
 ```
 HTTP/1.1 200 OK
 Date: Mon, 01 Dec 2008 00:23:53 GMT
