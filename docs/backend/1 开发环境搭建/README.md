@@ -66,7 +66,7 @@ Tomcat服务已经成功启动！我来总结一下验证结果：
 3. Web服务：✅ 正常
    * 已在默认端口 8080 上运行
    * 您可以通过以下方式访问：
-     * 浏览器打开：[http://localhost:8080](http://localhost:8080)
+     * 浏览器打开：`[http://localhost:8080](http://localhost:8080)`
      * 或点击上面提供的预览链接
 
 ![](./Tomcat%20设置管理账号密码.png)
