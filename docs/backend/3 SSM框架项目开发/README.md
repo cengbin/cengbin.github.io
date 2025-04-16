@@ -43,3 +43,27 @@ clean install -U -D maven.test.skip=true 这个命令的意思是：
 * -U：这个参数的意思是 "Update Snapshots"，它会强制 Maven 检查并更新所有快照版本的依赖项（即版本号以 -SNAPSHOT 结尾的依赖项）。
 * -D：这个参数后面跟随的是属性定义，用于在命令行中设置或覆盖 Maven 属性。
 * maven.test.skip=true：这是一个 Maven 属性，设置为 true 表示跳过测试编译和执行阶段。也就是说，在构建过程中，Maven 不会运行任何测试用例。
+
+## 分页接口返回数据设计：
+
+```
+{
+    "code": "0000",
+    "data": {
+        "currentPage": 1,
+        "data":null,
+        "endIndex": 50,
+        "firstPage": true,
+        "lastPage": true,
+        "nextPage": 1,
+        "pageCount": 1,
+        "pageSize": 50,
+        "previousPage": 1,
+        "startIndex": 0,
+        "totalCount": 8,
+        "unit": "条"
+    },
+    “message”: "成功",
+    "requestId": '35235234'
+}
+```
