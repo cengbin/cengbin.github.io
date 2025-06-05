@@ -187,10 +187,11 @@
 
 通过JavaScript运行时集成的实现原理：拦截路由，根据不同路由规则渲染对应的子应用。
 
-核心要做的事情：  
+主应用核心要做的事情：  
 
-1. 路由管理
-2. 增量加载子应用
+1. 整体布局（B端应用）
+2. 路由管理
+2. 子应用加载
 3. 应用间运行时隔离
 4. 应用间通信
 
@@ -235,3 +236,4 @@ sea.js提供了异步加载模块的方式`require.async(id, callback?)`去实�
 
 1. [微前端](https://martinfowler.com/articles/micro-frontends.html)
 2. [解密微前端：从qiankun看沙箱隔离](https://juejin.cn/post/6896643767353212935 )
+3. [微前端的实践总结](https://mp.weixin.qq.com/s/YFcNT0eF7Ylb8nmnJeVcIA)
