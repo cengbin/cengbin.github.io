@@ -12,14 +12,15 @@
 
 有【司机管理】菜单，页面路径配置如下
 
-basic_center/driver_manage 司机列表查询页， 
-basic_center/driver_manage/create 司机增加页面， 
-basic_center/driver_manage/update 司机更新页面， 
-basic_center/driver_manage/detail 司机详情页面， 
+* basic_center/driver_manage 司机列表查询页，
+* basic_center/driver_manage/create 司机增加页面，
+* basic_center/driver_manage/update 司机更新页面，
+* basic_center/driver_manage/detail 司机详情页面，
 
 【司机管理】菜单路径指向basic_center/driver_manage，其他路径设置菜单隐藏。
 
-不同的页面通过路由切换来展示，例如要跳转到创建this.$rooter.push('basic_center/driver_manage/create'),创建成功再通过this.$rooter.push('basic_center/driver_manage')跳回到列表查询页面。
+不同的页面通过路由切换来展示，例如要跳转到创建`this.$rooter.push('basic_center/driver_manage/create')`,创建成功再通过
+`this.$rooter.push('basic_center/driver_manage')`跳回到列表查询页面。
 
 ### 参考
 
