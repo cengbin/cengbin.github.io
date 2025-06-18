@@ -6,6 +6,17 @@
 
 ## 多语言展示
 
+常见的检测顺序包括：
+
+1. URL 查询参数 (e.g., yoursite.com?lng=en)
+1. Cookie
+1. localStorage
+1. sessionStorage
+1. 浏览器 navigator 对象 (即用户在浏览器设置中偏好的语言)
+1. HTML lang 标签
+
+`i18next-browser-languagedetector`这个插件非常有用，因为它可以让你的应用“智能地”以用户最熟悉的语言展示，提升用户体验。
+
 ```javascript
 // 获取当前语言
 function getUserLang() {
