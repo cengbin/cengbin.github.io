@@ -75,6 +75,24 @@ content-encoding: gzip
 
 实践：不同类型静态资源放在不同的服务器，使用不同的域名。
 
+方法五：合理利用 script 标签的 async 和 defer 属性
+
+async和defer属性值为bool，它用来说明script脚本应该**如何执行**。 async和defer属性仅适用于script标签有src属性的情况。在script标签没有src属性的情况下，async和defer属性可以不指定值。
+
+使用async/defer属性有三种模式可供选择:
+
+1. `<script src="script.js"></script>`
+
+如果async或defer都不存在，那么DOM解析会停止，浏览器会立即加载并执行指定的脚本。执行完成后再继续DOM解析。
+
+2. `<script async src="script.js"></script>`
+
+async 脚本会在后台加载，并在加载就绪时运行。DOM 和其他脚本不会等待它们，它们也不会等待其它的东西。async 脚本就是一个会在加载完成时执行的完全独立的脚本。
+
+3. `<script defer src="script.js"></script>`
+
+defer 特性告诉浏览器不要等待脚本加载和执行。浏览器将继续解析DOM。脚本会“在后台”下载，然后等 DOM 构建完成后，脚本才会执行。
+
 ### 理论2：减少关键资源个数
 
 方法一：合并CSS、JS
