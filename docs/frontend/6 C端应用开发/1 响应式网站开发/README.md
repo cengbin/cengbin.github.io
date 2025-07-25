@@ -81,3 +81,31 @@ Flexbox是一种基于弹性盒子模型的布局技术。
 ### 响应式网站开发建议
 
 ![](./响应式网站开发建议.png)
+
+## PC端和移动端采用了不同的布局和交互处理方式
+
+响应式的逻辑是一套代码通过灵活的布局和样式调整适配不同端，如果有些模块PC端和移动端布局和展现方式完全不一样是两套组件。
+
+网站是根据初始加载时的设备类型决定渲染内容，而不是随窗口大小实时切换内容，所以没有很好的办法通过在改变浏览器宽度的情况下实时重新渲染内容。
+
+一种强制刷新方案，在检测到从PC端切到移动端的情况下强制刷新页面重新渲染内容。
+
+```tsx
+useEffect(() => {
+  const initialIsMobile = window.innerWidth < 768;
+
+  function handleResize() {
+    const currentIsMobile = window.innerWidth < 768;
+    if (initialIsMobile !== currentIsMobile) {
+      window.location.reload();
+    }
+  }
+
+  const debouncedHandleResize = debounce(handleResize, 500);
+  window.addEventListener('resize', debouncedHandleResize);
+
+  return () => {
+    window.removeEventListener('resize', debouncedHandleResize);
+  };
+}, []);
+```
