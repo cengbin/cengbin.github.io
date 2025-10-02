@@ -44,7 +44,29 @@ clean install -U -D maven.test.skip=true 这个命令的意思是：
 * -D：这个参数后面跟随的是属性定义，用于在命令行中设置或覆盖 Maven 属性。
 * maven.test.skip=true：这是一个 Maven 属性，设置为 true 表示跳过测试编译和执行阶段。也就是说，在构建过程中，Maven 不会运行任何测试用例。
 
-## 分页接口返回数据设计：
+## 接口设计
+
+GET    /orders        查集合
+POST   /orders        新建
+GET    /orders/123    查单个
+PUT    /orders/123    全量更新
+PATCH  /orders/123    部分更新
+DELETE /orders/123    删除
+
+
+## 分页接口
+
+```
+{  
+    "code": 0,  
+    "data": {    
+        "list": [ … ],   
+        "total": 256,    
+        "page": 2,    
+        "size": 20  
+    }
+}
+```
 
 ```
 {
