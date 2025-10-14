@@ -51,7 +51,9 @@ Access-Control-Allow-Origin: *
 
 ## 跨站请求伪造 CSRF
 
-跨站请求伪造（Cross-site request forgery, CSRF）是一种冒充受信任用户，向服务器发送非预期请求的攻击方式。
+跨站请求伪造（Cross Site Request Forgery，通常缩写为CSRF）是一种冒充受信任用户，向服务器发送非预期请求的攻击方式。
+
+[2007年Gmail的CSRF漏洞](https://www.cnblogs.com/papering/p/15923917.html)
 
 **举个例子**
 
