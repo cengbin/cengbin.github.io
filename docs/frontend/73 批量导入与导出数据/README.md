@@ -1,4 +1,4 @@
-# 前端批量导入excel数据总结
+# 前端批量导入、导出 excel 数据总结
 
 以批量导入【玩家+附件数据.xlsx】文件为例：
 
@@ -38,7 +38,7 @@ function maxLimit(file, size = 10) {
 }
 ```
 
-2、解析文件（表头 header 、行数据 results） 
+2、解析文件（表头 header 、行数据 results）
 
 2.1 服务端解析
 
@@ -62,7 +62,11 @@ ajax(params).then(({ code, data, message }) => {
 2.2 前端解析
 2.2.1 前端效验行数是否符合规范（例如：小于1000行）  
 2.2.2 前端效验列数据格式是否正确（例如：附件数量只能是数字）  
-2.2.3 后端检测行数据是否配置合法（例如：玩家ID是否存在）  
+2.2.3 后端检测行数据是否配置合法（例如：玩家ID是否存在）
+
+第三方库使用：sheetjs  
+官网：https://docs.sheetjs.com/  
+npm：https://www.npmjs.com/package/xlsx
 
 ```
 const reader = new FileReader();
@@ -99,7 +103,7 @@ getHeaderRow(sheet) {
 ![](./excel_detail.png)
 
 3.1 表单输入玩家ID进行搜索  
-3.2 前端分页展示当前页+符合搜索条件的数据  
+3.2 前端分页展示当前页+符合搜索条件的数据
 
 4、支持表格中对行数据修改
 
