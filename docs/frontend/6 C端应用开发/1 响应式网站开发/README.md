@@ -157,11 +157,19 @@ function App() {
 // 示例组件
 import {useDevice} from './DeviceContext';
 
-function ResponsiveComponent() {
+function RecordComponent() {
   const {isPc, isMobile} = useDevice();
 
   // 根据当前设备类型渲染不同内容
-  return isPc ? <PCComponent/> : <MobileComponent/>;
+  // return isPc ? <PCComponent/> : <MobileComponent/>;
+  return (
+    <>
+      // PC端显示表格
+      {isPc && <RecordTable onPageChange={(page) => BusinessProgress.itemQuery(page)}/>}
+      // 移动端显示列表
+      {isMobile && <RecordList onScrollToBottom={() => BusinessProgress.itemQuery()}/>}
+    </>
+  );
 }
 ```
 
