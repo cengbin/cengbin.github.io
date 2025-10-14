@@ -54,6 +54,8 @@
 
 ### Token存储
 
+[前端登录token到底应该存在哪？一篇说透！](https://mp.weixin.qq.com/s/yJBqprwmZ2WOQGgei_74dw)
+
 Token应该存储在cookie中，还是storage中？
 
 * 将 Token 存储在 webStorage (localStorage, sessionStorage) 中可以通过同域的js访问，这样导致很容易受到 XSS
