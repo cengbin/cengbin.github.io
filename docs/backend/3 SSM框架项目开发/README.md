@@ -16,11 +16,15 @@
 </bean>
 ```
 
-### 2. 在 MyBatis 的 XML 映射文件中使用 `CDATA` 是为了确保包含特殊字符的 SQL 语句能够被正确处理。XML 解析器在解析文档时，会将 < 和 & 等字符视为特殊字符，因为它们在 XML 中具有特定的含义。如果 SQL 语句中包含这些字符，而没有进行适当处理，就会导致解析错误。
+### 2. 在 MyBatis 的 XML 映射文件中使用
+
+`CDATA` 是为了确保包含特殊字符的 SQL 语句能够被正确处理。XML 解析器在解析文档时，会将 < 和 & 等字符视为特殊字符，因为它们在
+XML 中具有特定的含义。如果 SQL 语句中包含这些字符，而没有进行适当处理，就会导致解析错误。
 
 以下是关于 MyBatis 中 `CDATA` 的使用说明：
 
-保留原始字符：`CDATA` 允许您在 XML 文件中包含不被解析的文本数据，例如 SQL 语句中的特殊字符 `<、>` 和 `&` 等。这些字符在 `CDATA` 区段内不会被 XML 解析器当作标记解析，从而避免了解析错误
+保留原始字符：`CDATA` 允许您在 XML 文件中包含不被解析的文本数据，例如 SQL 语句中的特殊字符 `<、>` 和 `&` 等。这些字符在
+`CDATA` 区段内不会被 XML 解析器当作标记解析，从而避免了解析错误
 。
 
 简化转义操作：使用 `CDATA` 可以避免对 SQL 语句中的每个特殊字符进行逐一转义，简化了编写和维护 SQL 语句的工作量
@@ -42,28 +46,30 @@ clean install -U -D maven.test.skip=true 这个命令的意思是：
 * install：这个目标会将项目打包并安装到本地仓库中，这样其他项目就可以将此项目作为依赖项。
 * -U：这个参数的意思是 "Update Snapshots"，它会强制 Maven 检查并更新所有快照版本的依赖项（即版本号以 -SNAPSHOT 结尾的依赖项）。
 * -D：这个参数后面跟随的是属性定义，用于在命令行中设置或覆盖 Maven 属性。
-* maven.test.skip=true：这是一个 Maven 属性，设置为 true 表示跳过测试编译和执行阶段。也就是说，在构建过程中，Maven 不会运行任何测试用例。
+* maven.test.skip=true：这是一个 Maven 属性，设置为 true 表示跳过测试编译和执行阶段。也就是说，在构建过程中，Maven
+  不会运行任何测试用例。
 
 ## 接口设计
 
-GET    /orders        查集合
-POST   /orders        新建
-GET    /orders/123    查单个
-PUT    /orders/123    全量更新
-PATCH  /orders/123    部分更新
-DELETE /orders/123    删除
-
+```text
+GET/orders 查集合
+POST/orders 新建
+GET/orders/123 查单个
+PUT/orders/123 全量更新
+PATCH/orders/123 部分更新
+DELETE/orders/123 删除
+```
 
 ## 分页接口
 
 ```
-{  
-    "code": 0,  
-    "data": {    
-        "list": [ … ],   
-        "total": 256,    
-        "page": 2,    
-        "size": 20  
+{ 
+    "code":0,
+    "data": {  
+        "list": [ … ], 
+        "total":256, 
+        "page":2, 
+        "size":20 
     }
 }
 ```
