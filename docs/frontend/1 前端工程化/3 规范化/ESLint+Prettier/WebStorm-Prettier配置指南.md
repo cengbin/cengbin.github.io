@@ -186,51 +186,8 @@ function foo() {
 }
 ```
 
----
-
-## 🔧 团队协作建议
-
-### 1. Git Hooks（推荐）
-
-安装 `husky` 和 `lint-staged`，在提交前自动格式化：
-
-```bash
-npm install -D husky lint-staged
-npx husky install
-```
-
-在 `package.json` 中添加：
-```json
-{
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write"
-    ]
-  }
-}
-```
-
-### 2. CI/CD 检查
-
-在 CI 流程中添加格式检查：
-```yaml
-- name: Check code format
-  run: npm run format:check
-```
-
-### 3. 编辑器配置统一
-
-建议团队成员都使用相同的 Prettier 配置，避免格式不一致。
-
----
-
 ## 📚 参考资料
 
 - [Prettier 官方文档](https://prettier.io/)
 - [WebStorm Prettier 集成](https://www.jetbrains.com/help/webstorm/prettier.html)
 - [Prettier 配置选项](https://prettier.io/docs/en/options.html)
-
----
-
-**最后更新：** 2025-11-13  
-**维护者：** 曾伟斌
