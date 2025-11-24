@@ -44,6 +44,16 @@ Cache-Control 是 HTTP1.1 的字段，表示缓存资源的最大有效时间，
 * no-store：所有内容都不会被缓存，即不使用强制缓存，也不使用协商缓存
 * max-age=xxx (xxx is numeric)：缓存内容将在xxx秒后失效
 
+#### 配置示例
+
+静态资源强制缓存31536000秒（一年）
+
+```text
+location ~* \.(css|js|jpg|jpeg|png|gif|ico|webp|svg|ttf|woff|woff2)$ {
+    add_header Cache-Control "public, max-age=31536000";
+}
+```
+
 ### 协商缓存
 
 协商缓存就是强制缓存失效后，浏览器携带缓存标识向服务器发起请求，由服务器根据缓存标识决定是否使用缓存的过程。
