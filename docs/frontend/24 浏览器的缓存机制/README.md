@@ -56,7 +56,7 @@ location ~* \.(css|js|jpg|jpeg|png|gif|ico|webp|svg|ttf|woff|woff2)$ {
 
 ### 协商缓存
 
-协商缓存就是强制缓存失效后，浏览器携带缓存标识向服务器发起请求，由服务器根据缓存标识决定是否使用缓存的过程。
+浏览器携带缓存标识向服务器发起请求，由服务器根据缓存标识决定是否使用缓存的过程。
 
 协商缓存的标识也是在响应报文的HTTP头中和请求结果一起返回给浏览器的，控制协商缓存的字段分别有：
 Last-Modified / If-Modified-Since 和 Etag / If-None-Match ，
