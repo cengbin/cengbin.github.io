@@ -37,9 +37,6 @@
 * echarts
     * ECharts是一款基于JavaScript的数据可视化图表库，提供直观，生动，可交互，可个性化定制的数据可视化图表。
     * https://echarts.apache.org/zh/index.html
-* boxicons
-    * boxicons是一套开源图标集，包含 1500 多个图标，用来丰富网站 / 应用程序体验。
-    * https://github.com/atisawd/boxicons
 * JsBarcode
     * 用JavaScript编写的条形码生成库，可在浏览器和Node.js上工作
     * https://github.com/lindell/JsBarcode
@@ -54,6 +51,11 @@
 * pinyin-match
     * 汉字转拼音 JavaScript库
     * https://github.com/xmflswood/pinyin-match
+* 字体图标集
+  * https://fontawesome.com/
+* boxicons
+  * boxicons是一套开源图标集，包含 1500 多个图标，用来丰富网站 / 应用程序体验。
+  * https://github.com/atisawd/boxicons
 
 ## 开发依赖
 
