@@ -79,4 +79,7 @@
 * redux
 * redux-logger
     * https://github.com/LogRocket/redux-logger
+* classnames
+  * 一个用于有条件地将类名连接在一起的简单 JavaScript 实用工具。
+  * https://github.com/JedWatson/classnames
 
