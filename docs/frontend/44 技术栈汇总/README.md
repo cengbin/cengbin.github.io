@@ -56,6 +56,9 @@
 * boxicons
   * boxicons是一套开源图标集，包含 1500 多个图标，用来丰富网站 / 应用程序体验。
   * https://github.com/atisawd/boxicons
+* remarkable
+  * Markdown 解析器，做得恰到好处。速度快，易于扩展。
+  * https://github.com/jonschlinkert/remarkable
 
 ## 开发依赖
 
