@@ -16,18 +16,24 @@
 
 ## 3、非对称加密算法
 
-非对称加密算法是一种密码学中的加密方式，也被称为公钥加密算法。与对称加密算法不同，非对称加密算法使用一对密钥，分别是公钥和私钥。非对称加密算法的一个关键特性是，使用公钥加密的数据只能由相应的私钥解密，而使用私钥加密的数据只能由相应的公钥解密。常见的非对称加密算法包括RSA和ECC等。
+非对称加密算法是一种密码学中的加密方式，也被称为公钥加密算法。与对称加密算法不同，非对称加密算法使用一对密钥，分别是公钥和私钥。
+非对称加密算法的一个关键特性是，使用公钥加密的数据只能由相应的私钥解密，而使用私钥加密的数据只能由相应的公钥解密。
+常见的非对称加密算法包括RSA和ECC等。
 
-公钥是可以公开分享的密钥，用于加密数据。任何人都可以获得公钥，但不能由公钥推导出私钥。
+**公钥**是可以公开分享的密钥，用于加密数据。任何人都可以获得公钥，但不能由公钥推导出私钥。
 
-私钥是保密的密钥，用于解密由公钥加密的数据。只有私钥的持有者能够解密使用公钥加密的信息。
+**私钥**是保密的密钥，用于解密由公钥加密的数据。只有私钥的持有者能够解密使用公钥加密的信息。
 
 ## 实践
 
+**安装依赖**
+
 `npm install crypto-js@4.2.0 jsencrypt@3.2.1 --save --registry https://registry.npmmirror.com`
 
-> 注意：安装完成后需要在jsencrypt模块的入口文件jsencrypt.js的首行加入如下代码，不然会运行报错。
-global.window = {};
+> 注意：安装完成后需要在jsencrypt模块的入口文件jsencrypt.js的首行加入如下代码，不然会运行报错。  
+> global.window = {};
+
+### 消息摘要算法
 
 ```
 const CryptoJS = require('crypto-js');
@@ -41,9 +47,11 @@ let md5_password = CryptoJS.MD5(password).toString();
 // 消息摘要算法 - SHA1
 let sha1_password = CryptoJS.SHA1(password).toString();
 console.log({md5_password, sha1_password, length: md5_password.length})
+```
 
-// 对称加密算法
+### 对称加密算法
 
+```
 // AES算法 - ECB模式
 // 在UTF-8字符集编码下1个英文字母/数字占1字节，所以key等于16字节。
 let key = '0123456789abcdef';
@@ -68,7 +76,11 @@ var config = {
 let aes_cbc_encrypt_password = CryptoJS.AES.encrypt(password, key, config).toString();
 let aes_cbc_decrypt_password = CryptoJS.AES.decrypt(aes_cbc_encrypt_password, key, config).toString(CryptoJS.enc.Utf8);
 console.log({aes_cbc_encrypt_password, aes_cbc_decrypt_password})
+```
 
+### 非对称加密算法
+
+```
 // 非对称加密算法 - 加密
 // 提前生成的公钥，公钥给别人，用于加密
 let public_key = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDlOJu6TyygqxfWT7eLtGDwajtN\n' +
