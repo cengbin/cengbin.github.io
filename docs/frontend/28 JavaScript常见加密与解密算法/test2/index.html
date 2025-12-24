@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/jsencrypt@latest/bin/jsencrypt.min.js"></script>
+<script>
+  const jsencrypt = new JSEncrypt()
+  // RSA 密钥对 (2048位)
+  const publicKey = jsencrypt.getPublicKey();
+  const privateKey = jsencrypt.getPrivateKey();
+  console.log({publicKey,privateKey})
+
+  // 原始消息
+  const message = 'This is a secret message for RSA encryption!';
+
+  console.log('原始消息:', message);
+  console.log('\n');
+
+  // 1. 使用公钥加密
+  const encrypt = new JSEncrypt();
+  encrypt.setPublicKey(publicKey);
+  const encrypted = encrypt.encrypt(message);
+
+  console.log('1. 使用公钥加密:');
+  console.log('   加密结果:', encrypted);
+  console.log('\n');
+
+  // 2. 使用私钥解密
+  const decrypt = new JSEncrypt();
+  decrypt.setPrivateKey(privateKey);
+  const decrypted = decrypt.decrypt(encrypted);
+
+  console.log('2. 使用私钥解密:');
+  console.log('   解密结果:', decrypted);
+  console.log('   是否与原文相同:', decrypted === message);
+  console.log('\n');
+</script>
+</body>
+</html>

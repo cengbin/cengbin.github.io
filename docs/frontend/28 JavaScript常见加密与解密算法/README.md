@@ -115,3 +115,22 @@ console.log({encrypted_password, uncrypted_password})
 参考：
 
 https://www.bilibili.com/video/BV17t4y1f7oE/ 
+
+        数据加密(publicKey)
+客户端  -------------------->   服务端
+
+客户端数据加密发送到服务端：
+
+* 把服务端提供的公钥 publicKey 硬编码到前端中。
+* 前端通过公钥生成加密数据。
+* 服务端通过私钥解密数据。
+
+服务端数据加密发送到客服端：
+
+* 前端生成 publicKey privateKey 放到内存中。
+* 前端使用服务端公钥加密 publicKey 得到加密后的 publicKey。
+* 前端把加密后的 publicKey 放到 WebSocket URL 的参数中发送到服务端。（或建立WebSocket连接后首先把加密后的 publicKey 发送到服务端）
+* 服务端解密URL参数值数据拿到 publicKey。
+* 服务端通过 publicKey 加密数据发送到前端。
+* 前端拿到数据再通过 privateKey 解密数据。
+
