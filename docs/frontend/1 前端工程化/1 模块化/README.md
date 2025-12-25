@@ -12,4 +12,4 @@
 
 1. [JavaScript 模块化](./JavaScript模块化.md)
 2. [CSS 模块化](./CSS模块化.md)
-3. [模块封装 SDK 开发](./SDK开发.md)
+3. [NPM 模块开发](../../59%20NPM模块开发/README.md)
