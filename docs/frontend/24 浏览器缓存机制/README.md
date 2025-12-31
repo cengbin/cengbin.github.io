@@ -46,33 +46,31 @@ Cache-Control 是 HTTP1.1 的字段，表示缓存资源的最大有效时间，
 
 #### 配置示例
 
-静态资源强制缓存31536000秒（一年）
-
-```text
+```nginx configuration
 location ~* \.(css|js|jpg|jpeg|png|gif|ico|webp|svg|ttf|woff|woff2)$ {
-    add_header Cache-Control "public, max-age=31536000";
+    # 强制缓存：静态资源缓存7天(60*60*24*7=604800)
+    add_header Cache-Control "public, max-age=604800";
 }
 ```
 
 ### 协商缓存
 
-浏览器携带缓存标识向服务器发起请求，由服务器根据缓存标识决定是否使用缓存的过程。
+过期后，浏览器携带缓存标识向服务器发起请求，由服务器根据缓存标识决定是否使用缓存的过程。
 
 协商缓存的标识也是在响应报文的HTTP头中和请求结果一起返回给浏览器的，控制协商缓存的字段分别有：
-Last-Modified / If-Modified-Since 和 Etag / If-None-Match ，
-其中 Etag / If-None-Match 的优先级比 Last-Modified / If-Modified-Since高。
+Last-Modified / If-Modified-Since 和 Etag / If-None-Match ， 其中 Etag / If-None-Match 的优先级比 Last-Modified / If-Modified-Since高。
 
-##### Etag / If-None-Match
+#### Last-Modified 与 If-Modified-Since（HTTP/1.0）
 
-Etag是服务器响应请求时，返回当前资源文件的一个唯一标识(由服务器生成)。
+**Last-Modified** 是该资源文件在服务器最后被修改的时间。
 
-If-None-Match是客户端再次发起该请求时，携带上次请求返回的唯一标识Etag值，通过此字段值告诉服务器该资源上次请求返回的唯一标识值。服务器收到该请求后，发现该请求头中含有If-None-Match，则会根据If-None-Match的字段值与该资源在服务器的Etag值做对比，一致则返回304，代表资源无更新，继续使用缓存文件；不一致则重新返回资源文件，状态码为200。
+**If-Modified-Since** 则是客户端再次发起该请求时，携带上次请求返回的Last-Modified值，通过此字段值告诉服务器该资源上次请求返回的最后被修改时间。服务器收到该请求，发现请求头含有If-Modified-Since字段，则会根据If-Modified-Since的字段值与该资源在服务器的最后被修改时间做对比，若服务器的资源最后被修改时间大于If-Modified-Since的字段值，则重新返回资源，状态码为200；否则则返回304，代表资源无更新，可继续使用缓存文件。
 
-##### Last-Modified / If-Modified-Since
+#### Etag 与 If-None-Match（HTTP/1.1）
 
-Last-Modified是该资源文件在服务器最后被修改的时间。
+**Etag** 是服务器响应请求时，返回当前资源文件的一个唯一标识(由服务器生成)。
 
-If-Modified-Since则是客户端再次发起该请求时，携带上次请求返回的Last-Modified值，通过此字段值告诉服务器该资源上次请求返回的最后被修改时间。服务器收到该请求，发现请求头含有If-Modified-Since字段，则会根据If-Modified-Since的字段值与该资源在服务器的最后被修改时间做对比，若服务器的资源最后被修改时间大于If-Modified-Since的字段值，则重新返回资源，状态码为200；否则则返回304，代表资源无更新，可继续使用缓存文件。
+**If-None-Match** 是客户端再次发起该请求时，携带上次请求返回的唯一标识Etag值，通过此字段值告诉服务器该资源上次请求返回的唯一标识值。服务器收到该请求后，发现该请求头中含有If-None-Match，则会根据If-None-Match的字段值与该资源在服务器的Etag值做对比，一致则返回304，代表资源无更新，继续使用缓存文件；不一致则重新返回资源文件，状态码为200。
 
 #### 工作流程
 
@@ -90,6 +88,17 @@ If-Modified-Since则是客户端再次发起该请求时，携带上次请求返
 服务器比对：
   - 如果文件未更新 → 返回 304 Not Modified（无需下载）
   - 如果文件已更新 → 返回 200 + 新文件内容
+```
+
+#### 配置示例
+
+```nginx configuration
+location ~* \.(css|js|jpg|jpeg|png|gif|ico|webp|svg|ttf|woff|woff2)$ {
+    add_header Cache-Control "public, max-age=604800";
+    # 协商缓存：启用 ETag 和 Last-Modified
+    etag on;
+    if_modified_since exact;
+}
 ```
 
 ### 启发式缓存
@@ -114,9 +123,9 @@ Last-Modified)*0.1，这就是启发式缓存。
 
 ## 总结
 
-强制缓存优先于协商缓存进行，启发式缓存是兜底策略。若强制缓存(Expires和Cache-Control)
-生效则直接使用缓存，若不生效则进行协商缓存(Last-Modified / If-Modified-Since和Etag / If-None-Match)
-，协商缓存由服务器决定是否使用缓存，若协商缓存失效，那么代表该请求的缓存失效，重新获取请求结果，再存入浏览器缓存中；生效则返回304，继续使用缓存，主要过程如下：
+1. 强制缓存优先于协商缓存进行，启发式缓存是兜底策略。
+2. 若强制缓存(Expires和Cache-Control)生效则直接使用缓存，若不生效则进行协商缓存(Last-Modified / If-Modified-Since和Etag / If-None-Match)
+3. 协商缓存由服务器决定是否使用缓存，若协商缓存失效，那么代表该请求的缓存失效，重新获取请求结果，再存入浏览器缓存中；生效则返回304，继续使用缓存，主要过程如下：
 
 ![](./1.jpg)
 
