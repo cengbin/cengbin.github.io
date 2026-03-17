@@ -55,4 +55,5 @@
 
 ## 参考链接
 * [https://medium.com/@sheyitofunmi22/web-application-design-patterns-single-page-application-vs-multi-page-application-2d9b79e0c78f](https://medium.com/@sheyitofunmi22/web-application-design-patterns-single-page-application-vs-multi-page-application-2d9b79e0c78f)
+* [https://developer.mozilla.org/zh-CN/docs/Glossary/SPA](https://developer.mozilla.org/zh-CN/docs/Glossary/SPA)
 * [https://www.jianshu.com/p/a02eb15d2d70](https://www.jianshu.com/p/a02eb15d2d70)
