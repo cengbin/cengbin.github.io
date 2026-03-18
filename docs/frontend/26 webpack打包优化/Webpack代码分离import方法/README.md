@@ -26,13 +26,13 @@ console.log('main.js');
 
 ### 0.bundle.js:
 
-![c.js](./img1.jpg)
+![c.js](img1.jpg)
 
 ### main.bundle.js
 
 是一个立即执行函数，入参如下图，主要包裹着main.js的内容，其中会动态引入0.bundle.js(包裹着c.js这个module)：
 
-![mian.js](./img2.jpg)
+![mian.js](img2.jpg)
 
 主要就是webpack_require.e这个方法，webpack_require.e会返回promise
 
