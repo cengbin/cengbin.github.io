@@ -45,10 +45,10 @@ function parseName(name) {
  */
 function matchFileName(searchName, realName) {
   if (searchName === realName) return true
-  
+
   const cleanedSearchName = searchName.replace(/^\d+\s{1}/, '').trim()
   const cleanedActualName = realName.trim()
-  
+
   return cleanedSearchName === cleanedActualName
 }
 
@@ -135,7 +135,6 @@ module.exports = {
   themeConfig: {
     search: {provider: 'local'},
     nav: [
-      {text: '首页', link: '/'},
       {
         text: '前端',
         items: [
@@ -154,7 +153,12 @@ module.exports = {
           },
         ]
       },
-      {text: '后端', items: [{text: '首页', link: '/backend/'}]},
+      {
+        text: '后端',
+        items: [
+          {text: '首页', link: '/backend/'}
+        ]
+      },
       {
         text: '服务器',
         items: [
@@ -165,6 +169,7 @@ module.exports = {
       {
         text: '作品集',
         items: [
+          {text: '首页', link: '/works/'},
           {text: '《哈利·波特与大红狗》', link: '/works/《哈利·波特与大红狗》.md'},
           {text: '《来客》', link: '/works/《来客》.md'},
           {text: '《推倒 ta》', link: '/works/《推倒 ta》.md'},
