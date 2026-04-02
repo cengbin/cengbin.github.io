@@ -1,6 +1,8 @@
 const fs = require('fs')
 const path = require('path')
 
+const DEFAULT_SORT_VALUE = 9999
+
 function resolvePath(dir) {
   return path.resolve(__dirname, '../../', dir)
 }
@@ -11,99 +13,75 @@ const excludeList = fs
   .map(line => line.trim())
   .filter(line => line)
 
-let rootTree = {items: [], path: '',}
+const rootTree = {items: [], path: ''}
 
+// 匹配文件名（支持带序号的文件名）
 function matchFileName(searchName, realName) {
-  if (searchName === realName)
-    return true
-
-  // 移除开头的序号和一个空格
-  const cleanedSearchName = searchName.replace(/^\d+\s{1}/, '').trim();
-  const cleanedActualName = realName.trim();
-
-  return cleanedSearchName === cleanedActualName;
+  if (searchName === realName) return true
+  
+  const cleanedSearchName = searchName.replace(/^\d+\s{1}/, '').trim()
+  const cleanedActualName = realName.trim()
+  
+  return cleanedSearchName === cleanedActualName
 }
 
 /**
  * 递归读取目录，构建菜单树结构
- * @param {string} dirPath - 目录路径
- * @param {object} parent - 父级菜单对象
+ * 处理文件名格式："数字 名称" -> 提取数字作为排序值，显示名称去掉数字前缀
  */
-function deepReadDirSync(dirPath, parent,depth=0) {
-  // 该文件夹下的所有文件名称 (文件夹 + 文件)
-  let files = fs.readdirSync(dirPath)
+function deepReadDirSync(dirPath, parent, depth = 0) {
+  const files = fs.readdirSync(dirPath)
+  
   files.forEach(fileName => {
-    // 文件或文件夹以 . 开头忽略
-    if (fileName.substring(0, 1) === '.') return;
+    if (fileName.startsWith('.')) return
+    
+    // 检查是否在忽略列表中
+    if (excludeList.some(item => matchFileName(fileName, item))) return
 
-    // 在忽略文件中的 忽略
-    for (const item of excludeList) {
-      const match = matchFileName(fileName, item)
-      if (match) {
-        return;
-      }
+    const fileFullPath = `${dirPath}/${fileName}`
+    const fileExt = path.extname(fileName)
+    const fileBaseName = path.basename(fileName, fileExt)
+    const stat = fs.lstatSync(fileFullPath)
+    
+    // 处理显示名称和排序值："1 前端" -> {sort: 1, text: "前端"}
+    let displayName = stat.isFile() ? fileBaseName : fileName
+    let sortValue = DEFAULT_SORT_VALUE
+    
+    const parts = displayName.split(' ')
+    const firstPart = Number(parts[0])
+    if (firstPart) {
+      sortValue = firstPart
+      displayName = parts.slice(1).join(' ')
     }
 
-    let fileFullPath = `${dirPath}/${fileName}`
-    let fileExt = path.extname(fileName)
-    let fileBaseName = path.basename(fileName, fileExt);
-    let stat = fs.lstatSync(fileFullPath)
-
-    // 处理显示名称：去掉【数字 名字】格式中的数字前缀
-    // 例如："1 前端" -> "前端", "2 JavaScript" -> "JavaScript"
-    // 同时提取数字作为排序值
-    let displayName = fileName
     if (stat.isFile()) {
-      displayName = fileBaseName
-    }
-    let sortValue = 9999
-    let arr = displayName.split(" ")
-    if (arr.length && Number(arr[0])) {
-      sortValue = Number(arr[0])
-      displayName = arr.slice(1).join(" ")
-    }
+      if (fileExt !== '.md') return
 
-    if (stat.isFile()) { // 是文件
-      if (fileExt !== '.md')
-        return
-      // console.log({fileFullPath, fileName, fileBaseName, fileExt})
-
-      const item = {
+      if (!parent.items) parent.items = []
+      parent.items.push({
         text: displayName,
         link: `${parent.path}/${fileBaseName}`,
         sort: sortValue
-      }
-
-      if (!parent.items)
-        parent.items = []
-
-      parent.items.push(item)
-    } else if (stat.isDirectory()) { // 是文件夹
-
+      })
+    } else if (stat.isDirectory()) {
       const currentPath = `${parent.path}/${fileName}`
       const link = fs.existsSync(`${fileFullPath}/README.md`) ? `${currentPath}/README` : null
-      const item = {
+
+      if (!parent.items) parent.items = []
+      parent.items.push({
         text: displayName,
         link,
         path: currentPath,
         sort: sortValue
-      }
-
-      if (!parent.items)
-        parent.items = []
-
-      parent.items.push(item)
-
-      deepReadDirSync(fileFullPath, item,depth+1)
+      })
+      
+      deepReadDirSync(fileFullPath, parent.items[parent.items.length - 1], depth + 1)
     }
   })
-
-  if (parent.items && parent.items.length > 0) {
+  
+  // 按 sort 字段排序
+  if (parent.items?.length) {
     parent.items.sort((a, b) => a.sort - b.sort)
-  }
-
-  if(depth<2){
-    console.log(parent)
   }
 }
 
@@ -127,7 +105,7 @@ module.exports = {
       {
         text: '前端',
         items: [
-          {text: '技术栈汇总', link: '/frontend/54 技术栈汇总.md'},
+          {text: '首页', link: '/frontend/'},
           {
             text: '笔记',
             items: [
