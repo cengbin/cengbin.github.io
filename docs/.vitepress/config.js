@@ -1,6 +1,5 @@
 const fs = require('fs')
 const path = require('path')
-const {bubble_sort} = require('./util')
 
 function resolvePath(dir) {
   return path.resolve(__dirname, '../../', dir)
@@ -27,14 +26,19 @@ function matchFileName(searchName, realName) {
   return cleanedSearchName === cleanedActualName;
 }
 
-function deepReadDirSync(dirPath, parent) {
-  // console.log('===> deepReadDirSync:', dirPath)
+/**
+ * 递归读取目录，构建菜单树结构
+ * @param {string} dirPath - 目录路径
+ * @param {object} parent - 父级菜单对象
+ */
+function deepReadDirSync(dirPath, parent,depth=0) {
   // 该文件夹下的所有文件名称 (文件夹 + 文件)
   let files = fs.readdirSync(dirPath)
   files.forEach(fileName => {
     // 文件或文件夹以 . 开头忽略
     if (fileName.substring(0, 1) === '.') return;
 
+    // 在忽略文件中的 忽略
     for (const item of excludeList) {
       const match = matchFileName(fileName, item)
       if (match) {
@@ -47,14 +51,29 @@ function deepReadDirSync(dirPath, parent) {
     let fileBaseName = path.basename(fileName, fileExt);
     let stat = fs.lstatSync(fileFullPath)
 
+    // 处理显示名称：去掉【数字 名字】格式中的数字前缀
+    // 例如："1 前端" -> "前端", "2 JavaScript" -> "JavaScript"
+    // 同时提取数字作为排序值
+    let displayName = fileName
+    if (stat.isFile()) {
+      displayName = fileBaseName
+    }
+    let sortValue = 9999
+    let arr = displayName.split(" ")
+    if (arr.length && Number(arr[0])) {
+      sortValue = Number(arr[0])
+      displayName = arr.slice(1).join(" ")
+    }
+
     if (stat.isFile()) { // 是文件
       if (fileExt !== '.md')
         return
       // console.log({fileFullPath, fileName, fileBaseName, fileExt})
 
       const item = {
-        text: fileBaseName,
+        text: displayName,
         link: `${parent.path}/${fileBaseName}`,
+        sort: sortValue
       }
 
       if (!parent.items)
@@ -62,14 +81,14 @@ function deepReadDirSync(dirPath, parent) {
 
       parent.items.push(item)
     } else if (stat.isDirectory()) { // 是文件夹
-      // console.log({fileFullPath, fileName, fileBaseName, fileExt, isDirectory: true})
 
       const currentPath = `${parent.path}/${fileName}`
       const link = fs.existsSync(`${fileFullPath}/README.md`) ? `${currentPath}/README` : null
       const item = {
-        text: fileName,
+        text: displayName,
         link,
-        path: currentPath // 指定 md 文件，默认 index.md
+        path: currentPath,
+        sort: sortValue
       }
 
       if (!parent.items)
@@ -77,25 +96,20 @@ function deepReadDirSync(dirPath, parent) {
 
       parent.items.push(item)
 
-      deepReadDirSync(fileFullPath, item)
+      deepReadDirSync(fileFullPath, item,depth+1)
     }
   })
+
+  if (parent.items && parent.items.length > 0) {
+    parent.items.sort((a, b) => a.sort - b.sort)
+  }
+
+  if(depth<2){
+    console.log(parent)
+  }
 }
 
 deepReadDirSync(resolvePath('docs'), rootTree)
-
-rootTree.items.forEach(item => {
-  if (!item.items)
-    return;
-
-  bubble_sort(item.items)
-
-  item.items.forEach(item => {
-    let arr = item.text.split(" ")
-    if (arr.length && Number(arr[0]))
-      item.text = arr.slice(1).join(" ")
-  })
-})
 
 module.exports = {
   base: '/',
