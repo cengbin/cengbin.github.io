@@ -21,7 +21,6 @@
 36 关于组织分享
 37 关于组织团建
 38 语言代码表
-39 使用NodeJS开发命令行工具
 40 安全沙箱(Sandboxes)
 25 Zen Coding
 26 webpack打包优化
@@ -43,11 +42,8 @@
 57 如何打包库
 58 [调试经验记录]模板
 42 Vite配置SVG图标
-52 VitePress 坑总结
 60 不可见分隔符与空格引发的血案总结
 61 解决浏览器无法播放视频媒体文件的问题
-90 微信小程序开发总结
-98 笔记
 99 面试
 
 WebRTC vs WebSocket
@@ -124,3 +120,6 @@ XSS.md
 
 Stylelint 实践指南.md
 Zen Coding
+其他
+base64编码
+总结
