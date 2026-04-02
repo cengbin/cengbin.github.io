@@ -1,6 +1,6 @@
 {
   "name": "blog",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "彬彬的博客",
   "scripts": {
     "init": "npm install --registry=https://registry.npmmirror.com",
