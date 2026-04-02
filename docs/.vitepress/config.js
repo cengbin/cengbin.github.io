@@ -151,6 +151,7 @@ module.exports = {
           {text: '《推倒ta》', link: '/works/《推倒ta》.md'},
         ]
       },
+      {text: 'VitePress', link: 'https://vitepress.dev/zh/reference/site-config'},
     ],
     socialLinks: [
       {icon: 'github', link: 'https://github.com/cengbin/cengbin.github.io'}
