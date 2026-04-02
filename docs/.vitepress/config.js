@@ -11,8 +11,6 @@ const excludeList = fs
   .map(line => line.trim())
   .filter(line => line)
 
-// console.log(excludeList)
-
 let rootTree = {items: [], path: '',}
 
 function matchFileName(searchName, realName) {
