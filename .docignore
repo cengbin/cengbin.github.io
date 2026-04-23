@@ -63,22 +63,8 @@ JavaScript模块化.md
 SDK开发.md
 public
 微前端
-开发规范化-开发代码规范.md
-开发规范化-开发流程规范.md
-开发规范化-前后端分离接口规范.md
-开发规范化-项目目录与文件结构规范.md
-开发规范化-git-commit规范.md
-开发规范化-提交规范.md
-其他
-assets
-Code Review 编码标准.md
-CommitLint.md
-ESLint+Prettier
-Husky.md
-husky+lint-staged+commitlint实践.md
-lint-staged.md
+
 README.md
-StyleLint.md
 JS沙箱隔离.md
 使用Node如何制作一个专业的命令行工具以及命令执行的原理.md
 README-old-20230409.md
@@ -124,3 +110,13 @@ Zen Coding
 base64编码
 总结
 配置文件示例
+
+开发流程规范.md
+项目目录与文件结构规范.md
+开发代码规范.md
+提交规范.md
+前后端分离接口规范.md
+Code Review 编码标准.md
+ESLint+Prettier+Stylelint
+其他
+assets
