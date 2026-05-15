@@ -31,3 +31,11 @@
   <Outlet/>
 </Layout>
 ```
+
+## ProLayout
+
+```html
+<ProLayout menus={[]}>
+  <Outlet/>
+</ProLayout>
+```
